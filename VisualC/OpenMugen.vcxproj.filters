@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\src\game.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\logic\ControllerExecuter.cpp">
+      <Filter>logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\logic\engine.cpp">
+      <Filter>logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\logic\GameTimer.cpp">
+      <Filter>logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\logic\MemManager.cpp">
+      <Filter>logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\logic\player.cpp">
+      <Filter>logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\logic\Stack.cpp">
+      <Filter>logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\logic\StageManager.cpp">
+      <Filter>logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\logic\VirtualMachine.cpp">
+      <Filter>logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\driver\Input.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\driver\SDL_framerate.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\driver\SDLManager.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\driver\VideoSystem.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\AirBaseConfig.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\AirManager.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\BaseCofnig.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\CharsConfig.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\CmdManager.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\ConfigManager.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\SffManager.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\StageConfig.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\StateManager.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\StateParser.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\tokenizer.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tool\CArray.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tool\CAutoreleasePool.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tool\ccCArray.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tool\CDictionary.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tool\CObject.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tool\Common.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tool\CString.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tool\Geometry.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\driver\FontManager.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cocos\CCDirector.cpp">
+      <Filter>cocos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cocos\CCNode.cpp">
+      <Filter>cocos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cocos\CCScene.cpp">
+      <Filter>cocos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tool\CPointExtension.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cocos\CCLayer.cpp">
+      <Filter>cocos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\tool\Touch.cpp">
+      <Filter>tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\driver\TouchDispatcher.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cocos\UIBotton.cpp">
+      <Filter>cocos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ui\ChoosePlayerLayer.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ui\GameLayer.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ui\FightButton.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ui\JoyStickButton.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cocos\Sprite.cpp">
+      <Filter>cocos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ui\MenuLayer.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\SndConfig.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\driver\AudioSystem.cpp">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cocos\CCTexture2D.cpp">
+      <Filter>cocos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cocos\CCTextureCache.cpp">
+      <Filter>cocos</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\driver\glesext.c">
+      <Filter>driver</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\shader\ccShaders.cpp">
+      <Filter>shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\shader\CCGLProgram.cpp">
+      <Filter>shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\shader\ccGLStateCache.cpp">
+      <Filter>shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\shader\CCShaderCache.cpp">
+      <Filter>shader</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\StateParser_ControllerPart.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\logic\SystemManager.cpp">
+      <Filter>logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\SystemConfig.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\FightConfig.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\SceneAirConfig.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\logic\Helper.cpp">
+      <Filter>logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\logic\Fighter.cpp">
+      <Filter>logic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\token.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\SelectConfig.cpp">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\config\token.yy.c">
+      <Filter>config</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cocos\CCProgressTimer.cpp">
+      <Filter>cocos</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\define.h" />
+    <ClInclude Include="..\src\game.h" />
+    <ClInclude Include="..\src\structs.h" />
+    <ClInclude Include="..\src\logic\ControllerExecuter.h">
+      <Filter>logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\logic\engine.h">
+      <Filter>logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\logic\GameTimer.h">
+      <Filter>logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\logic\MemManager.h">
+      <Filter>logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\logic\player.h">
+      <Filter>logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\logic\Stack.h">
+      <Filter>logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\logic\StageManager.h">
+      <Filter>logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\logic\VirtualMachine.h">
+      <Filter>logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tool.h" />
+    <ClInclude Include="..\src\driver\Input.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\driver\SDL_framerate.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\driver\SDLManager.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\driver\VideoSystem.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\AirBaseConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\AirManager.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\BaseConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\CharsConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\CmdManager.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\ConfigManager.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\SffManager.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\StageConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\StateManager.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\StateParser.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\tokenizer.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tool\CArray.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tool\CAutoreleasePool.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tool\ccCArray.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tool\ccMacros.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tool\CDictionary.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tool\CInteger.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tool\CObject.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tool\Common.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tool\CString.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tool\Error.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tool\Geometry.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tool\uthash.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tool\utlist.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\driver\FontManager.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cocos\CCDirector.h">
+      <Filter>cocos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cocos\CCNode.h">
+      <Filter>cocos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cocos\CCScene.h">
+      <Filter>cocos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tool\CPointExtension.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cocos\CCLayer.h">
+      <Filter>cocos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\tool\Touch.h">
+      <Filter>tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\driver\TouchDelegateProtocol.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\driver\TouchDispatcher.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cocos\UIBotton.h">
+      <Filter>cocos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ui\ChoosePlayerLayer.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ui\GameLayer.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ui\FightButton.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cocos.h" />
+    <ClInclude Include="..\src\ui\JoyStickButton.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cocos\Sprite.h">
+      <Filter>cocos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ui\MenuLayer.h">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\SndConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\driver\AudioSystem.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cocos\CCTexture2D.h">
+      <Filter>cocos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cocos\CCTextureCache.h">
+      <Filter>cocos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cocos\ccTypes.h">
+      <Filter>cocos</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\driver\glesext.h">
+      <Filter>driver</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\shader\ccShader_Position_uColor_frag.h">
+      <Filter>shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\shader\ccShader_Position_uColor_vert.h">
+      <Filter>shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\shader\ccShaders.h">
+      <Filter>shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\shader\CCGLProgram.h">
+      <Filter>shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\shader\ccGLStateCache.h">
+      <Filter>shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\shader\CCShaderCache.h">
+      <Filter>shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\shader\ccShader_PositionTexture_frag.h">
+      <Filter>shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\shader\ccShader_PositionTexture_vert.h">
+      <Filter>shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\shader\ccShader_PositionTexture_afterimage_frag.h">
+      <Filter>shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\shader\ccShader_PositionTexture_afterimage_vert.h">
+      <Filter>shader</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\logic\SystemManager.h">
+      <Filter>logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\SystemConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\FightConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\SceneAirConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\logic\Helper.h">
+      <Filter>logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\logic\Fighter.h">
+      <Filter>logic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\token.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\config\SelectConfig.h">
+      <Filter>config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\cocos\CCProgressTimer.h">
+      <Filter>cocos</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="driver">
+      <UniqueIdentifier>{530b28cd-13bd-4084-b997-6cbafbba42c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ui">
+      <UniqueIdentifier>{03a5c0a1-d12e-4f02-bd3f-0b3438aa19e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="logic">
+      <UniqueIdentifier>{1f03f169-cb0b-4e3e-aed4-5de65fea7dab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="config">
+      <UniqueIdentifier>{f489c7f6-7a44-41eb-9c33-00ab9142575e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="tool">
+      <UniqueIdentifier>{3fcea8c4-b99b-4006-ad89-9acb46e7d5aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cocos">
+      <UniqueIdentifier>{437dc02c-a813-4d68-a9a4-7b61d8555f02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shader">
+      <UniqueIdentifier>{d0660784-789f-4fa2-81f6-5a6e13890506}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\config\token.l">
+      <Filter>config</Filter>
+    </None>
+  </ItemGroup>
+</Project>

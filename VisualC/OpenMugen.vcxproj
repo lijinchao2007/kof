@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\cocos\CCDirector.cpp" />
+    <ClCompile Include="..\src\cocos\CCLayer.cpp" />
+    <ClCompile Include="..\src\cocos\CCNode.cpp" />
+    <ClCompile Include="..\src\cocos\CCProgressTimer.cpp" />
+    <ClCompile Include="..\src\cocos\CCScene.cpp" />
+    <ClCompile Include="..\src\cocos\CCTexture2D.cpp" />
+    <ClCompile Include="..\src\cocos\CCTextureCache.cpp" />
+    <ClCompile Include="..\src\cocos\Sprite.cpp" />
+    <ClCompile Include="..\src\cocos\UIBotton.cpp" />
+    <ClCompile Include="..\src\config\AirBaseConfig.cpp" />
+    <ClCompile Include="..\src\config\AirManager.cpp" />
+    <ClCompile Include="..\src\config\BaseCofnig.cpp" />
+    <ClCompile Include="..\src\config\CharsConfig.cpp" />
+    <ClCompile Include="..\src\config\CmdManager.cpp" />
+    <ClCompile Include="..\src\config\ConfigManager.cpp" />
+    <ClCompile Include="..\src\config\FightConfig.cpp" />
+    <ClCompile Include="..\src\config\SceneAirConfig.cpp" />
+    <ClCompile Include="..\src\config\SelectConfig.cpp" />
+    <ClCompile Include="..\src\config\SffManager.cpp" />
+    <ClCompile Include="..\src\config\SndConfig.cpp" />
+    <ClCompile Include="..\src\config\StageConfig.cpp" />
+    <ClCompile Include="..\src\config\StateManager.cpp" />
+    <ClCompile Include="..\src\config\StateParser.cpp" />
+    <ClCompile Include="..\src\config\StateParser_ControllerPart.cpp" />
+    <ClCompile Include="..\src\config\SystemConfig.cpp" />
+    <ClCompile Include="..\src\config\token.cpp" />
+    <ClCompile Include="..\src\config\token.yy.c" />
+    <ClCompile Include="..\src\config\tokenizer.cpp" />
+    <ClCompile Include="..\src\driver\AudioSystem.cpp" />
+    <ClCompile Include="..\src\driver\FontManager.cpp" />
+    <ClCompile Include="..\src\driver\glesext.c" />
+    <ClCompile Include="..\src\driver\Input.cpp" />
+    <ClCompile Include="..\src\driver\SDLManager.cpp" />
+    <ClCompile Include="..\src\driver\SDL_framerate.cpp" />
+    <ClCompile Include="..\src\driver\TouchDispatcher.cpp" />
+    <ClCompile Include="..\src\driver\VideoSystem.cpp" />
+    <ClCompile Include="..\src\game.cpp" />
+    <ClCompile Include="..\src\logic\ControllerExecuter.cpp" />
+    <ClCompile Include="..\src\logic\engine.cpp" />
+    <ClCompile Include="..\src\logic\Fighter.cpp" />
+    <ClCompile Include="..\src\logic\GameTimer.cpp" />
+    <ClCompile Include="..\src\logic\Helper.cpp" />
+    <ClCompile Include="..\src\logic\MemManager.cpp" />
+    <ClCompile Include="..\src\logic\player.cpp" />
+    <ClCompile Include="..\src\logic\Stack.cpp" />
+    <ClCompile Include="..\src\logic\StageManager.cpp" />
+    <ClCompile Include="..\src\logic\SystemManager.cpp" />
+    <ClCompile Include="..\src\logic\VirtualMachine.cpp" />
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\shader\CCGLProgram.cpp" />
+    <ClCompile Include="..\src\shader\ccGLStateCache.cpp" />
+    <ClCompile Include="..\src\shader\CCShaderCache.cpp" />
+    <ClCompile Include="..\src\shader\ccShaders.cpp" />
+    <ClCompile Include="..\src\tool\CArray.cpp" />
+    <ClCompile Include="..\src\tool\CAutoreleasePool.cpp" />
+    <ClCompile Include="..\src\tool\ccCArray.cpp" />
+    <ClCompile Include="..\src\tool\CDictionary.cpp" />
+    <ClCompile Include="..\src\tool\CObject.cpp" />
+    <ClCompile Include="..\src\tool\Common.cpp" />
+    <ClCompile Include="..\src\tool\CPointExtension.cpp" />
+    <ClCompile Include="..\src\tool\CString.cpp" />
+    <ClCompile Include="..\src\tool\Geometry.cpp" />
+    <ClCompile Include="..\src\tool\Touch.cpp" />
+    <ClCompile Include="..\src\ui\ChoosePlayerLayer.cpp" />
+    <ClCompile Include="..\src\ui\FightButton.cpp" />
+    <ClCompile Include="..\src\ui\GameLayer.cpp" />
+    <ClCompile Include="..\src\ui\JoyStickButton.cpp" />
+    <ClCompile Include="..\src\ui\MenuLayer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\cocos.h" />
+    <ClInclude Include="..\src\cocos\CCDirector.h" />
+    <ClInclude Include="..\src\cocos\CCLayer.h" />
+    <ClInclude Include="..\src\cocos\CCNode.h" />
+    <ClInclude Include="..\src\cocos\CCProgressTimer.h" />
+    <ClInclude Include="..\src\cocos\CCScene.h" />
+    <ClInclude Include="..\src\cocos\CCTexture2D.h" />
+    <ClInclude Include="..\src\cocos\CCTextureCache.h" />
+    <ClInclude Include="..\src\cocos\ccTypes.h" />
+    <ClInclude Include="..\src\cocos\Sprite.h" />
+    <ClInclude Include="..\src\cocos\UIBotton.h" />
+    <ClInclude Include="..\src\config\AirBaseConfig.h" />
+    <ClInclude Include="..\src\config\AirManager.h" />
+    <ClInclude Include="..\src\config\BaseConfig.h" />
+    <ClInclude Include="..\src\config\CharsConfig.h" />
+    <ClInclude Include="..\src\config\CmdManager.h" />
+    <ClInclude Include="..\src\config\ConfigManager.h" />
+    <ClInclude Include="..\src\config\FightConfig.h" />
+    <ClInclude Include="..\src\config\SceneAirConfig.h" />
+    <ClInclude Include="..\src\config\SelectConfig.h" />
+    <ClInclude Include="..\src\config\SffManager.h" />
+    <ClInclude Include="..\src\config\SndConfig.h" />
+    <ClInclude Include="..\src\config\StageConfig.h" />
+    <ClInclude Include="..\src\config\StateManager.h" />
+    <ClInclude Include="..\src\config\StateParser.h" />
+    <ClInclude Include="..\src\config\SystemConfig.h" />
+    <ClInclude Include="..\src\config\token.h" />
+    <ClInclude Include="..\src\config\tokenizer.h" />
+    <ClInclude Include="..\src\define.h" />
+    <ClInclude Include="..\src\driver\AudioSystem.h" />
+    <ClInclude Include="..\src\driver\FontManager.h" />
+    <ClInclude Include="..\src\driver\glesext.h" />
+    <ClInclude Include="..\src\driver\Input.h" />
+    <ClInclude Include="..\src\driver\SDLManager.h" />
+    <ClInclude Include="..\src\driver\SDL_framerate.h" />
+    <ClInclude Include="..\src\driver\TouchDelegateProtocol.h" />
+    <ClInclude Include="..\src\driver\TouchDispatcher.h" />
+    <ClInclude Include="..\src\driver\VideoSystem.h" />
+    <ClInclude Include="..\src\game.h" />
+    <ClInclude Include="..\src\logic\ControllerExecuter.h" />
+    <ClInclude Include="..\src\logic\engine.h" />
+    <ClInclude Include="..\src\logic\Fighter.h" />
+    <ClInclude Include="..\src\logic\GameTimer.h" />
+    <ClInclude Include="..\src\logic\Helper.h" />
+    <ClInclude Include="..\src\logic\MemManager.h" />
+    <ClInclude Include="..\src\logic\player.h" />
+    <ClInclude Include="..\src\logic\Stack.h" />
+    <ClInclude Include="..\src\logic\StageManager.h" />
+    <ClInclude Include="..\src\logic\SystemManager.h" />
+    <ClInclude Include="..\src\logic\VirtualMachine.h" />
+    <ClInclude Include="..\src\shader\CCGLProgram.h" />
+    <ClInclude Include="..\src\shader\ccGLStateCache.h" />
+    <ClInclude Include="..\src\shader\CCShaderCache.h" />
+    <ClInclude Include="..\src\shader\ccShaders.h" />
+    <ClInclude Include="..\src\shader\ccShader_PositionTexture_afterimage_frag.h" />
+    <ClInclude Include="..\src\shader\ccShader_PositionTexture_afterimage_vert.h" />
+    <ClInclude Include="..\src\shader\ccShader_PositionTexture_frag.h" />
+    <ClInclude Include="..\src\shader\ccShader_PositionTexture_vert.h" />
+    <ClInclude Include="..\src\shader\ccShader_Position_uColor_frag.h" />
+    <ClInclude Include="..\src\shader\ccShader_Position_uColor_vert.h" />
+    <ClInclude Include="..\src\structs.h" />
+    <ClInclude Include="..\src\tool.h" />
+    <ClInclude Include="..\src\tool\CArray.h" />
+    <ClInclude Include="..\src\tool\CAutoreleasePool.h" />
+    <ClInclude Include="..\src\tool\ccCArray.h" />
+    <ClInclude Include="..\src\tool\ccMacros.h" />
+    <ClInclude Include="..\src\tool\CDictionary.h" />
+    <ClInclude Include="..\src\tool\CInteger.h" />
+    <ClInclude Include="..\src\tool\CObject.h" />
+    <ClInclude Include="..\src\tool\Common.h" />
+    <ClInclude Include="..\src\tool\CPointExtension.h" />
+    <ClInclude Include="..\src\tool\CString.h" />
+    <ClInclude Include="..\src\tool\Error.h" />
+    <ClInclude Include="..\src\tool\Geometry.h" />
+    <ClInclude Include="..\src\tool\Touch.h" />
+    <ClInclude Include="..\src\tool\uthash.h" />
+    <ClInclude Include="..\src\tool\utlist.h" />
+    <ClInclude Include="..\src\ui\ChoosePlayerLayer.h" />
+    <ClInclude Include="..\src\ui\FightButton.h" />
+    <ClInclude Include="..\src\ui\GameLayer.h" />
+    <ClInclude Include="..\src\ui\JoyStickButton.h" />
+    <ClInclude Include="..\src\ui\MenuLayer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\src\config\token.l" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{6F0C5F95-A518-4DF3-A2BC-5832C5A8A090}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectName>kof</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>11.0.60610.1</_ProjectFileVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)Bin/</OutDir>
+    <IntDir>Debug\</IntDir>
+    <LinkIncremental>true</LinkIncremental>
+    <ReferencePath>$(SolutionDir)../gles_sdk/include;$(ReferencePath)</ReferencePath>
+    <IncludePath>$(ProjectDir)../src;$(ProjectDir)../SDL2/include;$(ProjectDir)../SDL2_ttf-2.0.12;$(ProjectDir)../SDL2_image-2.0.0;$(ProjectDir)../SDL2_mixer-2.0.0;$(ProjectDir)../gles_sdk/include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Bin;$(SolutionDir)../gles_sdk/x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)Release/</OutDir>
+    <IntDir>$(ProjectDir)Release/Obj</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(ProjectDir)../include;$(ProjectDir)../SDL2/include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Release/;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>_DEBUG;WIN32;_WINDOWS;HAVE_OPENGL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <DisableSpecificWarnings>4819;4244;4800;4018;4996;4305;%(DisableSpecificWarnings)</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(SolutionDir)Bin/$(TargetFileName)</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ProgramDatabaseFile>$(OutDir)OpenMugen.pdb</ProgramDatabaseFile>
+      <SubSystem>Console</SubSystem>
+      <TargetMachine>MachineX86</TargetMachine>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <PrecompiledHeader />
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <OutputFile>$(OutDir)OpenMugen.exe</OutputFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
