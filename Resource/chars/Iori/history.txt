@@ -1,0 +1,42 @@
+IORI YAGAMI 71113
+* July 26, 2008
+ - Fixed Guard.hittime and Guard.pausetime
+ - Updated AI - abit.
+
+* January 11, 2005
+ - WinMugen Patch made by Winane, 
+   compiled all files in 1 rar file. ^^
+
+* November 22, 2002
+ - Bug Fixes
+ - Added Custom 2K Dm
+ - Added Alternative Follow-up SDM
+
+* May 7, 2002
+ - 3 level AI
+ - Intro Vs Kyo 2K1
+ - Added missing sounds
+
+* May 4. 2002
+ - Yaotome
+ - Yami Sugi
+
+* May 2, 2002
+ - All specials
+ - BAsic Yaotome DM
+ - To use old stance: Press D,D, start
+
+* April 30, 2002
+ - Kototsuki in
+ - Kuzukaze
+
+* April 26, 2002
+ - Aoi Hana
+ - Throws
+ - Yami barai
+
+* April 24, 2002
+ - All basic and required animations/sprites
+ - All Basic moves and attacks
+
+Sander71113

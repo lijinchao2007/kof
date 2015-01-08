@@ -1,0 +1,482 @@
+;--------------------------------------------------------
+;NUDE PLACE STAGE BY CIRIO
+;--------------------------------------------------------
+;e-mail:  cirio@rome.com
+;website: cirio.cjb.net
+;--------------------------------------------------------
+
+SVC¿ÒÃ√
+
+[Info]
+name = "Nude Place"
+
+[Camera]
+startx = 0
+starty = 0
+boundleft = -500
+boundright = 500
+boundhigh = -96
+boundlow = 0
+verticalfollow = .9
+floortension = 150
+tension = 111
+
+
+;--------------------------------------------------------
+[PlayerInfo]
+p1startx = -70          ;Starting x coordinates
+p1starty = 0            ;Starting y coordinates
+p1facing = 1            ;Direction player faces: 1=right, -1=left
+
+;--- Player 2 ---
+p2startx = 70
+p2starty = 0
+p2facing = -1
+
+;--- Common ---
+leftbound  = -1000 ;Left bound (x-movement)
+rightbound =  1000 ;Right bound
+
+;--------------------------------------------------------
+[Scaling]
+topz     = 0       
+botz     = 50      
+topscale = 1       
+botscale = 1.2     
+
+;--------------------------------------------------------
+[Bound]
+screenleft = 50    ;Dist from left of screen that player can move to
+screenright = 50   ;Right edge
+
+;--------------------------------------------------------
+[StageInfo]
+zoffset = 215
+autoturn = 1
+resetBG = 0
+
+;--------------------------------------------------------
+[Shadow]
+color = "0,0,0"
+yscale = 0
+reflect = 0
+
+;--------------------------------------------------------
+[Music]
+bgmusic = "sound/OST_XI02.ogg"
+bgvolume = 255
+
+[BGdef]
+spr = "stages/svc_chapel.sff"
+debugbg = 0
+
+;----------
+[BG 1]
+type  = normal
+spriteno = 0,0
+start = -974, -100
+mask = 0
+delta =1,1
+
+[BG 3]
+type  = anim
+actionno = 1
+start = 96, 1
+mask = 0
+delta = .78,.42
+
+[BG 15]
+type  = anim
+actionno = 90
+start = 0, 0
+mask = 1
+id = 15
+delta = .78,.42
+
+
+[BGCtrlDef 15]
+CtrlID = 15
+looptime = 2500
+
+[BGCtrl 3]
+type = Anim
+time = 0
+value = 90
+
+[BGCtrl 15]
+type = Posset
+time = 0
+x = -355
+y = 210
+
+[BGCtrl 15]
+type = VelSet
+time = 0
+x = 1
+y = -1
+
+
+[BGCtrl 3]
+type = Anim
+time = 500
+value = 9
+
+[BGCtrl 15]
+type = Posset
+time = 500
+x = 0
+y = 270
+
+[BGCtrl 15]
+type = VelSet
+time = 500
+x = -1
+y = -1
+
+[BGCtrl 3]
+type = Anim
+time = 1500
+value = 90
+
+[BGCtrl 15]
+type = Posset
+time = 1500
+x = -200
+y = 270
+
+[BGCtrl 15]
+type = VelSet
+time = 1500
+x = 1
+y = -1
+
+[BGCtrl 3]
+type = Anim
+time = 2000
+value = 9
+
+[BGCtrl 15]
+type = Posset
+time = 2000
+x = 200
+y = 270
+
+[BGCtrl 15]
+type = VelSet
+time = 2000
+x = -1
+y = -1
+
+[BG 2]
+type  = normal
+spriteno = 0,1
+start = 0, -100
+mask = 1
+
+
+
+[BG 4]
+type  = anim
+actionno = 2
+start = 57, -78
+mask = 1
+
+[BG 4]
+type  = anim
+actionno = 3
+start = -265, 123
+mask = 1
+
+[BG 4]
+type  = anim
+actionno = 4
+start = -96, 148
+mask = 1
+
+[BG 4]
+type  = anim
+actionno = 5
+start = 320, -43
+mask = 1
+
+[BG 4]
+type  = anim
+actionno = 6
+start = -376, 136
+mask = 0
+
+[BG 4]
+type  = anim
+actionno = 7
+start = -376, 2
+mask = 1
+
+[BG 4]
+type  = anim
+actionno = 8
+start = 224, 50
+mask = 1
+
+[BG 3]
+type  = anim
+actionno = 11
+start = -321, -104
+mask = 1
+id = 9
+
+[BGCtrlDef 9]
+CtrlID = 9
+looptime = -1
+
+[BGCtrl 9]
+type = Posset
+time = 0
+x = 0
+y = 0
+
+[BGCtrl 9]
+type = VelSet
+time = 0
+x = 1
+y = 1
+
+
+[BGCtrl 9]
+type = VelSet
+time = 280
+x = 0
+y = 0
+
+
+[BGCtrl 9]
+type = Posadd
+time = 301
+x = -10
+y = 8
+
+[BGCtrl 9]
+type = Anim
+time = 301
+value = 12
+
+[BGCtrl 9]
+type = Anim
+time = 321
+value = 10
+
+[BG 2]
+type  = normal
+spriteno = 0,2
+start = 974, -100
+mask = 1
+layerno = 1
+
+[Begin action 1]
+1,1, 0,0, 9
+1,2, 0,0, 9
+1,3, 0,0, 9
+1,4, 0,0, 9
+1,5, 0,0, 9
+1,6, 0,0, 9
+1,7, 0,0, 9
+1,8, 0,0, 9
+
+[Begin action 2]
+2,1, 0,0, 9
+2,2, 0,0, 9
+2,3, 0,0, 9
+2,4, 0,0, 9
+2,5, 0,0, 9
+2,6, 0,0, 9
+2,7, 0,0, 9
+2,8, 0,0, 9
+
+[Begin action 3]
+3,1, 0,0, 9
+3,2, 0,0, 9
+3,3, 0,0, 9
+3,4, 0,0, 9
+3,5, 0,0, 9
+3,6, 0,0, 9
+3,7, 0,0, 9
+3,8, 0,0, 9
+
+[Begin action 4]
+4,1, 0,0, 9
+4,2, 0,0, 9
+4,3, 0,0, 9
+4,4, 0,0, 9
+4,5, 0,0, 9
+4,6, 0,0, 9
+4,7, 0,0, 9
+4,8, 0,0, 9
+
+[Begin action 5]
+5,1, 0,0, 9
+5,2, 0,0, 9
+5,3, 0,0, 9
+5,4, 0,0, 9
+5,5, 0,0, 9
+5,6, 0,0, 9
+5,7, 0,0, 9
+5,8, 0,0, 9
+
+[Begin action 6]
+6,1, 0,0, 4
+6,2, 0,0, 4
+6,3, 0,0, 4
+6,2, 0,0, 4
+
+[Begin action 7]
+7,1, 0,0, 4
+7,2, 0,0, 4
+7,3, 0,0, 4
+7,2, 0,0, 4
+
+[Begin action 8]
+8,1, 0,0, 4
+8,2, 0,0, 4
+8,3, 0,0, 4
+8,2, 0,0, 4
+
+[Begin action 9]
+9,1, 0,0, 3
+9,2, 0,0, 3
+9,3, 0,0, 3
+9,4, 0,0, 3
+9,5, 0,0, 3
+9,6, 0,0, 3
+9,7, 0,0, 3
+9,8, 0,0, 3
+9,9, 0,0, 3
+
+[Begin action 90]
+9,1, 0,0, 3,H
+9,2, 0,0, 3,H
+9,3, 0,0, 3,H
+9,4, 0,0, 3,H
+9,5, 0,0, 3,H
+9,6, 0,0, 3,H
+9,7, 0,0, 3,H
+9,8, 0,0, 3,H
+9,9, 0,0, 3,H
+
+[Begin action 10]
+10,2, 0,0, 50
+10,1, 0,0, 200
+Loopstart
+10,1, 0,0, 5
+10,2, 0,0, 5
+10,3, 0,0, 5
+10,4, 0,0, 5
+10,5, 0,0, 5
+10,6, 0,0, 5
+10,7, 0,0, 5
+10,8, 0,0, 5
+10,9, 0,0, 5
+10,10, 0,0, 5
+10,11, 0,0, 5
+10,12, 0,0, 5
+10,13, 0,0, 5
+10,14, 0,0, 5
+10,15, 0,0, 5
+10,16, 0,0, 5
+10,17, 0,0, 5
+10,18, 0,0, 5
+10,19, 0,0, 5
+10,20, 0,0, 5
+10,21, 0,0, 5
+10,22, 0,0, 5
+10,23, 0,0, 5
+10,24, 0,0, 5
+10,25, 0,0, 5
+10,2, 0,0, 200
+10,1, 0,0, 200
+10,2, 0,0, 5
+10,3, 0,0, 5
+10,4, 0,0, 5
+10,5, 0,0, 5
+10,6, 0,0, 5
+10,7, 0,0, 5
+10,8, 0,0, 5
+10,9, 0,0, 5
+10,10, 0,0, 5
+10,11, 0,0, 5
+10,12, 0,0, 5
+10,13, 0,0, 5
+10,14, 0,0, 5
+10,15, 0,0, 5
+10,16, 0,0, 5
+10,17, 0,0, 5
+10,18, 0,0, 5
+10,19, 0,0, 5
+10,20, 0,0, 5
+10,21, 0,0, 5
+10,22, 0,0, 5
+10,23, 0,0, 5
+10,24, 0,0, 5
+10,25, 0,0, 5
+10,2, 0,0, 20
+10,3, 0,0, 5
+10,4, 0,0, 5
+10,5, 0,0, 5
+10,6, 0,0, 5
+10,7, 0,0, 5
+10,8, 0,0, 5
+10,9, 0,0, 5
+10,10, 0,0, 5
+10,11, 0,0, 5
+10,12, 0,0, 5
+10,13, 0,0, 5
+10,14, 0,0, 5
+10,15, 0,0, 5
+10,16, 0,0, 5
+10,17, 0,0, 5
+10,18, 0,0, 5
+10,19, 0,0, 5
+10,20, 0,0, 5
+10,21, 0,0, 5
+10,22, 0,0, 5
+10,23, 0,0, 5
+10,24, 0,0, 5
+10,25, 0,0, 5
+10,2, 0,0, 200
+10,1, 0,0, 200
+10,2, 0,0, 200
+10,1, 0,0, 200
+10,2, 0,0, 5
+10,3, 0,0, 5
+10,4, 0,0, 5
+10,5, 0,0, 5
+10,6, 0,0, 5
+10,7, 0,0, 5
+10,8, 0,0, 5
+10,9, 0,0, 5
+10,10, 0,0, 5
+10,11, 0,0, 5
+10,12, 0,0, 5
+10,13, 0,0, 5
+10,14, 0,0, 5
+10,15, 0,0, 5
+10,16, 0,0, 5
+10,17, 0,0, 5
+10,18, 0,0, 5
+10,19, 0,0, 5
+10,20, 0,0, 5
+10,21, 0,0, 5
+10,22, 0,0, 5
+10,23, 0,0, 5
+10,24, 0,0, 5
+10,25, 0,0, 5
+
+[Begin action 11]
+11,1, 0,0, 5
+11,2, 0,0, 5
+11,3, 0,0, 6
+11,4, 0,0, 5
+
+[Begin action 12]
+10,22, 0,0, 5
+10,23, 0,0, 5
+10,24, 0,0, 5
+10,25, 0,0, 5

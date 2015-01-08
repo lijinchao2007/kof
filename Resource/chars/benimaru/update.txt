@@ -1,0 +1,86 @@
+Benimaru Nikaido 100% updated.
+
+
+--------------------------------------------------------------------------------------------
+ *** MUGEN VERSION SELECTION ***
+
+ Benimaru is compatible with all currently available Mugen versions from 04.14.2001 and up.
+ But in order for Benimaru to work properly in the Mugen version of your choice, you must
+ select the proper code files for him to use.  To do so, open up his .def file in a text
+ editor, and find these lines:
+
+;st3     = 2001-04.txt    ;States for Mugen 04.14.2001
+st3      = 2002.txt       ;States for Mugen 11.01.2001+
+
+ By default, he's configured to be used with Mugen 11.01.2001 and up.  If you're using
+ Mugen 04.14.2001, add a semicolon before the second st3 line, and remove the semicolon
+ from the beginning of the first st3 line.
+ Furthermore, if you're using Mugen 04.14.2001, but have corrected the guard recovery time
+ bug in States 151 & 153 in your copy of /data/common1.cns, then open 2001-04.txt and
+ follow the instruction found at [State 5900, MugenVersion].
+
+--------------------------------------------------------------------------------------------
+ *** ARTIFICIAL INTELLIGENCE SYSTEM ***
+
+ Benimaru has a 3 level AI. All you have to do is edit benimaru.def using notepad.
+
+ cmd     = benimaru.cmd      ;Hard-AI
+ ;cmd      = benimedai.cmd   ;Medium-AI
+ ;cmd     = beninoai.cmd     ;No-AI
+
+ Just remove the semicolon AT THE START OF THE LINE before the AI level of your choice and
+ make sure the unwanted levels have semicolon before them. In the example above, it is
+ setup to use low level AI.
+
+--------------------------------------------------------------------------------------------
+
+
+April 7, 2006
+ - Moved States 150, 152, and 5900 into separate files (2001-04.txt & 2002.txt).
+ - Now using var(55) as Mugen version indicator.
+ - Divided all guard.ctrltimes by 2.
+ - Divided all guard.hittimes by (3&var(55)).
+ - Added more girl intro names, as suggested by BlackJack.
+ - Fixed debug flooding when Benimaru has no enemy.
+ - Fixed an invalid AI ChangeState.
+ - Changed enemy,trigger redirects to enemynear,trigger redirects.
+ - Updated AI activation code.
+ - Added attribute indicator anims to AIR file (some may need to be corrected, though).
+ - Minor miscellaneous tidying.
+
+
+January 11, 2004
+Fixed/Updated:
+1. Added Win Mugen Patch, made by Winane
+
+
+November 22, 2002
+Fixed/Updated:
+1. Redone Cvs DM.. Thanks to KADDET for the awesome edits.
+2. Tweaked the iai geri follow up to match KOF2001.
+
+APRIL 22, 2002
+Fixed/Updated:
+1. KOF2000 frames added
+2. Major Hitdefs and Juggle system overhaul.
+3. Raijiken/Raikouken fixes (use hitdef instead of proj...)
+4. Cvs2 sounds :)
+5. Cvs2 Dm/Sdm
+6. Hard/No AI
+7. Optional KOF2000 style palette (purplish electric stuff)
+8. A lot of bugfixes.
+9. KOF2001 Super Cancel and Wire Damage system
+
+Note:
+- Press and hold start while selecting Benimaru to use the purplish electric effects (KOF2K-2K1 style).
+
+Additional Credits:
+Deuce - Of course, he made this baby in the first place.
+SMI   - For getting Benimaru's basic velocities.
+Tenshin/Shindio - Help in the sound ripping department.
+Kaddet - For the great edits, as always.
+Winane - A little bugfixing and stuff.
+
+- Sander71113
+Report Bugs to me: sander71113@gmail.com
+http://sander71113.mgbr.net

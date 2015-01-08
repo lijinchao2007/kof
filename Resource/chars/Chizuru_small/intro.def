@@ -1,0 +1,274 @@
+; Ending cutscene for Chizuru Kagura's KOF96 Intro.
+; MUGENIZED BY: SANDER71113
+; Like the intro, this storyboard has multiple scenes.
+; Each scene uses two overlay anims, one for the picture, and
+; another for the text.
+; The fadein and fadeout parameters are used to fade one screen
+; to the next.
+
+[SceneDef]
+spr = intro.sff
+startscene = 0        ;Starting scene number (for debugging)
+
+;------------------------------------
+;START
+;CHIZURU1
+[Scene 0]
+; Fade
+fadein.time = 100       ;Time to take for fading in
+fadein.col = 100,-100,-100     ;Use 255,255,255 for white-fade
+fadeout.time = 10
+fadeout.col = 10,-100,-100
+; Screen color
+clearcolor = 0,0,100
+; Overlay Anims (from 0 to 9)
+layerall.pos = 0,0   ;Default position for all layers
+layer0.anim =  0
+layer0.offset = 161,167
+layer0.starttime = 0 
+layer1.anim =  7     
+layer1.offset = 0,0
+layer1.starttime = 0 
+layer2.anim =  1     
+layer2.offset = 139,220
+layer2.starttime = 50 
+; Music
+bgm = ending.mp3       ;Name of music file to play
+bgm.loop = 0
+; Total time
+end.time = 650
+;-------------------------------------------------------
+
+;CHIZURU2
+[Scene 1]
+; Fade
+fadein.time = 100       ;Time to take for fading in
+fadein.col = 100,-100,-100     ;Use 255,255,255 for white-fade
+fadeout.time = 10
+fadeout.col = 10,-100,-100
+; Screen color
+clearcolor = 0,0,100
+; Overlay Anims (from 0 to 9)
+layerall.pos = 0,0   ;Default position for all layers
+layer0.anim =  2
+layer0.offset = 161,167
+layer0.starttime = 0 
+layer1.anim =  7     
+layer1.offset = 0,0
+layer1.starttime = 0 
+layer2.anim =  3     
+layer2.offset = 139,220
+layer2.starttime = 50 
+end.time = 1000
+
+;-------------------------------------------------------
+
+;CHIZURU3
+[Scene 2]
+; Fade
+fadein.time = 100       ;Time to take for fading in
+fadein.col = 100,-100,-100     ;Use 255,255,255 for white-fade
+fadeout.time = 50
+fadeout.col = 200,200,200
+; Screen color
+clearcolor = 100,100,100
+; Overlay Anims (from 0 to 9)
+layerall.pos = 0,0   ;Default position for all layers
+layer0.anim =  5
+layer0.offset = 161,167
+layer0.starttime = 5 
+layer1.anim =  5
+layer1.offset = 181,197
+layer1.starttime = 0 
+layer2.anim =  5
+layer2.offset = 194,132
+layer2.starttime = 10 
+layer3.anim =  5
+layer3.offset = 274,142
+layer3.starttime = 15 
+layer4.anim =  5
+layer4.offset = 300,169
+layer4.starttime = 20 
+layer5.anim =  5
+layer5.offset = 284,195
+layer5.starttime = 25 
+layer6.anim =  4
+layer6.offset = 161,167
+layer6.starttime = 0 
+layer7.anim =  7     
+layer7.offset = 0,0
+layer7.starttime = 0 
+layer8.anim =  6    
+layer8.offset = 139,220
+layer8.starttime = 50 
+end.time = 530
+
+;----------------------------------------------------
+;CHIZURU4
+[Scene 3]
+; Fade
+fadein.time = 50       ;Time to take for fading in
+fadein.col = 200,200,200     ;Use 255,255,255 for white-fade
+fadeout.time = 10
+fadeout.col = 10,-100,-100
+; Screen color
+clearcolor = 200,50,50
+; Overlay Anims (from 0 to 9)
+layerall.pos = 0,0   ;Default position for all layers
+layer0.anim =  5
+layer0.offset = 161,167
+layer0.starttime = 5 
+layer1.anim =  5
+layer1.offset = 181,197
+layer1.starttime = 0 
+layer2.anim =  5
+layer2.offset = 194,132
+layer2.starttime = 10 
+layer3.anim =  5
+layer3.offset = 274,142
+layer3.starttime = 15 
+layer4.anim =  5
+layer4.offset = 300,169
+layer4.starttime = 20 
+layer5.anim =  5
+layer5.offset = 284,195
+layer5.starttime = 25 
+layer6.anim =  8
+layer6.offset = 161,167
+layer6.starttime = 0 
+layer7.anim =  7     
+layer7.offset = 0,0
+layer7.starttime = 0 
+layer8.anim =  9    
+layer8.offset = 139,220
+layer8.starttime = 0 
+end.time = 322
+
+
+;------------------------------------
+;FINAL POSE
+[Scene 6]
+; Fade
+fadein.time = 100       ;Time to take for fading in
+fadein.col = 100,-100,-100     ;Use 255,255,255 for white-fade
+fadeout.time = 50
+fadeout.col = 10,-100,-100
+; Screen color
+clearcolor = 50,50,50
+; Overlay Anims (from 0 to 9)
+layerall.pos = 0,0   ;Default position for all layers
+layer0.anim =  17
+layer0.offset = 157,240
+layer0.starttime = 0 
+layer1.anim =  18
+layer1.offset = 157,240
+layer1.starttime = 0 
+layer2.anim =  19     
+layer2.offset = 157,240
+layer2.starttime = 0
+; Total time
+end.time = 250
+
+;------------------------------------
+;FIN
+[Scene 7]
+; Fade
+fadein.time = 100       ;Time to take for fading in
+fadein.col = 100,-100,-100     ;Use 255,255,255 for white-fade
+fadeout.time = 10
+fadeout.col = 10,-100,-100
+; Screen color
+clearcolor = 100,100,100
+; Overlay Anims (from 0 to 9)
+layerall.pos = 0,0   ;Default position for all layers
+layer0.anim =  20
+layer0.offset = 0,0
+layer0.starttime = 0 
+; Total time
+end.time = 250
+
+;=======================================================================
+;---<> ANIMATIONS <>---
+;=======================================================================
+;SCENE 0
+[Begin Action 0]
+0,0, 0,0, -1
+
+;TEXT SCENE0
+[Begin Action 1]
+1,1, 0,0, 220
+1,-1,0,0, 20
+1,2, 0,0, -1
+
+;SCENE 1
+[Begin Action 2]
+2,1, 0,0, -1
+
+;TEXT SCENE1
+[Begin Action 3]
+3,1, 0,0, 200
+3,-1,0,0, 20
+3,2, 0,0, 200
+3,-1,0,0, 20
+3,3, 0,0, 200
+3,-1,0,0, 20
+3,4, 0,0, -1
+
+;FACE
+[Begin Action 4]
+4,  1, 0,0, 520
+4,  2, 0,0, -1
+
+
+;POWER
+[Begin Action 5]
+5,  1, 0,0, 5
+5,  2, 0,0, 5
+5,  3, 0,0, 5
+5,  4, 0,0, 5
+5,  5, 0,0, 5
+5,  6, 0,0, 5
+5,  7, 0,0, 5
+5,  8, 0,0, 5
+5,  9, 0,0, 5
+5, -1, 0,0, 9
+
+;TEXT
+[Begin Action 6]
+6,  1, 0,0, 250
+6, -1, 0,0, 20
+6,  2, 0,0, -1
+
+;COVER
+[Begin Action 7]
+7, 1,  0,0, -1
+
+;FACE
+[Begin Action 8]
+4,  3, 0,0, -1
+
+;Text SCENE 2
+[Begin Action 9]
+6,  3, 0,0, -1
+
+;Mai
+[Begin Action 17]
+17, 1, 0,0, 1
+
+;King
+[Begin Action 18]
+18, 1, 0,0, 1
+
+;Chiz
+[Begin Action 19]
+19, 1, 0,0, -1
+
+;FIN
+[Begin Action 20]
+20, 1, 0,0, -1
+
+;=========================================================
+;---<> Email   : sander71113@yahoo.com 
+;=========================================================
+;---<> WEBPAGE : http://server48.hypermart.net/sander71113
+;=========================================================

@@ -1,0 +1,1462 @@
+;=============================================================================
+;Kilikili SUMMON 1
+[Statedef 1550]
+type = S
+movetype = I
+physics = S
+anim = 1550
+sprpriority = -1
+poweradd = 70
+velset = 0
+ctrl = 0
+
+[State 250, 6]
+type = playsnd
+trigger1 = animelem = 7
+value = 8,0
+volume = 50
+
+[State 250, 6]
+type = screenbound	
+trigger1 = time >=0
+value = 0
+movecamera = 1,0
+
+[State 1100,illussion]
+type = Helper
+trigger1 = animelem = 7, = 0
+name = "kilikili"
+id = 1551
+stateno = 1551
+pos = 0,0
+postype = p1
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+
+[State 250, 6]
+type = varset	
+trigger1 = time = 0
+var(1) = 0
+
+[State 250, 6]
+type = varset	
+trigger1 = command = "pq"
+trigger1 = time > 0
+var(1) = 1
+
+[State 250, 6]
+type = varset	
+trigger1 = command = "pahipo"
+trigger1 = time > 0
+var(1) = 2
+
+[State 250, Palengke queen]
+type = changestate	
+trigger1 = var(1) = 1
+trigger1 = animelem = 7, = [27,40]
+value = 1655
+ctrl = 0
+
+[State 250, Pahipo]
+type = changestate	
+trigger1 = var(1) = 2
+trigger1 = animelem = 7, = [27,40]
+value = 1710
+ctrl = 0
+
+;----------------------------------------
+
+;Ai
+[State 250, Palengke queen]
+type = changestate	
+triggerall = var(9) = 1
+triggerall = animelem = 7, = [27,40]
+trigger1 = p2bodydist x = [5,80]
+trigger1 = p2statetype != L
+value = 1655
+ctrl = 0
+
+[State 250, Pahipo]
+type = changestate	
+triggerall = var(9) = 1
+triggerall = random <300
+triggerall = animelem = 7, = [27,40]
+trigger1 = p2bodydist x = [5,40]
+trigger1 = p2statetype = C
+trigger2 = p2bodydist x = [5,40]
+trigger2 = p2movetype  = H
+value = 1710
+ctrl = 0
+;-------------------------------------------
+
+[State 280, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;-----------------------------
+
+;Kilikili attack
+[Statedef 1551]
+type = S
+movetype = A
+physics = S
+anim = 1551
+poweradd = 70
+juggle = 11
+velset = 0
+ctrl = 0
+
+;Play sound when running
+[State 100, 0]
+type = PlaySnd
+trigger1 = animelem = 1
+trigger2 = animelem = 4
+value = 0,12
+channel = 20
+volume = 10
+
+[State 250, 6]
+type = playsnd
+trigger1 = time = 0
+value = 8,1
+volume = 0
+
+[State 1010, Override]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, AA, AP, AT
+slot = 0
+stateno = 1537
+time = -1
+
+[State 250, 6]
+type = sprpriority	
+trigger1 = animelem = 5, <0
+value = -1
+
+[State 250, 6]
+type = sprpriority	
+trigger1 = animelem =5, >=0
+value = 1
+
+[State 200, 1]
+type = afterimage
+trigger1 = time = 0
+time = 19
+palbright = 0,0,0
+palcontrast = 250,250,250
+paladd = 0,0,0
+palmul = 0.6,0.6,0.6
+timegap = 1
+framegap = 2
+length = 5
+
+[State 250, 6]
+type = screenbound	
+trigger1 = time >=0
+value = 0
+movecamera = 1,0
+
+[State 250, 6]
+type = velset	
+trigger1 = animelem = 1
+x = 16
+
+[State 250, 6]
+type = veladd	
+trigger1 = animelem = 5
+trigger2 = animelem = 6
+trigger3 = animelem = 7
+x = 8
+
+[State 250, 6]
+type = veladd	
+trigger1 = animelem = 9,>1
+x = -.002
+
+[State 250, 6]
+type = velset	
+trigger1 = animelem = 10
+x = 0
+
+[State 250, 6]
+type = velset	
+trigger1 = vel x >.1
+trigger1 = movecontact 
+x = .5
+
+[State 250, 6]
+type = veladd	
+trigger1 = vel x >.1
+trigger1 = movecontact 
+x = -.4
+
+[State 250, 6]
+type = playerpush
+trigger1 = AnimElem = 6,<0
+value = 0
+
+[State 280, 3]
+type = HitDef
+trigger1 = p2bodydist x <25
+trigger1 = AnimElem = 6
+attr = S, SA
+damage = 84,10
+hitflag = MAF
+guardflag = MA
+pausetime = 11,7
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = -5,-65
+hitsound = S280,0
+guardsound = S200,3
+ground.slidetime = 18
+ground.velocity = -4,-6.5
+guard.slidetime = 18
+air.velocity = -4,-6.5
+airguard.velocity = -4,-2
+fall = 1
+fall.recover = 0
+guard.velocity = -8.9
+getpower = 30
+givepower = 30
+
+[State 280, 3]
+type = HitDef
+trigger1 = p2bodydist x >=25
+trigger1 = AnimElem = 6
+attr = S, SA
+damage = 84,10
+hitflag = MAF
+guardflag = MA
+pausetime = 11,7
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = -5,-85
+hitsound = S280,0
+guardsound = S200,3
+ground.slidetime = 18
+ground.velocity = -3,-6.5
+guard.slidetime = 18
+air.velocity = -3,-6.5
+airguard.velocity = -4,-2
+fall = 1
+fall.recover = 0
+guard.velocity = -8.9
+getpower = 30
+givepower = 30
+
+[State 280, 4]
+type = destroyself
+trigger1 = AnimTime = 0
+trigger2 = root, movetype = H
+trigger3 = root, stateno = 1650
+trigger4 = root, stateno = 1700
+;-----------------------------
+
+;=======================================================
+
+;Kilikili attack 2
+[Statedef 1600]
+type = S
+movetype = A
+physics = S
+anim = 1600
+poweradd = 70
+juggle = 11
+velset = 0
+ctrl = 0
+
+;Play sound when running
+[State 100, 0]
+type = PlaySnd
+trigger1 = animelem = 2
+trigger2 = animelem = 5
+value = 0,12
+channel = 20
+volume = 10
+
+[State 250, 6]
+type = playsnd
+trigger1 = animelem = 2
+value = 8,1
+volume = 0
+
+[State 1100,illussion left]
+type = Helper
+trigger1 = time = 0
+name = "Illussion Left Behind"
+id = 1601
+stateno = 1601
+pos = 0,0
+postype = p1
+helpertype = player
+keyctrl = 0
+ownpal = 1
+
+[State 200, 1]
+type = afterimage
+trigger1 = time = 0
+time = 28
+palbright = 0,0,0
+palcontrast = 250,250,250
+paladd = 0,0,0
+palmul = 0.6,0.6,0.6
+timegap = 1
+framegap = 2
+length = 5
+
+[State 250, 6]
+type = sprpriority	
+trigger1 = animelem =6, <0
+value = -1
+
+[State 250, 6]
+type = sprpriority	
+trigger1 = animelem =6, >=0
+value = 1
+
+[State 250, 6]
+type = screenbound	
+trigger1 = time >=0
+value = 0
+movecamera = 1,0
+
+[State 250, 6]
+type = varset	
+trigger1 = time = 0
+var(1) = 0
+
+[State 250, 6]
+type = varset	
+trigger1 = command = "pq"
+trigger1 = time > 0
+var(1) = 1
+
+[State 250, 6]
+type = varset	
+trigger1 = command = "pahipo"
+trigger1 = time > 0
+var(1) = 2
+
+[State 250, palengke queen]
+type = changestate	
+trigger1 = var(1) = 1
+trigger1 = animelem = 11, = 4
+value = 1656
+ctrl = 0
+
+[State 250, pahipo]
+type = changestate	
+trigger1 = var(1) = 2
+trigger1 = animelem = 11, = 4
+value = 1701
+ctrl = 0
+
+;----------------------------------------
+;Ai
+[State 250, Palengke queen]
+type = changestate	
+triggerall = var(9) = 1
+triggerall = random <= 1000
+triggerall = animelem = 11, = 4
+trigger1 = p2bodydist x = [5,80]
+trigger1 = p2statetype != L 
+trigger2 = movehit
+value = 1656
+ctrl = 0
+
+[State 250, Pahipo]
+type = changestate	
+triggerall = var(9) = 1
+triggerall = random <300
+triggerall = animelem = 11, = 4
+trigger1 = p2bodydist x = [5,40]
+trigger1 = p2movetype = H
+value = 1701
+ctrl = 0
+;------------------------------------------
+
+[State 250, 6]
+type = velset	
+trigger1 = animelem = 2
+x = 16
+
+[State 250, 6]
+type = veladd	
+trigger1 = animelem = 6
+trigger2 = animelem = 7
+trigger3 = animelem = 8
+x = 8
+
+[State 250, 6]
+type = veladd	
+trigger1 = animelem = 10,>1
+x = -.002
+
+[State 250, 6]
+type = velset	
+trigger1 = animelem = 11
+x = 0
+
+[State 250, 6]
+type = velset	
+trigger1 = vel x >.1
+trigger1 = movecontact
+x = 1
+
+[State 250, 6]
+type = veladd	
+trigger1 = vel x >.1
+trigger1 = movehit
+x = -.4
+
+[State 250, 6]
+type = playerpush
+trigger1 = AnimElem = 6,<0
+value = 0
+
+[State 280, 3]
+type = HitDef
+trigger1 = p2bodydist x <35
+trigger1 = AnimElem = 7
+attr = S, SA
+damage = 84,10
+hitflag = MAF
+guardflag = MA
+pausetime = 11,7
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = -5,-65
+hitsound = S280,0
+guardsound = S200,3
+ground.slidetime = 18
+ground.velocity = -3,-6.5
+guard.slidetime = 18
+air.velocity = -3,-6.5
+airguard.velocity = -4,-2
+fall = 1
+fall.recover = 0
+guard.velocity = -8.9
+getpower = 30
+givepower = 30
+
+[State 280, 3]
+type = HitDef
+trigger1 = p2bodydist x >=35
+trigger1 = AnimElem = 7
+attr = S, SA
+damage = 84,10
+hitflag = MAF
+guardflag = MA
+pausetime = 11,7
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = -5,-85
+hitsound = S280,0
+guardsound = S200,3
+ground.slidetime = 18
+ground.velocity = -2.7,-6.5
+guard.slidetime = 18
+air.velocity = -2.7,-6.5
+airguard.velocity = -4,-2
+fall = 1
+fall.recover = 0
+guard.velocity = -8.9
+getpower = 30
+givepower = 30
+
+[State 280, 4]
+type = changestate
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;-----------------------------
+;Illusion left behind
+[Statedef 1601]
+type = S
+movetype = A
+physics = S
+anim = 1601
+sprpriority = 0
+velset = 0,0
+ctrl = 0
+
+
+[State 250, 6]
+type = playsnd
+trigger1 = animelem = 7
+value = 8,0
+volume = 50
+
+[State 250, 6]
+type = playerpush	
+trigger1 = time >=0
+value = 1
+
+[State 250, 6]
+type = bindtoroot	
+trigger1 = animelem = 7, <1
+pos = 0,0
+
+[State 250, 6]
+type = nothitby	
+trigger1 = time >= 0
+value = SCA
+
+[State 280, 4]
+type = destroyself
+trigger1 = AnimTime = 0
+trigger2 = root, movetype = H
+;------------------------------
+
+;=================================================================
+;Palenke Queen X
+;shift
+[Statedef 1655]
+type = S
+movetype = I
+physics = S
+anim = 1655
+sprpriority = 1
+poweradd = 70
+velset = 0
+ctrl = 0
+
+[State 250, 6]
+type = posset	
+trigger1 = time = 0
+x = helper(1551), pos x
+
+[State 280, 4]
+type = changestate
+trigger1 = time = 1
+value = 1650
+ctrl = 0
+
+;=================================================================
+;Palenke Queen X
+;start
+[Statedef 1650]
+type = S
+movetype = I
+physics = S
+anim = 1650
+sprpriority = 1
+poweradd = 70
+velset = 0
+ctrl = 0
+
+[State 250, 6]
+type = velset	
+trigger1 = time = 0
+x = 0
+
+[State 280, 4]
+type = changestate
+trigger1 = animtime = 0
+value = 1651
+ctrl = 0
+;---------------------
+
+;=================================================================
+;Palenke Queen Y
+;start
+[Statedef 1656]
+type = S
+movetype = I
+physics = S
+anim = 1656
+sprpriority = 1
+poweradd = 70
+velset = 0
+ctrl = 0
+
+[State 250, 6]
+type = velset	
+trigger1 = time = 0
+x = 0
+
+[State 280, 4]
+type = changestate
+trigger1 = animtime = 0
+value = 1651
+ctrl = 0
+;---------------------
+
+;on air
+[Statedef 1651]
+type = A
+movetype = A
+physics = N
+anim = 1651
+sprpriority = 1
+poweradd = 70
+velset = 5,-6
+ctrl = 0
+
+[State 250, 6]
+type = playsnd
+trigger1 = time = 0
+value = 9,0
+volume = 50
+
+[State 280, 3]
+type = HitDef
+trigger1 = AnimElem = 3
+attr = S, SA
+damage = 74,10
+hitflag = MAF
+guardflag = MA
+pausetime = 11,11
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = -5,-87
+hitsound = S240,0
+guardsound = S200,3
+ground.slidetime = 18
+ground.velocity = -4,-4
+air.velocity = -4,-4
+airguard.velocity = -4,-2
+guard.slidetime = 14
+fall = 1
+guard.velocity = -8.9
+getpower = 30
+givepower = 30
+
+[State 250, 6]
+type = veladd	
+trigger1 = time >= 0
+y = .42
+
+[State 280, 4]
+type = changestate
+trigger1 = (vel y > 0) && (pos y >=0)
+value = 1652
+ctrl = 0
+
+;---------------------
+[Statedef 1652]
+type = S
+movetype = I
+physics = N
+anim = 1652
+sprpriority = 1
+velset = 0,0
+ctrl = 0
+
+[State 250, 6]
+type = playsnd	
+trigger1 = time = 0
+value = 0,7
+volume = 50
+
+[State 250, 6]
+type = velset	
+trigger1 = time = 0
+y = 0
+
+[State 250, 6]
+type = posset	
+trigger1 = time = 0
+y = 0
+
+[State 280, 4]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+;=====================
+
+;=================================================================
+
+;Pahipo X
+;Shift
+[Statedef 1710]
+type = S
+movetype = I
+physics = S
+anim = 1655
+sprpriority = 1
+poweradd = 70
+velset = 0
+ctrl = 0
+
+[State 250, 6]
+type = posset	
+trigger1 = time = 0
+x = helper(1551), pos x
+
+[State 280, 4]
+type = changestate
+trigger1 = time = 4
+trigger2 = time >= 3
+TRIGGER2 = p2bodydist x=[30,5]
+value = 1700
+ctrl = 0
+
+;----------------------------------------
+
+;Pahipo a
+;Shift
+[Statedef 1710]
+type = S
+movetype = I
+physics = S
+anim = 1655
+sprpriority = 1
+poweradd = 70
+velset = 0
+ctrl = 0
+
+[State 250, 6]
+type = posset	
+trigger1 = time = 0
+x = helper(1551), pos x
+
+[State 280, 4]
+type = changestate
+trigger1 = time = 4
+trigger2 = time >= 3
+TRIGGER2 = p2bodydist x=[30,5]
+value = 1700
+ctrl = 0
+
+;=================================================================
+;=================================================================
+;Pahipo X
+;Attack
+[Statedef 1700]
+type = S
+movetype = A
+physics = S
+anim = 1700
+sprpriority = 1
+poweradd = 70
+velset = 0
+ctrl = 0
+
+[State 250, 6]
+type = posadd	
+trigger1 = var(1) = 2
+trigger1 = time = 0
+x = -20
+
+[State 250, 6]
+type = playsnd
+trigger1 = animelem =3
+value = 9,0
+volume = 50
+
+[State 280, 3]
+type = HitDef
+trigger1 = AnimElem = 5
+attr = S, SA
+damage = 74,10
+animtype = diagup
+hitflag = MAFD
+guardflag = MA
+pausetime = 12,12
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = -5,-87
+hitsound = S240,0
+guardsound = S200,3
+ground.slidetime = 18
+ground.velocity = -.1,4
+air.velocity = -.1,4
+airguard.velocity = -4,-2
+guard.slidetime = 14
+fall = 1
+fall.recover = 0
+guard.velocity = -8.9
+getpower = 30
+givepower = 30
+
+[State 280, 4]
+type = changestate
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;---------------------
+
+;Pahipo Y
+;Attack
+[Statedef 1701]
+type = S
+movetype = A
+physics = S
+anim = 1701
+sprpriority = 1
+poweradd = 70
+velset = 0
+ctrl = 0
+
+[State 250, 6]
+type = posadd	
+trigger1 = var(1) = 2
+trigger1 = time = 0
+x = -20
+
+[State 250, 6]
+type = playsnd
+trigger1 = animelem = 3
+value = 9,0
+volume = 50
+
+[State 250, 6]
+type = velset	
+trigger1 = time = 0
+x = 0
+
+[State 280, 3]
+type = HitDef
+trigger1 = AnimElem = 4
+attr = S, SA
+damage = 74,5
+animtype = diagup
+hitflag = MAFD
+guardflag = MA
+pausetime = 11,11
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = -5,-87
+hitsound = S240,0
+guardsound = S200,3
+ground.slidetime = 18
+ground.velocity = -4,4
+air.velocity = -3,-3
+airguard.velocity = -4,-2
+guard.slidetime = 14
+fall = 1
+fall.recover = 0
+guard.velocity = -8.9
+getpower = 30
+givepower = 30
+
+[State 280, 4]
+type = changestate
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+;---------------------
+;======================================
+
+;Chika summon 1
+[Statedef 1750]
+type = S
+movetype = I
+physics = S
+anim = 1550
+sprpriority = -1
+poweradd = 70
+velset = 0
+ctrl = 0
+
+[State 250, 6]
+type = playsnd
+trigger1 = animelem = 7
+value = 8,0
+volume = 50
+
+[State 250, 6]
+type = screenbound	
+trigger1 = time >=0
+value = 0
+movecamera = 1,0
+
+[State 1100,illussion]
+type = Helper
+trigger1 = animelem = 7, = 1
+name = "kilikili"
+id = 1551
+stateno = 1751
+pos = 0,0
+postype = p1
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+
+[State 250, 6]
+type = varset	
+trigger1 = time = 0
+var(1) = 0
+
+[State 250, 6]
+type = varset	
+trigger1 = command = "pq2"
+trigger1 = time > 0
+var(1) = 1
+
+[State 250, 6]
+type = varset	
+trigger1 = command = "pahipo2"
+trigger1 = time > 0
+var(1) = 2
+
+[State 250, Palengke queen]
+type = changestate	
+trigger1 = var(1) = 1
+trigger1 = animelem = 7, = [27,40]
+value = 1655
+ctrl = 0
+
+[State 250, Pahipo]
+type = changestate	
+trigger1 = var(1) = 2
+trigger1 = animelem = 7, = [27,40]
+value = 1710
+ctrl = 0
+
+;-------------------------------------------
+;Ai
+[State 250, Palengke queen]
+type = changestate	
+triggerall = var(9) = 1
+triggerall = random <= 300
+triggerall = animelem = 7, = [27,40]
+trigger1 = p2bodydist x = [0,80]
+value = 1710
+ctrl = 0
+
+[State 250, Pahipo]
+type = changestate	
+triggerall = var(9) = 1
+triggerall = random <= 900
+triggerall = animelem = 7, = [27,40]
+trigger1 = p2bodydist x = [0,40]
+trigger1 = p2movetype = H
+value = 1655
+ctrl = 0
+;-------------------------------------
+
+[State 280, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;-----------------------------
+
+;Chika attack
+[Statedef 1751]
+type = S
+movetype = A
+physics = S
+anim = 1751
+poweradd = 70
+juggle = 11
+velset = 0
+ctrl = 0
+
+[State 1010, Override]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, AA, AP, AT
+slot = 0
+stateno = 1537
+time = -1
+
+;Play sound when running
+[State 100, 0]
+type = PlaySnd
+trigger1 = animelem = 1
+trigger2 = animelem = 4
+value = 0,12
+channel = 20
+volume = 10
+
+[State 250, 6]
+type = playsnd
+trigger1 = animelem = 1
+value = 8,1
+volume = 0
+
+[State 250, 6]
+type = sprpriority	
+trigger1 = animelem = 5, <0
+value = -1
+
+[State 250, 6]
+type = sprpriority	
+trigger1 = animelem =5, >=0
+value = 1
+
+[State 200, 1]
+type = afterimage
+trigger1 = time = 0
+time = 19
+palbright = 0,0,0
+palcontrast = 250,250,250
+paladd = 0,0,0
+palmul = 0.6,0.6,0.6
+timegap = 1
+framegap = 2
+length = 5
+
+[State 250, 6]
+type = screenbound	
+trigger1 = time >=0
+value = 0
+movecamera = 1,0
+
+[State 250, 6]
+type = velset	
+trigger1 = animelem = 1
+x = 10
+
+[State 250, 6]
+type = veladd
+triggerall = !movecontact
+trigger1 = animelem = 6
+trigger2 = animelem = 7
+trigger3 = animelem = 8
+x = 6
+
+[State 250, 6]
+type = veladd	
+trigger1 = animelem = 10,>1
+x = -.002
+
+[State 250, 6]
+type = velset	
+trigger1 = animelem = 11
+x = 0
+
+[State 250, 6]
+type = velset	
+trigger1 = vel x >.1
+trigger1 = movecontact
+x = .5
+
+[State 250, 6]
+type = veladd	
+trigger1 = vel x >.1
+trigger1 = movecontact
+x = -.4
+
+[State 250, 6]
+type = playerpush
+trigger1 = AnimElem = 5,<0
+value = 0
+
+[State 250, 6]
+type = width
+trigger1 = AnimElem = 6,>=0
+value = 30,30
+
+[State 280, 3]
+type = HitDef
+trigger1 = p2statetype != A
+trigger1 = AnimElem = 7
+attr = S, SA
+damage = 84,10
+animtype = diagup
+hitflag = MAF
+guardflag = MA
+pausetime = 11,11
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = -5,-65
+hitsound = S280,0
+guardsound = S200,3
+ground.slidetime = 18
+ground.velocity = -.7,8
+air.velocity = -.7,8
+airguard.velocity = -4,-2
+fall.yvelocity = -3
+down.bounce = 0
+p2getp1state = 1
+p2stateno = 1760
+fall = 1
+guard.velocity = -8.9
+guard.slidetime = 19
+getpower = 30
+givepower = 30
+
+[State 280, 3]
+type = HitDef
+trigger1 = p2statetype = A
+trigger1 = AnimElem = 7
+attr = S, SA
+damage = 84,10
+animtype = diagup
+hitflag = MAF
+guardflag = MA
+pausetime = 11,11
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = -5,-65
+hitsound = S280,0
+guardsound = S200,3
+ground.slidetime = 18
+ground.velocity = -.7,8
+air.velocity = -.7,8
+airguard.velocity = -4,-2
+down.bounce = 0
+fall = 1
+getpower = 30
+givepower = 30
+
+[State 280, 4]
+type = destroyself
+trigger1 = AnimTime = 0
+trigger2 = root, movetype = H
+trigger3 = root, stateno = 1650
+trigger4 = root, stateno = 1700
+;--------------------------------------
+
+;Chika attack 2
+[Statedef 1800]
+type = S
+movetype = A
+physics = S
+anim = 1800
+poweradd = 70
+juggle = 11
+velset = 0
+ctrl = 0
+
+;Play sound when running
+[State 100, 0]
+type = PlaySnd
+trigger1 = animelem = 2
+trigger2 = animelem = 5
+value = 0,12
+channel = 20
+volume = 10
+
+[State 250, 6]
+type = playsnd
+trigger1 = animelem = 2
+value = 8,1
+volume = 0
+
+[State 250, 6]
+type = sprpriority	
+trigger1 = animelem = 6, <0
+value = -1
+
+[State 250, 6]
+type = sprpriority	
+trigger1 = animelem =6, >=0
+value = 1
+
+[State 200, 1]
+type = afterimage
+trigger1 = time = 0
+time = 28
+palbright = 0,0,0
+palcontrast = 250,250,250
+paladd = 0,0,0
+palmul = 0.6,0.6,0.6
+timegap = 1
+framegap = 2
+length = 5
+
+[State 250, 6]
+type = screenbound	
+trigger1 = time >=0
+value = 0
+movecamera = 1,0
+
+[State 250, 6]
+type = velset	
+trigger1 = animelem = 2
+x = 10
+
+[State 250, 6]
+type = veladd
+triggerall = !movecontact
+trigger1 = animelem = 7
+trigger2 = animelem = 8
+trigger3 = animelem = 9
+x = 6
+
+[State 250, 6]
+type = veladd	
+trigger1 = animelem = 11,>1
+x = -.002
+
+[State 250, 6]
+type = velset	
+trigger1 = animelem = 12
+x = 0
+
+[State 250, 6]
+type = velset	
+trigger1 = vel x >.1
+trigger1 = movecontact
+x = .7
+
+[State 250, 6]
+type = veladd	
+trigger1 = vel x >.1
+trigger1 = movecontact
+x = -.4
+
+[State 250, 6]
+type = playerpush
+trigger1 = AnimElem = 6,<0
+value = 0
+
+[State 280, 3]
+type = HitDef
+trigger1 = p2statetype != A
+trigger1 = AnimElem = 8
+attr = S, SA
+damage = 84,10
+animtype = diagup
+hitflag = MA
+guardflag = MA
+pausetime = 11,11
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = -5,-65
+hitsound = S280,0
+guardsound = S200,3
+ground.slidetime = 18
+ground.velocity = .1,8
+air.velocity = .1,8
+airguard.velocity = -4,-2
+down.bounce = 0
+fall.yvelocity = -3
+p2getp1state = 1
+p2stateno = 1760
+fall = 1
+guard.velocity = -8.9
+guard.slidetime = 19
+getpower = 30
+givepower = 30
+
+[State 280, 3]
+type = HitDef
+trigger1 = p2statetype = A
+trigger1 = AnimElem = 8
+attr = S, SA
+damage = 84,10
+animtype = diagup
+hitflag = MA
+guardflag = MA
+pausetime = 11,11
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = -5,-65
+hitsound = S280,0
+guardsound = S200,3
+ground.slidetime = 18
+ground.velocity = -.7,8
+air.velocity = -.7,8
+airguard.velocity = -4,-2
+down.bounce = 0
+fall = 1
+guard.velocity = -8.9
+guard.slidetime = 19
+getpower = 30
+givepower = 30
+
+[State 1100,illussion left]
+type = Helper
+trigger1 = time = 0
+name = "Illussion Left Behind"
+id = 1551
+stateno = 1601
+pos = 0,0
+postype = p1
+helpertype = player
+keyctrl = 0
+ownpal = 1
+
+[State 250, 6]
+type = varset	
+trigger1 = time = 0
+var(1) = 0
+
+[State 250, 6]
+type = varset	
+trigger1 = command = "pq2"
+trigger1 = time > 0
+var(1) = 1
+
+[State 250, 6]
+type = varset	
+trigger1 = command = "pahipo2"
+trigger1 = time > 0
+var(1) = 2
+
+[State 250, palengke queen]
+type = changestate	
+trigger1 = var(1) = 1
+trigger1 = animelem = 11, = 4
+value = 1656
+ctrl = 0
+
+[State 250, pahipo]
+type = changestate	
+trigger1 = var(1) = 2
+trigger1 = animelem = 11, = 4
+value = 1701
+ctrl = 0
+
+;-------------------------------------------
+;Ai
+[State 250, Palengke queen]
+type = changestate	
+triggerall = var(9) = 1
+triggerall = random <300
+trigger1 = animelem = 11, = 4
+trigger1 = p2bodydist x = [0,80]
+value = 1701
+ctrl = 0
+
+[State 250, Pahipo]
+type = changestate	
+triggerall = var(9) = 1
+triggerall = random <= 900
+triggerall = animelem = 11, = 4
+trigger1 = p2bodydist x = [0,40]
+trigger1 = p2movetype = H
+trigger2 = movehit
+value = 1656
+ctrl = 0
+;-------------------------------------
+
+[State 280, 4]
+type = changestate
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+;--------------------------------------
+
+;---------------------------------------------------------------------------
+; SLAM FACE DOWN shaking
+[Statedef 1760]
+type    = S
+movetype= H
+physics = N
+velset = 0,0
+
+[State 5000, 1]
+type = ChangeAnim
+trigger1 = Time = 0
+value = 5012
+
+[State 5000, 3] ;Freeze anim
+type = ChangeAnim
+trigger1 = Time > 0
+value = anim
+
+[State 5000, 5]
+type = ChangeState
+trigger1 = HitShakeOver
+value = 1761 
+
+[State 5000, FFB Hard]
+type = ForceFeedback
+trigger1 = anim = 5012
+persistent = 0
+time = 15
+waveform = sinesquare
+ampl = 140
+
+;---------------------------------------------------------------------------
+
+;-----------------------------------
+;subsob
+[Statedef 1761]
+type    = S
+movetype= H
+physics = N
+velset = 0,0
+
+[State 3010, Envshake]
+type = envshake
+Trigger1 = time = 0
+time = 9
+ampl = -3
+freq = 110
+
+[State 2052, posadd]
+type = posadd
+trigger1 = Time = 0
+x = -20
+
+[State 5110,1]
+type = nothitby
+trigger1 = Time >= 0
+value = SCA
+time = 1
+
+[State 5100, EnvShake]
+type = FallEnvShake
+trigger1 = Time = 0
+
+[State 5100, Var]
+type = VarSet
+trigger1 = Time = 0
+;trigger1 = GetHitVar(fall.yvel) = 0
+sysvar(1) = floor(vel y)
+
+[State 5100, 2]
+type = ChangeAnim
+triggerall = time = 0
+trigger1 = SelfAnimExist(5102)
+value = 5102
+
+[State 5100, 2]
+type = ChangeAnim
+triggerall = time = 0
+trigger1 = SelfAnimExist(5101)
+trigger1 = !SelfAnimExist(5102)
+value = 5101
+
+[State 5100, 2]
+type = ChangeAnim
+triggerall = time = 0
+trigger1 = !SelfAnimExist(5101)
+trigger1 = !SelfAnimExist(5102)
+value = 5100
+
+[State 5100, 4]
+type = PosSet
+trigger1 = Time = 0
+y = 0
+
+[State 5100, 6] ;Reduce speed
+type = VelMul
+trigger1 = Time = 0
+x = 0.75
+
+[State 5100, 8]
+type = GameMakeAnim
+trigger1 = Time = 1
+value = 61
+pos = 0, 0
+under = sysvar(1) <= 10
+
+[State 5100, 9]
+type = HitFallDamage
+trigger1 = Time = 3
+
+[State 5100, 10]
+type = PlaySnd
+trigger1 = Time = 1
+;value = F7, 0 ;Hit ground
+value = F7, (sysvar(1) > 5) + (sysvar(1) > 14)
+
+[State 5100, 12]
+type = selfState
+trigger1 = Time = 10
+value = 5101;2053
+
+[State 5100, 13]
+type = ForceFeedback
+trigger1 = Time = 0
+waveform = sinesquare
+ampl = 128,-3,-.2,.005
+time = 20
+;---------------------------------------

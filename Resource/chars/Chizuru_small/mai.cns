@@ -1,0 +1,193 @@
+;=============================
+; CHIZURUX's MAI STRIKER CODES
+;=============================
+
+[Statedef 3000]
+type = S
+movetype = I
+physics = S
+velset = 0,0
+anim = 3000
+sprpriority = -4
+
+[State 6001, 1]
+type = AssertSpecial
+trigger1 = Time >= 0
+flag = noautoturn
+
+[State 6000, 1]
+type = AssertSpecial
+trigger1 = Time >= 0
+flag = noshadow
+
+[State 6000, 2]
+type = screenbound
+trigger1 = time  >= 0
+value = 0
+movecamera = 0,0
+
+[State 6000, 3]
+type = changestate
+trigger1 = p2movetype = H
+value    = 3001
+
+[State 6000, 3]
+type = changestate
+trigger1 = parent,movetype = H
+value    = 3002
+
+[State 6000, 3]
+type = changestate
+trigger1 = win
+value    = 3003
+
+[State 6000, 3]
+type = changestate
+trigger1 = lose
+trigger2 = drawgame
+value    = 3004
+
+[State 6000, 4]
+type = destroyself
+trigger1 = roundstate = 4
+
+;=======================================
+
+;p2gethit
+[Statedef 3001]
+type = S
+movetype = I
+physics = S
+velset = 0,0
+anim = 3001
+sprpriority = -4
+
+[State 6002, 1]
+type = AssertSpecial
+trigger1 = Time >= 0
+flag = noshadow
+
+[State 6002, 1]
+type = AssertSpecial
+trigger1 = Time >= 0
+flag = noautoturn
+
+[State 6002, 2]
+type = screenbound
+trigger1 = time  >= 0
+value = 0
+movecamera = 0,0
+
+[State 6000, 3]
+type = changestate
+trigger1 = win
+value    = 3003
+
+[State 6000, 3]
+type = changestate
+trigger1 = lose
+trigger2 = drawgame
+value    = 3004
+
+[State 6002, 3]
+type = changestate
+trigger1 = p2movetype != H
+value    = 3000
+
+;================================
+
+;gethit
+[Statedef 3002]
+type = S
+movetype = I
+physics = S
+velset = 0,0
+anim = 3002
+sprpriority = -4
+
+[State 6004, 1]
+type = AssertSpecial
+trigger1 = Time >= 0
+flag = noshadow
+
+[State 6004, 1]
+type = AssertSpecial
+trigger1 = Time >= 0
+flag = noautoturn
+
+[State 6004, 2]
+type = screenbound
+trigger1 = time  >= 0
+value = 0
+movecamera = 0,0
+
+[State 6000, 3]
+type = changestate
+trigger1 = win
+value    = 3003
+
+[State 6000, 3]
+type = changestate
+trigger1 = lose
+trigger2 = drawgame
+value    = 3004
+
+[State 6004, 3]
+type = changestate
+trigger1 = parent,movetype != H
+value    = 3000
+
+;====================================================================
+
+;Win
+[Statedef 3003]
+type = S
+movetype = I
+physics = S
+velset = 0,0
+anim = 3003
+sprpriority = -4
+
+[State 6004, 1]
+type = AssertSpecial
+trigger1 = Time >= 0
+flag = noshadow
+
+[State 6004, 1]
+type = AssertSpecial
+trigger1 = Time >= 0
+flag = noautoturn
+
+[State 6004, 2]
+type = screenbound
+trigger1 = time  >= 0
+value = 0
+movecamera = 0,0
+
+;=====================================================
+
+;Lose
+[Statedef 3004]
+type = S
+movetype = I
+physics = S
+velset = 0,0
+anim = 3004
+sprpriority = -4
+
+[State 6004, 1]
+type = AssertSpecial
+trigger1 = Time >= 0
+flag = noshadow
+
+[State 6004, 1]
+type = AssertSpecial
+trigger1 = Time >= 0
+flag = noautoturn
+
+[State 6004, 2]
+type = screenbound
+trigger1 = time  >= 0
+value = 0
+movecamera = 0,0
+

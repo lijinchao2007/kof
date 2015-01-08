@@ -1,0 +1,37 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "kfm"
+displayname = "Kung Fu Man"
+versiondate = "2014/3/28"
+mugenversion = "06,14,2003"
+author = "ljc"
+pal.defaults = "1,2,3,4,5"
+
+[Files]
+sprite = kfm.sff
+anim = kfm.air
+sound = kfm.snd
+cmd = kfm.cmd
+cns = kfm.cns
+stcommon = common1.cns
+st = kfm.cns
+pal1 = kfm.act
+pal2 = kfm4.act
+pal3 = kfm2.act
+pal4 = kfm5.act
+pal5 = kfm3.act
+pal6 = kfm.act
+pal7 = kfm4.act
+;pal8 = kfm.act
+;pal9 = kfm2.act
+;pal10 = kfm5.act
+;pal11 = kfm3.act
+;pal12 = kfm.act
+
+[Arcade]
+intro.storyboard = intro.def
+ending.storyboard = ending.def

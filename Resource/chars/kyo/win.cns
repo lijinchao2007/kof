@@ -1,0 +1,273 @@
+;ƒ^ƒbƒOƒ‚[ƒhŸ—˜‰æ‘œ(©•ª‚ª1‚o‘¤)
+[Statedef 20000]
+type = S
+movetype = I
+physics = S
+ctrl = 0
+anim = 0
+velset = 0,0
+
+[STate 1380]
+type=AssertSpecial
+trigger1=Time = [0,840]
+flag = RoundNotOver
+flag2= noFG
+flag3 = nowalk
+[STate 1380]
+type=AssertSpecial
+trigger1=Time = [0,1000]
+flag=nobardisplay
+flag2=Noshadow
+flag3=Nomusic
+
+[State 8900, cut_in];ã‚©‚ç‰º‚É‰º‚è‚Ä‚­‚é(1P)
+type = Explod
+trigger1 = Time = 0
+anim = 20000
+pos = 0,-240
+postype = left
+vel = 0,7
+supermovetime = 35
+pausemovetime = 35
+removetime = 35
+ignorehitpause = 1
+bindtime = 1
+ownpal = 1
+sprpriority  = 8
+[State 8900, cut_in];‰æ‘œŒÅ’è
+type = Explod
+trigger1 = Time = 35
+anim = 20000
+pos = 0,0
+postype = left
+vel = 0,0
+supermovetime = 1000
+pausemovetime = 1000
+removetime = 1000
+ignorehitpause = 1
+bindtime = 1
+ownpal = 1
+sprpriority  = 8
+[State 8900, cut_in];‰æ‘œ”wŒi(ÂF)
+type = Explod
+trigger1 = Time = 0
+anim = 20001
+pos = 0,0
+postype = left
+vel = 0,0
+supermovetime = 1000
+pausemovetime = 1000
+removetime = 1000
+ignorehitpause = 1
+bindtime = 1
+ownpal = 1
+sprpriority  = 7
+scale=1.31,1.7
+
+[State 8900, cut_in];ƒ^ƒbƒO–¡•û”s–k”wŒi
+type = Explod
+trigger1 = Time = 0
+anim = 20007
+pos = 160,240
+postype = left
+vel = 0,-7
+supermovetime = 35
+pausemovetime = 35
+removetime = 35
+ignorehitpause = 1
+bindtime = 1
+ownpal = 1
+sprpriority  = 6
+[State 8900, cut_in];ƒ^ƒbƒO–¡•û”s–k”wŒiŒÅ’è
+type = Explod
+trigger1 = Time = 35
+anim = 20007
+pos = 160,0
+postype = left
+vel = 0,0
+supermovetime = 1000
+pausemovetime = 1000
+removetime = 1000
+ignorehitpause = 1
+bindtime = 1
+ownpal = 1
+sprpriority  = 6
+
+[State 8900, cut_in];Ÿ—˜‘äŒ”wŒi‰æ‘œ
+type = Explod
+trigger1 = Time = 36
+anim = 20003
+pos = 0,170
+postype = left
+vel = 0,0
+supermovetime = 1000
+pausemovetime = 1000
+removetime = 1000
+ignorehitpause = 1
+bindtime = 1
+ownpal = 1
+scale=75,1
+sprpriority  = 9
+[State 8900, cut_in];Ÿ—˜‘äŒ”wŒi‰æ‘œ
+type = Explod
+trigger1 = Time = 36
+anim = 20008
+pos = 320,120
+postype = left
+supermovetime = 1000
+pausemovetime = 1000
+removetime = 1000
+ignorehitpause = 1
+bindtime = 1
+ownpal = 1
+scale=0.5,0.5
+sprpriority  = 11
+
+[State 8900, cut_in];‰æ‘œ”wŒi(ÔF)•ÛŒ¯—p
+type = Explod
+trigger1 = Time = 0
+anim = 20002
+pos = 160,0
+postype = left
+vel = 0,0
+supermovetime = 1000
+pausemovetime = 1000
+removetime = 1000
+ignorehitpause = 1
+bindtime = 1
+ownpal = 1
+sprpriority  = 5
+scale=1.31,1.7
+
+[State 182, 1]
+type = varrandom
+trigger1 = Time = 0
+v= 31
+range = 0,2
+[State 8900, cut_in];Ÿ—˜‘äŒ
+type = Explod
+trigger1 = var(31) = 0
+trigger1 = Time = 36
+anim = 20004
+pos = 35,190
+postype = left
+supermovetime = 1000
+pausemovetime = 1000
+removetime = 1000
+ignorehitpause = 1
+bindtime = 1
+ownpal = 1
+ontop=1
+[State 8900, cut_in];Ÿ—˜‘äŒ
+type = Explod
+trigger1 = var(31) = 1
+trigger1 = Time = 36
+anim = 20005
+pos = 35,190
+postype = left
+supermovetime = 1000
+pausemovetime = 1000
+removetime = 1000
+ignorehitpause = 1
+bindtime = 1
+ownpal = 1
+ontop=1
+[State 8900, cut_in];Ÿ—˜‘äŒ
+type = Explod
+trigger1 = var(31) = 2
+trigger1 = Time = 36
+anim = 20006
+pos = 35,190
+postype = left
+supermovetime = 1000
+pausemovetime = 1000
+removetime = 1000
+ignorehitpause = 1
+bindtime = 1
+ownpal = 1
+ontop=1
+
+[STate 1380];Ÿ—˜‰¹Šy
+type=playsnd
+trigger1=Time = 0
+value=20000,0
+volume=255
+
+[STate 1380];Ÿ—˜‰¹º1
+type=playsnd
+trigger1=Time = 36
+value=1,33
+volume=255
+
+[STate 1380];Ÿ—˜‰¹º2
+type=playsnd
+trigger1=Time = 156
+value=1,34
+volume=255
+
+;ƒ^ƒbƒOƒ‚[ƒhŸ—˜‰æ‘œ(©•ª‚ª3‚o‘¤)
+[Statedef 20005]
+type = S
+movetype = I
+physics = S
+ctrl = 0
+anim = 0
+velset = 0,0
+
+[STate 1380]
+type=AssertSpecial
+trigger1=Time = [0,840]
+flag = RoundNotOver
+flag2= noFG
+flag3 = nowalk
+[STate 1380]
+type=AssertSpecial
+trigger1=Time = [0,1000]
+flag=nobardisplay
+flag2=Noshadow
+flag3=Nomusic
+
+[State 8900, cut_in];‰º‚©‚çã‚Éã‚ª‚é(3P)
+type = Explod
+trigger1 = Time = 0
+anim = 20000
+pos = 160,240
+postype = left
+vel = 0,-7
+supermovetime = 35
+pausemovetime = 35
+removetime = 35
+ignorehitpause = 1
+bindtime = 1
+ownpal = 1
+sprpriority  = 8
+[State 8900, cut_in];‰æ‘œŒÅ’è
+type = Explod
+trigger1 = Time = 35
+anim = 20000
+pos = 160,0
+postype = left
+vel = 0,0
+supermovetime = 1000
+pausemovetime = 1000
+removetime = 1000
+ignorehitpause = 1
+bindtime = 1
+ownpal = 1
+sprpriority  = 8
+[State 8900, cut_in];‰æ‘œ”wŒi(ÔF)
+type = Explod
+trigger1 = Time = 0
+anim = 20002
+pos = 160,0
+postype = left
+vel = 0,0
+supermovetime = 1000
+pausemovetime = 1000
+removetime = 1000
+ignorehitpause = 1
+bindtime = 1
+ownpal = 1
+sprpriority  = 7
+scale=1.31,1.7
+

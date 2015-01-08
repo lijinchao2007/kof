@@ -1,0 +1,158 @@
+;---------------------------------------------------------------------------
+; Initialize (at the start of the round)
+[Statedef 5900]
+type = S
+
+[State 5900, 1] ;Clear all int variables
+type = VarRangeSet
+trigger1 = !RoundsExisted
+value = 0
+
+[State 5900, 2] ;Clear all float variables
+type = VarRangeSet
+trigger1 = !RoundsExisted
+fvalue = 0
+
+[State 5900, MugenVersion]
+type = VarSet
+trigger1 = 1
+var(55) = 2
+;1 = Unfixed 04.14.2001
+;2 = 11.01.2001+, & fixed 04.14.2001
+
+[State 5900, 3] ;Intro for round 1
+type = ChangeState
+trigger1 = roundno = 1
+value = 190
+
+;-------------------------------
+
+; SGUARDHIT (shaking)
+[Statedef 150]
+type    = S
+movetype= H
+physics = N
+velset = 0,0
+
+[State 150, 1]
+type = ChangeAnim
+trigger1 = 1
+value = 150
+
+[State 150, GCRUSH CODE]
+type = ChangeState
+trigger1 = var(12) >= 1000 && time = 0
+value = 307
+ctrl = 0
+
+[State 150, 2]
+type = ChangeState
+trigger1 = HitShakeOver
+value = 151 + 2*(command = "holddown")
+
+[State 150, Hi to Lo]
+type = StateTypeSet
+trigger1 = statetype = S && command = "holddown"
+statetype = C
+physics = C
+
+[State 150, Lo to Hi]
+type = StateTypeSet
+trigger1 = statetype = C && command != "holddown"
+statetype = S
+physics = S
+
+[State 150, 3]
+type = ForceFeedback
+trigger1 = time = 0
+waveform = square
+time = 3
+
+[State 150, GCRUSH CODE]
+type = VarAdd
+trigger1 = GetHitVar(slidetime) <= 0 && GetHitVar(hittime) <= 0 && time = 0 && var(12) <= 999
+persistent = 0
+var(12) = 125
+persistent = 0
+ignorehitpause = 1
+
+[State 150, GCRUSH CODE]
+type = VarAdd
+trigger1 = (GetHitVar(slidetime) = [1,16]) && (GetHitVar(hittime) = [1,16]) && time = 0 && var(12) <= 999
+persistent = 0
+var(12) = ifelse((Gethitvar(slidetime) = [1,9]),50,75)
+ignorehitpause = 1
+
+[State 150, GCRUSH CODE]
+type = VarAdd
+trigger1 = GetHitVar(slidetime) >= 17 && GetHitVar(hittime) >= 17 && time = 0 && var(12) <= 999
+persistent = 0
+var(12) = 100
+persistent = 0
+ignorehitpause = 1
+
+;---------------------------------------------------------------------------
+
+; CGUARDHIT (shaking)
+[Statedef 152]
+type    = C
+movetype= H
+physics = N
+velset = 0,0
+
+[State 152, 1]
+type = ChangeAnim
+trigger1 = 1
+value = 151
+
+[State 152, GCRUSH CODE]
+type = ChangeState
+trigger1 = var(12) >= 1000 && time = 0
+value = 307
+ctrl = 0
+
+[State 152, 3]
+type = ChangeState
+trigger1 = HitShakeOver
+value = 151 + 2*(command = "holddown")
+
+[State 152, Hi to Lo]
+type = StateTypeSet
+trigger1 = statetype = S && command = "holddown"
+statetype = C
+physics = C
+
+[State 152, Lo to Hi]
+type = StateTypeSet
+trigger1 = statetype = C && command != "holddown"
+statetype = S
+physics = S
+
+[State 152, 4]
+type = ForceFeedback
+trigger1 = time = 0
+waveform = square
+time = 4
+
+[State 152, GCRUSH CODE]
+type = VarAdd
+trigger1 = GetHitVar(slidetime) <= 0 && GetHitVar(hittime) <= 0 && time = 0 && var(12) <= 999
+persistent = 0
+var(12) = 125
+persistent = 0
+ignorehitpause = 1
+
+[State 152, GCRUSH CODE]
+type = VarAdd
+trigger1 = (GetHitVar(slidetime) = [1,16]) && (GetHitVar(hittime) = [1,16]) && time = 0 && var(12) <= 999
+persistent = 0
+var(12) = ifelse((Gethitvar(slidetime) = [1,9]),50,75)
+ignorehitpause = 1
+
+[State 152, GCRUSH CODE]
+type = VarAdd
+trigger1 = GetHitVar(slidetime) >= 17 && GetHitVar(hittime) >= 17 && time = 0 && var(12) <= 999
+persistent = 0
+var(12) = 100
+persistent = 0
+ignorehitpause = 1

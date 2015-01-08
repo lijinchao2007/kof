@@ -1,0 +1,30 @@
+; ここにキャラ情報を書いてください
+[Info]
+name = "kyou kusanagi"        ;キャラの名前
+displayname = "kyo" ;表示されるキャラの名前
+versiondate = 11,22,2000    ;キャラの更新情報
+mugenversion = 11,22,2000   ;キャラが動くmugenのバージョン（多分）
+author = "arukari"         ;キャラの製作者名
+pal.defaults = 2      ;敵としてでるキャラのパレット
+
+; Files for the player
+[Files]
+cmd     = yuri.cmd   ;キャラのコマンド
+cns     = kyon.cns   ;キャラのプログラム
+st      = kyos.cns   ;キャラのプログラム
+st2     = kyoara.cns   ;キャラのプログラム
+st3=kyokeri.cns
+st4=kyon.cns
+st5=kyotyo.cns
+st6 = kyotyo2.cns
+st7 = commoso.cns
+st8 = win.cns
+stcommon = common1.cns 
+sprite  = kyo.sff   ;キャラの絵
+anim    = kyou.air   ;キャラの動き
+sound   = kyou.snd   ;キャラの音
+pal1    = kyo.act  ;キャラの色（最大１２個）
+pal2        = yuri2.act
+pal3        = yuri3.act
+pal4=yuri4.act
+pal5=yuri5.act

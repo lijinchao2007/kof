@@ -1,0 +1,31 @@
+[Info]
+Name         ="OROCHI IORI"
+DisplayName  ="OROCHI IORI"
+versiondate  =11/11/2008
+MugenVersion =06/14/2003
+Author       ="Zelgadis"
+Pal.Defaults = 1,2,3,4,5,6
+
+[Files]
+Cmd      ="Iori-Orochi-M-AI.cmd"
+Cns      ="Iori-Orochi.cns"
+St       ="Iori-Orochi.cns"
+StCommon =common1.cns
+Sprite   ="Iori-Orochi.sff"
+Anim     ="Iori-Orochi.air"
+Sound    ="Iori-Orochi.snd"
+;pal1="Paletas/Iori-98-Original.act"
+pal1="Paletas/orochi_iori.act"
+pal2="Paletas/Iori-98-2.act"
+pal3="Paletas/Iori-98-3.act"
+pal4="Paletas/Iori-98-1.act"
+pal5="Paletas/Iori-98-5.act"
+pal6="Paletas/Iori-98-6.act"
+st1="Iori-Orochi-N.cns"
+st2="Iori-Orochi-S.cns"
+st3="Iori-Orochi-H.cns"
+st4="Iori-Orochi-2-3.cns"
+
+[Arcade]
+intro.storyboard =
+ending.storyboard =

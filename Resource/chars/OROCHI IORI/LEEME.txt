@@ -1,0 +1,59 @@
+;--------------------------------------;
+;      MUGEN MEMORIAL ZELGADIS         ;
+;                                      ;
+;              Play KOF                ;
+;--------------------------------------;
+
+;======================================================================================
+
+Este personaje fue creado por zelgadis con ayuda de JIN
+el cual me paso la base de sus chars (Eso explica por que algunos
+de los archivos están en idioma oriental) Además no deseo retirar
+el idioma japonés del char ya que eso significaría sacarle parte del crédito a mi amigo JIN.
+
+
+;--------------------------------------------------------------------------------------
+Actualizaciones:
+
+20/04/2009
+
+Reparacion de sparks en golpes
+reparacion de algunos bugs encontrados
+
+05/02/2009
+
+Reparacion de Bugs
+Reparacion de Comandos
+Agregado de AI (Inteligencia artificial)
+
+11/11/2008
+
+Creacion del Char
+
+Este personaje esta realizado tal cuan es en su juego original.
+
+;--------------------------------------------------------------------------------------
+
+;======================================================================================
+
+Agradecimientos:
+
+Splites Iori Orochi KOFM Version By Kusanagi
+
+Bueno aquí paso a agradecer a todos los que me ayudaron a aprender a fondo sobre mugen
+
+Primero que nada gracias a Kusanagi que fue quien creo y edito el 98% de los sprites
+para esta nueva version de iori Orochi yo solo edite los de los statedefs [1720 & el final del 20003]
+
+gracias por la base de chas JIN, y sobre todas las cosas gracias a SNK (PLAYMORE)
+ya que todos los personajes son de su propiedad.
+Tambien muchas gracias especiales a satoshi en cual creo la web revivalmugen y me ayudo
+a que este proyecto kof sea uno de los mejores en su tipo.
+
+;======================================================================================
+
+PD: ya sabes, si tienes alguna duda o quieres modificar alguno
+de mis chars no dudes en comunicarte con migo(Tengo mail sabes).
+
+
+;======================================================================================

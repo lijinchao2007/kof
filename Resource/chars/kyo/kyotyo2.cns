@@ -1,0 +1,3021 @@
+;無式。ＭＡＸ無しの予定。
+
+;無式弱 暗転
+[statedef 17999]
+type=S
+movetype=A
+physics=S
+anim=17999
+ctrl=0
+poweradd=-1000
+velset = 0,0
+
+
+[state 2105,1]
+type=nothitby
+trigger1=1
+value=SCA
+time=1
+
+;特殊挑発var初期化
+[state 113]
+type = varset
+trigger1 = time = 0
+v = 28
+value = 0
+
+;無式ヒットフラグ初期化
+[state 113]
+type = varset
+trigger1 = time = 0
+v = 28
+value = 0
+
+[state 2001]
+type=playsnd
+trigger1=time=1
+value=s1,29
+[state 2001]
+type=playsnd
+trigger1=time=1
+value=s1,29
+
+画面少しフラッシュ
+[state 9999,0]
+type=envcolor
+trigger1= animelem = 1
+value=255,255,255
+under=1
+time=3
+
+
+;画面暗転
+[state 9999,0]
+type=envcolor
+trigger1=animelem = 2
+value=0,0,0
+under=1
+time=35
+
+[State 9999,1]
+type=superpause
+trigger1=animelem = 1
+unhitable=12
+movetime=3
+pos=12,9998
+time=35
+sound=s0,15
+
+;ＬＶ３エフェクト	表
+[State 3250, 4]
+type = Explod
+trigger1 = animelem = 3
+anim = 12100
+postype = p1
+pos = 29,-77
+sprpriority = 5
+bindtime = 1
+supermove = 1
+ownpal = 1
+ignorehitpause = 0
+removeongethit = 0
+ID = 3000
+
+;裏
+[State 3250, 4]
+type = Explod
+trigger1 = animelem = 3
+anim = 12110
+postype = p1
+pos = 29,-77
+sprpriority = -2
+bindtime = 1
+supermove = 1
+ownpal = 1
+ignorehitpause = 0
+removeongethit = 0
+ID = 3000
+
+;小さい炎エフェクト
+[state 9999,20]
+type=explod
+trigger1=animelem=3
+anim = 14000
+postype = p1
+pos = 43,-67
+sprpriority = 99
+bindtime = 1
+removetime = 32
+supermove = 1
+ownpal = 1
+ignorehitpause = 0
+removeongethit = 1
+ID = 14000
+
+
+[state 9999,30]
+type=changestate
+trigger1=animtime = 0
+value=19001
+;-------------------------------------
+;無式	炎発射
+[statedef 19001]
+type = S
+movetype = A
+anim = 19001
+ctrl = 0
+juggle = 0
+physics = S
+
+
+;闇払い　後ろ炎
+[state 18001]
+type = Explod
+trigger1 = animelem = 6
+anim = 17000
+postype = p1
+pos = 18,-97
+sprpriority = 4
+bindtime = 1
+supermove = 1
+ownpal = 1
+ignorehitpause = 0
+removeongethit = 0
+ID = 3000
+
+
+;無式炎ヘルパー	発射
+[state 18001,1]
+type=helper
+helpertype=normal
+name="きり株"
+ID=19000
+pos=92,-0
+postype=P1
+stateno=19000
+keystrl=0
+trigger1 = animelem=4
+
+
+;パンチヘルパー1	発射
+[state 18001,1]
+type=helper
+helpertype=normal
+name="きり株"
+ID=19002
+pos=-30,-0
+postype=P1
+stateno=19002
+keystrl=0
+trigger1 = time = 23
+
+;パンチヘルパー2	発射
+[state 18001,1]
+type=helper
+helpertype=normal
+name="きり株"
+ID=19003
+pos=-30,-0
+postype=P1
+stateno=19003
+keystrl=0
+trigger1 = time = 31
+
+;パンチヘルパー3	発射
+[state 18001,1]
+type=helper
+helpertype=normal
+name="きり株"
+ID=19004
+pos=-30,-0
+postype=P1
+stateno=19004
+keystrl=0
+trigger1 =  time = 38
+
+移動
+[state 23231]
+type = posadd
+trigger1 = animelem = 8
+x = 20
+
+移動
+[state 18001,2]
+type = posadd
+trigger1 = animtime = 1
+x = 20
+
+[state 18001,2]
+type = changestate
+trigger1 = time = 42 ; time = 34
+value = 19006
+
+;-----------------------------------------------------------
+;	無式炎ヘルパー
+;-------------------------------------------------
+[statedef 19000]
+type =	S
+movetype = A
+physics = S
+anim = 19000
+ctrl = 0
+juggle = 0
+
+;完全無敵
+[state 312]
+type = nothitby
+trigger1 = 1
+value = SCA
+
+;攻撃判定(相手が空中くらいの時に攻撃判定が発生しないダミー判定)
+[state 18000,3]
+type = HitDef
+trigger1 = p2statetype = A && p2movetype = H
+attr = S, HP                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 75, 9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = hard               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = M                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = none                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 0, 20                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+guard.pausetime = 0, 5                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-15)*2.77),floor((-70               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,17                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 5                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 28             ;相手が後にすべる時間
+ground.hittime  = 28             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = -24.93  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -19.39  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+air.fall=1
+palfx.time = 55
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+fall=0
+fall.recover=0
+
+;攻撃判定
+[state 18000,3]
+type = HitDef
+trigger1 = animelem=1
+attr = S, HP                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 75, 9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = hard               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = M                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MAF                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 0, 20                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+guard.pausetime = 0, 5                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-15)*2.77),floor((-70               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,17                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 5                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 28             ;相手が後にすべる時間
+ground.hittime  = 22             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = -22.16  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -19.39  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+air.fall=1
+palfx.time = 55
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+fall=0
+fall.recover=0
+
+
+;音
+[state 18000,2]
+type = playsnd
+trigger1 = time = 0
+value = s0,21
+
+
+;消す
+[state 18000,3]
+type = destroyself
+trigger1 = animtime =0
+
+;------------------------------------------
+;無式	連打パンチヘルパー1
+[statedef 19002]
+type = S 
+movetype = A
+physics = N
+anim = 19012
+ctrl = 0
+
+;一瞬だけ接触判定あり
+[state 432]
+type = playerpush
+trigger1 = animelem = 1
+value = 1
+
+;一瞬だけ接触判定あり
+[state 432]
+type = playerpush
+trigger1 = animelem = 2
+value = 0
+
+;移動
+[state 19002,0]
+type = posadd
+trigger1 = animelem = 1 || animelem = 2 || animelem = 3 || animelem = 4 || animelem = 5
+x = 25
+
+;=========================燃える技に必要なステート====================
+;燃える技を当てた時必須
+[state 1000,999]
+type=varrandom
+trigger1=movehit=1
+v=10
+range=1,11
+persistent = 0
+
+;燃える技を当てた時必須2
+[state 1000,9991]
+type=varrandom
+trigger1=movehit=1
+v=11
+range=1,11
+persistent = 0
+
+;燃える技を当てた時必須3
+[state 1000,9992]
+type=varrandom
+trigger1=movehit=1
+v=12
+range=1,11
+persistent = 0
+
+;燃える技を当てた時必須4
+[state 1000,9993]
+type=varrandom
+trigger1=movehit=1
+v=13
+range=1,11
+persistent = 0
+
+;燃える技を当てた時必須5
+[state 1000,9994]
+type=varrandom
+trigger1=movehit=1
+v=14
+range=1,11
+persistent = 0
+
+;吹っ飛ぶ燃え技に必須
+[state 1010,999]
+type=varrandom
+trigger1=movehit=1
+v=2
+range=1,6
+persistent = 0
+;=========================ここまで========================
+
+
+;音
+[state 18002,1]
+type = playsnd
+trigger1 = time = 0
+value = s0,19
+
+;ベクトル止め
+[state 83912]
+type = velset
+trigger1 = animelem = 5
+x = 0
+
+;完全無敵
+[state 312]
+type = nothitby
+trigger1 = 1
+value = SCA
+
+;攻撃判定
+[state 18000,3]
+type = HitDef
+trigger1 = animelem=1
+attr = S, NA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 30, 9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = hard               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = M                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MAF                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 2, 20                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+guard.pausetime = 0, 5                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-40)*2.77),floor((-65               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,17                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 5                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 28             ;相手が後にすべる時間
+ground.hittime  = 22             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = -0.0,0.0  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -5.54,-5.54  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+air.fall=1
+palfx.time = 55
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+fall=0
+fall.recover=0
+kill = 0
+
+;あたったときフラッシュ
+[state 19002]
+type = BGpalfx
+trigger1 = movehit = 1
+add = 70,70,70
+sinadd = 10, 10, 10
+time = 1;1
+persistant = 0
+ignorehitpause = 1
+
+;消す
+[state 18000,3]
+type = destroyself
+trigger1 = animtime = 0
+
+
+;当たったときの判定
+[state 18001]
+type = parentvarset
+trigger1 = movehit = 1
+value = 1
+v= 27
+
+;------------------------------------------
+;無式	連打パンチヘルパー2
+[statedef 19003]
+type = S 
+movetype = A
+physics = N
+anim = 19013
+ctrl = 0
+
+;接触判定消去
+[state 432]
+type = playerpush
+trigger1 = 1
+value = 0
+
+
+;移動
+[state 19002,0]
+type = posadd
+trigger1 = animelem = 1 || animelem = 2 || animelem = 3 || animelem = 4 || animelem = 5
+x = 25
+
+;=========================燃える技に必要なステート====================
+;燃える技を当てた時必須
+[state 1000,999]
+type=varrandom
+trigger1=movehit=1
+v=10
+range=1,11
+persistent = 0
+
+;燃える技を当てた時必須2
+[state 1000,9991]
+type=varrandom
+trigger1=movehit=1
+v=11
+range=1,11
+persistent = 0
+
+;燃える技を当てた時必須3
+[state 1000,9992]
+type=varrandom
+trigger1=movehit=1
+v=12
+range=1,11
+persistent = 0
+
+;燃える技を当てた時必須4
+[state 1000,9993]
+type=varrandom
+trigger1=movehit=1
+v=13
+range=1,11
+persistent = 0
+
+;燃える技を当てた時必須5
+[state 1000,9994]
+type=varrandom
+trigger1=movehit=1
+v=14
+range=1,11
+persistent = 0
+
+;吹っ飛ぶ燃え技に必須
+[state 1010,999]
+type=varrandom
+trigger1=movehit=1
+v=2
+range=1,6
+persistent = 0
+;=========================ここまで========================
+
+
+;音
+[state 18002,1]
+type = playsnd
+trigger1 = time = 0
+value = s0,19
+
+;ベクトル止め
+[state 83912]
+type = velset
+trigger1 = animelem = 5
+x = 0
+
+;完全無敵
+[state 312]
+type = nothitby
+trigger1 = 1
+value = SCA
+
+;攻撃判定
+[state 18000,3]
+type = HitDef
+trigger1 = animelem=1
+attr = S, NA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 30, 9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = hard               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = M                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MAF                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 2, 20                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+guard.pausetime = 0, 5                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-40)*2.77),floor((-65               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,17                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 5                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 28             ;相手が後にすべる時間
+ground.hittime  = 22             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = -0.0,0.0  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -5.54,-5.54  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+air.fall=1
+palfx.time = 55
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+fall=0
+fall.recover=0
+
+;あたったときフラッシュ
+[state 19002]
+type = BGpalfx
+trigger1 = movehit = 1
+add = 70,70,70
+sinadd = 10, 10, 10
+time = 1;1
+persistant = 0
+ignorehitpause = 1
+
+;消す
+[state 18000,3]
+type = destroyself
+trigger1 = animtime = 0
+
+
+;当たったときの判定
+[state 18001]
+type = parentvarset
+trigger1 = movehit = 1
+value = 1
+v= 27
+
+;------------------------------------------
+;無式	連打パンチヘルパー3
+[statedef 19004]
+type = S 
+movetype = A
+physics = N
+anim = 19014
+ctrl = 0
+
+;接触判定消去
+[state 432]
+type = playerpush
+trigger1 = 1
+value = 0
+
+;移動
+[state 19002,0]
+type = posadd
+trigger1 = animelem = 1 || animelem = 2 || animelem = 3 || animelem = 4 || animelem = 5
+x = 25
+
+;=========================燃える技に必要なステート====================
+;燃える技を当てた時必須
+[state 1000,999]
+type=varrandom
+trigger1=movehit=1
+v=10
+range=1,11
+persistent = 0
+
+;燃える技を当てた時必須2
+[state 1000,9991]
+type=varrandom
+trigger1=movehit=1
+v=11
+range=1,11
+persistent = 0
+
+;燃える技を当てた時必須3
+[state 1000,9992]
+type=varrandom
+trigger1=movehit=1
+v=12
+range=1,11
+persistent = 0
+
+;燃える技を当てた時必須4
+[state 1000,9993]
+type=varrandom
+trigger1=movehit=1
+v=13
+range=1,11
+persistent = 0
+
+;燃える技を当てた時必須5
+[state 1000,9994]
+type=varrandom
+trigger1=movehit=1
+v=14
+range=1,11
+persistent = 0
+
+;吹っ飛ぶ燃え技に必須
+[state 1010,999]
+type=varrandom
+trigger1=movehit=1
+v=2
+range=1,6
+persistent = 0
+;=========================ここまで========================
+
+
+;音
+[state 18002,1]
+type = playsnd
+trigger1 = time = 0
+value = s0,19
+
+;ベクトル止め
+[state 83912]
+type = velset
+trigger1 = animelem = 5
+x = 0
+
+;完全無敵
+[state 312]
+type = nothitby
+trigger1 = 1
+value = SCA
+
+;攻撃判定
+[state 18000,3]
+type = HitDef
+trigger1 = animelem=1
+attr = S, NA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 30, 9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = hard               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = M                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MAF                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 2, 20                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+guard.pausetime = 0, 5                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-40)*2.77),floor((-65               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,17                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 5                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 28             ;相手が後にすべる時間
+ground.hittime  = 22             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = -0.0,0.0  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -5.54,-5.54  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+air.fall=1
+palfx.time = 55
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+fall=0
+fall.recover=0
+
+;あたったときフラッシュ
+[state 19002]
+type = BGpalfx
+trigger1 = movehit = 1
+add = 70,70,70
+sinadd = 10, 10, 10
+time = 1;1
+persistant = 0
+ignorehitpause = 1
+
+;消す
+[state 18000,3]
+type = destroyself
+trigger1 = animtime = 0
+
+
+;当たったときの判定
+[state 18001]
+type = parentvarset
+trigger1 = movehit = 1
+value = 1
+v= 27
+
+
+;------------------------------------------
+;無式	連打パンチヘルパー4
+[statedef 19005]
+type = S 
+movetype = A
+physics = N
+anim = 19015
+ctrl = 0
+
+;接触判定消去
+[state 432]
+type = playerpush
+trigger1 = 1
+value = 0
+
+;移動
+[state 19002,0]
+type = posadd
+trigger1 = animelem = 1 || animelem = 2 || animelem = 3 || animelem = 4 || animelem = 5 || animelem = 6
+x = 14
+
+;=========================燃える技に必要なステート====================
+;燃える技を当てた時必須
+[state 1000,999]
+type=varrandom
+trigger1=movehit=1
+v=10
+range=1,11
+persistent = 0
+
+;燃える技を当てた時必須2
+[state 1000,9991]
+type=varrandom
+trigger1=movehit=1
+v=11
+range=1,11
+persistent = 0
+
+;燃える技を当てた時必須3
+[state 1000,9992]
+type=varrandom
+trigger1=movehit=1
+v=12
+range=1,11
+persistent = 0
+
+;燃える技を当てた時必須4
+[state 1000,9993]
+type=varrandom
+trigger1=movehit=1
+v=13
+range=1,11
+persistent = 0
+
+;燃える技を当てた時必須5
+[state 1000,9994]
+type=varrandom
+trigger1=movehit=1
+v=14
+range=1,11
+persistent = 0
+
+;吹っ飛ぶ燃え技に必須
+[state 1010,999]
+type=varrandom
+trigger1=movehit=1
+v=2
+range=1,6
+persistent = 0
+;=========================ここまで========================
+
+
+;音
+[state 18002,1]
+type = playsnd
+trigger1 = time = 0
+value = s0,19
+
+;ベクトル止め
+[state 83912]
+type = velset
+trigger1 = animelem = 5
+x = 0
+
+;完全無敵
+[state 312]
+type = nothitby
+trigger1 = 1
+value = SCA
+
+;攻撃判定
+[state 18000,3]
+type = HitDef
+trigger1 = animelem=7
+attr = S, NA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 30, 9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = hard               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = M                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MAF                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 2, 20                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+guard.pausetime = 0, 5                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-40)*2.77),floor((-65               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,17                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 5                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 28             ;相手が後にすべる時間
+ground.hittime  = 22             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = -5.54,0.0  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -5.54,-5.54  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+air.fall=1
+palfx.time = 55
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+fall=0
+fall.recover=0
+
+;あたったときフラッシュ
+[state 19002]
+type = Allpalfx
+trigger1 = movehit = 1
+add = 200,50,50
+sinadd = 10, 10, 10
+time = 1;1
+persistant = 0
+
+;消す
+[state 18000,3]
+type = destroyself
+trigger1 = animtime = 0
+
+
+;当たったときの判定
+[state 18001]
+type = parentvarset
+trigger1 = movehit = 1
+value = 1
+v= 27
+
+;-----------------------------------------
+;ラストパンチ
+[statedef 19006]
+type = S
+movetype = A
+physics = N
+anim = 19003
+ctrl = 0
+juggle = 6
+
+;接触判定消去
+[state 432]
+type = playerpush
+trigger1 = 1
+value = 1
+
+;移動
+[state 19002,0]
+type = posadd
+trigger1 = animelem = 1 || animelem = 2 || animelem = 3 || animelem = 4 || animelem = 5 || animelem = 6
+x = 17
+
+;当たったときの判定消去
+[state 18001]
+type = parentvarset
+trigger1 = time = 0
+value = 0
+v= 27
+
+
+;技終了時の軸合わせ
+[state 321]
+type = posadd
+trigger1 = time = 47
+x = 25
+
+[state 9999,25]
+type=playsnd
+trigger1=animelem=2
+value=s1,30
+[state 9999,25]
+type=playsnd
+trigger1=animelem=2
+value=s1,30
+
+;パンチエフェクト
+[state 9999,20]
+type=explod
+trigger1=animelem=10
+anim = 9003
+postype = p1
+pos = 85,-70
+sprpriority = 99
+bindtime = 1
+removetime = 38
+supermove = 1
+ownpal = 1
+ignorehitpause = 1
+removeongethit = 0
+ID = 1405
+
+
+;当たったとき限定、フラッシュ
+[state 18000,43]
+type = envcolor
+trigger1=animelem = 10
+trigger1 = var(27) = 1
+value = 255,255,255
+time = 3
+
+;燃える技を当てた時必須
+[state 1000,999]
+type=varrandom
+triggerall = var(27) = 1
+trigger1=animelem = 3
+trigger2=animelem = 6
+v=10
+range=1,5
+ignorehitpause = 1
+;燃える技を当てた時必須2
+[state 1000,9991]
+type=varrandom
+triggerall = var(27) = 1
+trigger1=animelem = 3
+trigger2=animelem = 6
+v=11
+range=1,5
+ignorehitpause = 1
+;燃える技を当てた時必須3
+[state 1000,9992]
+type=varrandom
+triggerall = var(27) = 1
+trigger1=animelem = 3
+trigger2=animelem = 6
+v=12
+range=1,6
+ignorehitpause = 1
+;燃える技を当てた時必須4
+[state 1000,9993]
+type=varrandom
+triggerall = var(27) = 1
+trigger1=animelem = 3
+trigger2=animelem = 6
+v=13
+range=1,5
+ignorehitpause = 1
+;燃える技を当てた時必須5
+[state 1000,9994]
+type=varrandom
+triggerall = var(27) = 1
+trigger1=animelem = 3
+trigger2=animelem = 6
+v=14
+range=1,9
+ignorehitpause = 1
+;吹っ飛ぶ燃え技に必須
+[state 1010,999]
+type=varset
+trigger1=movehit=1
+v=2
+value=4
+ignorehitpause = 1
+
+;連打した場合
+[state 3123]
+type = changestate
+trigger1 = time > 19
+trigger1 = command = "renda"
+value = 18500
+
+;終了
+[state 1000,2]
+type=changestate
+trigger1=animtime=0
+value=0
+ctrl=1
+
+;補正なし
+[state 1000,1]
+type = HitDef
+trigger1 = animelem=3
+attr = S, NP                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 130,9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = diagup               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = M                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MAF                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 50, 50                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+guard.pausetime = 30, 35                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+graundguard.velocity = 69.25,0.0
+groundguard.slidetime = 28             ;相手が後にすべる時間
+groundguard.hittime  = 22             ;コンボが繋がる時間（高くしすぎない事）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-40)*2.77),floor((-70               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,99                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 4                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 28             ;相手が後にすべる時間
+ground.hittime  = 22             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = -27.7,-22.991  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = high                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -27.7,-19.39  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+air.fall=1
+palfx.time = 90
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+fall=1
+fall.recover=0
+envshake.time = 15
+envshake.ampl = 10
+envshake. freq = 80
+envshake.phase = 80
+
+;ヒット爆発エフェクト
+[state 9999,20]
+type=explod
+trigger1 = movehit = 1
+trigger1 = numExplod(23900) < 1
+anim = 23900
+postype = p2
+pos = -60,-70
+random = 60,70
+sprpriority = 99
+bindtime = 1
+removetime = 49
+ownpal = 1
+ignorehitpause = 1
+removeongethit = 0
+ID = 23900
+pausemovetime = -1
+random = 50,30
+persistant = 0
+
+;ヒット爆発エフェクト
+[state 9999,20]
+type=explod
+trigger1 = movehit = 1
+anim = 23800
+trigger1 = numExplod(23800) < 1
+postype = p2
+pos = -100,-90
+random = 100,90
+sprpriority = 99
+bindtime = 1
+removetime = 39
+ownpal = 1
+ignorehitpause = 1
+removeongethit = 0
+ID = 23800
+pausemovetime = -1
+random = 50,30
+persistant = 0
+
+;ガークラポイント
+[state 20000,1]
+type = varadd
+trigger1 = moveguarded = 1
+v = 39
+value = 100
+persistent = 0
+ignorehitpause = 1
+;--------------------------------------------------
+;連打したときの決めポーズ
+[statedef  18500]
+type = S
+movetype = I
+physics = S
+anim = 18500
+ctrl = 0
+
+;一合わせ
+[state 12312]
+type = posadd
+trigger1 = time = 0
+x = -26
+
+;小さい炎エフェクト
+[state 9999,20]
+type=explod
+trigger1=animelem=1
+anim = 14000
+postype = p1
+pos = 49,-100
+sprpriority = 99
+bindtime = 1
+removetime = 5
+supermove = 1
+ownpal = 1
+ignorehitpause = 0
+removeongethit = 1
+ID = 18500
+
+;小さい炎エフェクト
+[state 9999,20]
+type=explod
+trigger1=animelem=2
+anim = 14000
+postype = p1
+pos = 59,-92
+sprpriority = 99
+bindtime = 1
+removetime = 5
+supermove = 1
+ownpal = 1
+ignorehitpause = 0
+removeongethit = 1
+ID = 18500
+
+
+;小さい炎エフェクト消滅
+[state 9999,20]
+type=explod
+trigger1=animelem=3
+anim = 14010
+postype = p1
+pos = 43,-56
+sprpriority = 99
+bindtime = 1
+supermove = 1
+ownpal = 1
+ignorehitpause = 0
+removeongethit = 1
+ID = 18500
+
+;消滅の音
+[state 5423]
+type = playsnd
+trigger1 = animelem = 3
+value = s0,27
+
+
+;消滅の音
+[state 5423]
+type = playsnd
+trigger1 = animelem = 5
+value = s1,14
+
+
+
+;var消し
+[state 4312]
+type = varset
+trigger1 = animtime = 0
+value = 0
+v= 28
+
+
+
+;移行
+[state 4123]
+type = changestate
+trigger1 =animtime = 0
+value = 0
+ctrl =1
+
+;==============================================================================
+;かむくら　つかみモーション
+[statedef 19300]
+type = S
+movetype = A
+ctrl = 0
+anim = 19300
+poweradd = -3000
+
+;無敵
+[state 6020,0]
+type=nothitby
+trigger1=1
+time=1
+value=SCA
+
+;外れたときの声
+[state 19300,000]
+type = playsnd
+trigger1 = animelem = 5
+value = s1,14
+
+;外れたとき終了
+[state 19300,00]
+type = changestate
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;攻撃判定
+[state 19300,1]
+type = HitDef
+trigger1 = time=0
+attr = S, Nt                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 0, 0                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = midium               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = none                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = M                    ;当てる事のできる条件
+priority = 3, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 0, 0                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7890                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-25)*2.77),floor((-78               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,14                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 4                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 5             ;相手が後にすべる時間
+ground.hittime  = 10             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = -13.85  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -3.878,-8.31  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+p1stateno=19301
+p2stateno=19350
+fall=0
+fall.recover=0
+getpower=80
+p2facing=1
+ground.cornerpush.veloff = -0
+guard.cornerpush.veloff = -0
+air.cornerpush.veloff = -0
+
+;すべりどめ
+[state 532]
+type = velset
+trigger1 = time = 10
+x = 0
+
+;ヴェクトルがマイナスなら消す
+[state 432]
+type = velset
+trigger1 = vel X < 0
+x = 0
+;==============================================================================
+;かむくら　つかまった相手1
+[statedef 19350]
+type = S
+movetype = H
+ctrl = 0
+velset = 0,0
+physics = S
+
+[state 19350,00]
+type = changeanim2
+trigger1 = time = 0
+value = 19350
+
+;ヴェクトルがマイナスなら消す
+[state 432]
+type = velset
+trigger1 = vel X < 0
+x = 0
+;==============================================================================
+;かむくら　爆破と暗転
+[statedef 19301]
+anim = 19301
+velset = 0,0
+
+;ヴェクトルがマイナスなら消す
+[state 432]
+type = velset
+trigger1 = vel X < 0
+x = 0
+
+;あたったときフラッシュ
+[state 19002]
+type = envcolor
+trigger1 = time = 1
+value = 244,244,244
+time = 5;1
+persistant = 0
+ignorehitpause = 1
+
+;相手を固定
+[state 6020,0]
+type=targetbind
+trigger1=time = 0
+pos=30,0
+ignorehitpause = 1
+
+;無敵
+[state 6020,0]
+type=nothitby
+trigger1=1
+time=1
+value=SCA
+
+;相手ステートを変更
+[state 19301,00]
+type = targetstate
+trigger1 = time = 1
+value = 19351
+
+;相手ダメージ
+[state 3421]
+type = targetlifeadd
+trigger1 = time = 1
+value = -100
+kill = 0
+
+;爆破エフェクト
+[state 60]
+type=explod
+trigger1=time=1
+anim = 13900
+postype = p1
+pos = 60,-56
+sprpriority = 12
+bindtime = 1
+; = 34
+supermove = 1
+ownpal = 1
+ignorehitpause = 0
+removeongethit = 0
+pausemovetime = 10
+ID = 3000
+[state 600]
+type=explod
+trigger1=time=1
+anim = 13900
+postype = p1
+pos = 55,-68
+sprpriority = 12
+bindtime = 1
+; = 34
+supermove = 1
+ownpal = 1
+ignorehitpause = 0
+removeongethit = 0
+pausemovetime = 10
+ID = 3000
+[state 600]
+type=explod
+trigger1=time=1
+anim = 13900
+postype = p1
+pos = 75,-38
+sprpriority = 12
+bindtime = 1
+; = 34
+supermove = 1
+ownpal = 1
+ignorehitpause = 0
+removeongethit = 0
+pausemovetime = 10
+ID = 3000
+[state 600]
+type=explod
+trigger1=time=1
+anim = 13900
+postype = p1
+pos = 80,-58
+sprpriority = 12
+bindtime = 1
+; = 34
+supermove = 1
+ownpal = 1
+ignorehitpause = 0
+removeongethit = 0
+pausemovetime = 10
+ID = 3000
+
+
+;燃える技を当てた時必須
+[state 1000,999]
+type=varrandom
+trigger1=time=1
+v=10
+range=1,6
+;燃える技を当てた時必須2
+[state 1000,9991]
+type=varrandom
+trigger1=time=2
+v=11
+range=1,6
+;燃える技を当てた時必須3
+[state 1000,9992]
+type=varrandom
+trigger1=time=3
+v=12
+range=1,6
+;燃える技を当てた時必須4
+[state 1000,9993]
+type=varrandom
+trigger1=time=4
+v=13
+range=1,6
+;燃える技を当てた時必須5
+[state 1000,9994]
+type=varrandom
+trigger1=time=1
+v=14
+range=1,6
+
+;爆破音
+[state 6020,2]
+type=playsnd
+trigger1=time=1
+value=s0,21
+channel = 1
+;爆破音
+[state 6020,2]
+type=playsnd
+trigger1=time=1
+value=s0,21
+channel = 2
+
+;ポーズ
+[state 19301,39]
+type = pause
+trigger1 = time = 0
+time = 10
+persistent = 0
+
+;ポーズ
+[state 19301,39]
+type = pause
+trigger1 = time = 1
+time = 15
+persistent = 0
+
+;スロモ
+[state 19301,39]
+type = pause
+trigger1 = time = [1,12]
+time = 2
+
+;「死ね」
+[state 19302,0]
+type = playsnd
+trigger1 = time = 21
+value = s1,15
+persistent = 0
+
+
+;次に移行
+[state 19301,999]
+type = changestate
+trigger1 = animtime = 0
+value = 19302
+
+;==============================================================================
+;かむくら　つかまった相手2(爆破くらう)
+[statedef 19351]
+type = S
+movetype = H
+ctrl = 0
+physics = S
+velset = -8,0
+
+;燃えてる色
+[state 19351,1]
+type = palfx
+trigger1 = time = 0
+time = 47
+mul = 240,220,128
+sinadd = 32,128,220,16
+add = 190,180,84
+
+[state 19351,00]
+type = changeanim2
+trigger1 = time = 0
+value = 19351
+
+;==============================================================================
+;かむくら　暗転タメモーション
+[statedef 19302]
+anim = 19302
+
+
+;画面暗転
+[state 9999,0]
+type=envcolor
+trigger1=animelem = 2
+value=0,0,0
+under=1
+time=35
+
+;超必殺暗転
+[State 9999,1]
+type=superpause
+trigger1=time = 0
+movetime=35
+pos=12,9998
+time=35
+sound=s0,13
+persistent = 0
+
+;ＬＶ３エフェクト	表
+[State 3250, 4]
+type = Explod
+trigger1=time = 0
+anim = 12100
+postype = p1
+pos = -20,-65
+sprpriority = 5
+bindtime = 1
+supermove = 1
+ownpal = 1
+ignorehitpause = 0
+removeongethit = 0
+ID = 3000
+persistent = 0
+
+;裏
+[State 3250, 4]
+type = Explod
+trigger1=time = 0
+anim = 12110
+postype = p1
+pos = -20,-65
+sprpriority = -2
+bindtime = 1
+supermove = 1
+ownpal = 1
+ignorehitpause = 0
+removeongethit = 0
+ID = 3000
+persistent = 0
+
+
+;音
+[state 19302,0]
+type = playsnd
+trigger1 = time = 0
+value = s0,26
+
+;次にいこう
+[state 19302,999]
+type = changestate
+trigger1 = time = 35
+value = 19303
+
+
+;タメエフェクト
+[state 9999,20]
+type=explod
+trigger1=time=0
+anim = 16051
+postype = p1
+pos = -20,-10
+sprpriority = 99
+bindtime = 1
+removetime = 3
+supermove = 1
+ownpal = 1
+ignorehitpause = 1
+removeongethit = 1
+ID = 14000
+
+;タメエフェクト奥
+[state 9999,20]
+type=explod
+trigger1=time=0
+anim = 16052
+postype = p1
+pos = -30,-3
+sprpriority = -1
+bindtime = 1
+removetime = 3
+supermove = 1
+ownpal = 1
+ignorehitpause = 1
+removeongethit = 1
+ID = 14000
+
+;182タメエフェクト
+[state 9999,20]
+type=explod
+trigger1=time=0
+anim = 19360
+postype = p1
+pos = 0,0
+sprpriority = 99
+bindtime = 1
+removetime = 35
+supermove = 1
+ownpal = 1
+ignorehitpause = 1
+removeongethit = 1
+ID = 14000
+;==============================================================================
+;かむくら　一発目(182)
+[statedef 19303]
+anim = 19303
+movetype = A
+ctrl = 0
+type = S
+
+;移動
+[state 16001,00]
+type = velset
+trigger1 = animelem = 2
+x = 12
+persistent = 0
+
+;ヒットしたらそこで停止
+[state 16001,0]
+type = velset
+trigger1 = movehit
+x = 0
+ignorehitpause = 1
+
+;無敵
+[state 6020,0]
+type=nothitby
+trigger1=1
+time=1
+value=SCA
+
+;攻撃判定
+[state 1000,1]
+type = HitDef
+trigger1 = animelem=3
+attr = S, SA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 50, 9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = hard               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = none                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MAF                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 20, 20                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-25)*2.77),floor((-65               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,3                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 5                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 24             ;相手が後にすべる時間
+ground.hittime  = 40             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = floor((-9-(var(40)*2))*2.77),0.0  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+guard.pausetime = 13,13
+guard.velocity = floor((-9-(var(40)*2))*2.77)
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -12.465,-13.85  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+air.fall=0
+palfx.time = 47
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+envshake.time = 25
+envshake.ampl = 10
+envshake. freq = 110
+envshake.phase = 110
+persistent = 0
+kill = 0
+
+;=========================燃える技に必要なステート====================
+;燃える技を当てた時必須
+[state 1000,999]
+type=varrandom
+trigger1=movehit=1
+v=10
+range=1,11
+persistent = 0
+ignorehitpause = 1
+
+;燃える技を当てた時必須2
+[state 1000,9991]
+type=varrandom
+trigger1=movehit=1
+v=11
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須3
+[state 1000,9992]
+type=varrandom
+trigger1=movehit=1
+v=12
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須4
+[state 1000,9993]
+type=varrandom
+trigger1=movehit=1
+v=13
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須5
+[state 1000,9994]
+type=varrandom
+trigger1=movehit=1
+v=14
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;吹っ飛ぶ燃え技に必須
+[state 1010,999]
+type=varrandom
+trigger1=movehit=1
+v=2
+range=4,9
+persistent = 0
+ignorehitpause = 1
+;=========================ここまで========================
+
+;フラッシュ2予備だし
+[state 191]
+type=helper
+helpertype=normal
+name="きり株"
+ID=3111
+pos=100,-55
+postype=P1
+stateno=15001
+keystrl=0
+trigger1=movehit
+persistent = 0
+ignorehitpause = 1
+
+;後ろ炎
+[state 1919,0]
+type=explod
+anim = 1911
+postype = p1
+pos = -20,0
+sprpriority = 10
+bindtime = 1
+removetime = 22
+supermove = 1
+ownpal = 1
+ID = 3111
+trigger1=time=0
+pausemovetime = -1
+
+[state 9999,25]
+type=playsnd
+trigger1=movehit = 1
+value=s0,37
+persistent = 0
+ignorehitpause = 1
+channel = 1
+[state 9999,25]
+type=playsnd
+trigger1=movehit = 1
+value=s0,37
+persistent = 0
+ignorehitpause = 1
+channel = 2
+[state 9999,25]
+type=playsnd
+trigger1=movehit = 1
+value=s0,3
+persistent = 0
+ignorehitpause = 1
+channel = 3
+
+[state 9999,25]
+type=playsnd
+trigger1=animelem=2
+value=s0,26
+
+;分身ヘルパー
+[state 191]
+type=helper
+helpertype=normal
+name="きり株"
+ID=3111
+pos=0,0
+postype=P1
+stateno=19313
+keystrl=0
+trigger1 = time = 0
+trigger2 = time = 10
+ownpal = 1
+
+;次にいこう
+[state 19303,999]
+type = changestate
+trigger1 = animtime = 0
+value = 19304
+ctrl = 0
+;==============================================================================
+;かむくら　一段目ヘルパー
+[statedef 19313]
+type = S
+movetype = A
+anim = 19313
+ctrl = 0
+
+;消滅
+[state 19313,000]
+type = destroyself
+trigger1 = animtime = 0
+
+;移動1
+[state 16001,0]
+type = posadd
+trigger1 = animelem = 6 || animelem = 7 || animelem = 8 || animelem = 9
+x = 10
+
+
+;無敵
+[state 6020,0]
+type=nothitby
+trigger1=1
+time=1
+value=SCA
+
+;攻撃判定
+[state 1000,1]
+type = HitDef
+trigger1 = animelem=3
+attr = S, SA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 25, 9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = hard               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = none                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MAF                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 2, 20                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-25)*2.77),floor((-65               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,36                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 5                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 24             ;相手が後にすべる時間
+ground.hittime  = 18             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = floor((-9-(var(40)*2))*2.77),0.0  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+guard.pausetime = 13,13
+guard.velocity = floor((-9-(var(40)*2))*2.77)
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -12.465,-13.85  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+air.fall=0
+palfx.time = 47
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+kill = 0
+
+;音
+[state 9999,25]
+type=playsnd
+trigger1=animelem=2
+value=s0,10
+
+;==============================================================================
+;かむくら　二発目(あらがみ)
+[statedef 19304]
+type = S
+movetype = A
+anim = 19304
+ctrl = 0
+
+;荒がみ一あわせ
+[state 1000,000]
+type = posadd
+trigger1 = animelem = 3
+trigger2 = animelem = 4
+trigger3 = animelem = 5
+x = 8
+
+
+;あらがみ系統の音
+[state 9090]
+type=playsnd
+trigger1=animelem=5
+value=s0,10
+
+
+;あらがみ系統の音
+[state 9090]
+type=playsnd
+trigger1=animelem=16
+value=s1,7
+
+[state 2500,3]
+type=explod
+trigger1=Animelem=7
+anim = 1001
+postype = p1
+pos = 96,-65
+sprpriority = 4
+bindtime = 1
+; = 29
+supermove = 1
+ownpal = 1
+ignorehitpause = 1
+removeongethit = 1
+ID = 3000
+
+;攻撃判定
+[state 1000,1]
+type = HitDef
+trigger1 = animelem=3
+attr = S, SA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 50, 9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = midium               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = none                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MAF                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 2, 9                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-25)*2.77),floor((-65               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,36                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 5                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 24             ;相手が後にすべる時間
+ground.hittime  = 18             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = floor((-13-(var(40)*2))*2.77),0.0  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+guard.pausetime = 13,13
+guard.velocity = floor((-9-(var(40)*2))*2.77)
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -12.465,-13.85  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+air.fall=0
+palfx.time = 47
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+kill = 0
+
+;あたったときフラッシュ
+[state 19002]
+type = BGpalfx
+trigger1 = movehit = 1
+add = 70,70,70
+sinadd = 10, 10, 10
+time = 1;1
+persistant = 0
+ignorehitpause = 1
+
+;=========================燃える技に必要なステート====================
+;燃える技を当てた時必須
+[state 1000,999]
+type=varrandom
+trigger1=movehit=1
+v=10
+range=1,11
+persistent = 0
+ignorehitpause = 1
+
+;燃える技を当てた時必須2
+[state 1000,9991]
+type=varrandom
+trigger1=movehit=1
+v=11
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須3
+[state 1000,9992]
+type=varrandom
+trigger1=movehit=1
+v=12
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須4
+[state 1000,9993]
+type=varrandom
+trigger1=movehit=1
+v=13
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須5
+[state 1000,9994]
+type=varrandom
+trigger1=movehit=1
+v=14
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;吹っ飛ぶ燃え技に必須
+[state 1010,999]
+type=varrandom
+trigger1=movehit=1
+v=2
+range=4,9
+persistent = 0
+ignorehitpause = 1
+;=========================ここまで========================
+
+;分身ヘルパー
+[state 191]
+type=helper
+helpertype=normal
+name="きり株"
+ID=3111
+pos=-40,0
+postype=P1
+stateno=19314
+keystrl=0
+trigger1 = time = 0
+trigger2 = time = 8
+ownpal = 1
+
+;次に移行
+[state 19304,999]
+type = changestate
+trigger1 = animtime = 0
+value = 19305
+ctrl = 1
+;==============================================================================
+;かむくら　二段目ヘルパー
+[statedef 19314]
+type = S
+movetype = A
+anim = 19314
+ctrl = 0
+
+;消滅
+[state 19313,000]
+type = destroyself
+trigger1 = animtime = 0
+
+;荒がみ一あわせ
+[state 1000,000]
+type = posadd
+trigger1 = animelem = 3
+trigger2 = animelem = 4
+trigger3 = animelem = 5
+x = 8
+
+;攻撃判定
+[state 1000,1]
+type = HitDef
+trigger1 = animelem=3
+attr = S, SA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 25, 9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = midium               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = none                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MAF                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 2, 20                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-25)*2.77),floor((-65               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,36                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 5                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 24             ;相手が後にすべる時間
+ground.hittime  = 18             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = floor((-9-(var(40)*2))*2.77),0.0  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+guard.pausetime = 13,13
+guard.velocity = floor((-9-(var(40)*2))*2.77)
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -12.465,-13.85  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+air.fall=0
+palfx.time = 47
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+kill = 0
+
+;音
+[state 9999,25]
+type=playsnd
+trigger1=animelem=2
+value=s0,10
+
+;無敵
+[state 6020,0]
+type=nothitby
+trigger1=1
+time=1
+value=SCA
+;==============================================================================
+;かむくら　三発目(どくがみ)
+[statedef 19305]
+type = S
+movetype = A
+anim = 19305
+ctrl = 0
+
+;後退
+[state 19304,000]
+type = posadd
+trigger1 = time = 0
+x = -30
+
+;移動1
+[state 4324]
+type = posadd
+trigger1 = animelem = 1 || animelem = 2 || animelem = 3 || animelem = 4 || animelem = 5 || animelem = 6
+x = 10
+
+;移動2
+[state 4324]
+type = posadd
+trigger1 = animelem = 7 || animelem = 8 || animelem = 9 || animelem = 10
+x = 10
+
+;あらがみ系の音
+[state 1500,1]
+type=playsnd
+trigger1=animelem=9
+value=s0,10
+
+;無敵
+[state 6020,0]
+type=nothitby
+trigger1=1
+time=1
+value=SCA
+
+;攻撃判定
+[state 1000,1]
+type = HitDef
+trigger1 = animelem=3
+attr = S, SA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 50, 9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = hard               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = none                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MAF                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 2, 9                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-25)*2.77),floor((-65               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,36                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 5                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 24             ;相手が後にすべる時間
+ground.hittime  = 18             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = floor((-13-(var(40)*2))*2.77),0.0  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+guard.pausetime = 13,13
+guard.velocity = floor((-9-(var(40)*2))*2.77)
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -12.465,-13.85  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+air.fall=0
+palfx.time = 47
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+kill = 0
+
+;=========================燃える技に必要なステート====================
+;燃える技を当てた時必須
+[state 1000,999]
+type=varrandom
+trigger1=movehit=1
+v=10
+range=1,11
+persistent = 0
+ignorehitpause = 1
+
+;燃える技を当てた時必須2
+[state 1000,9991]
+type=varrandom
+trigger1=movehit=1
+v=11
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須3
+[state 1000,9992]
+type=varrandom
+trigger1=movehit=1
+v=12
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須4
+[state 1000,9993]
+type=varrandom
+trigger1=movehit=1
+v=13
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須5
+[state 1000,9994]
+type=varrandom
+trigger1=movehit=1
+v=14
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;吹っ飛ぶ燃え技に必須
+[state 1010,999]
+type=varrandom
+trigger1=movehit=1
+v=2
+range=4,9
+persistent = 0
+ignorehitpause = 1
+;=========================ここまで========================
+
+;分身ヘルパー
+[state 191]
+type=helper
+helpertype=normal
+name="きり株"
+ID=3111
+pos=-40,0
+postype=P1
+stateno=19002
+keystrl=0
+trigger1 = time = 6
+trigger2 = time = 14
+trigger3 = time = 22
+ownpal = 1
+
+;後ろ炎
+[state 1919,0]
+type=explod
+anim = 1911
+postype = p1
+pos = -20,0
+sprpriority = 10
+bindtime = 1
+removetime = 22
+supermove = 1
+ownpal = 1
+ID = 3111
+trigger1=animelem = 1
+pausemovetime = -1
+
+[state 9999,25]
+type=playsnd
+trigger1 = animelem = 1
+value=s0,26
+
+[state 9999,25]
+type=playsnd
+trigger1 = animelem = 1
+value=s0,26
+
+[state 9999,25]
+type=playsnd
+trigger1 = animelem = 1
+value=s0,26
+
+;次に移行
+[state 19304,999]
+type = changestate
+trigger1 = animtime = 0
+value = 19306
+ctrl = 0
+
+;==============================================================================
+;かむくら　三段目ヘルパー
+[statedef 19315]
+type = S
+movetype = A
+anim = 19315
+ctrl = 0
+
+;無敵
+[state 6020,0]
+type=nothitby
+trigger1=1
+time=1
+value=SCA
+
+;消滅
+[state 19313,000]
+type = destroyself
+trigger1 = animtime = 0
+
+;移動1
+[state 4324]
+type = posadd
+trigger1 = animelem = 1 || animelem = 2 || animelem = 3 || animelem = 4 || animelem = 5 || animelem = 6
+x = 10
+
+;移動2
+[state 4324]
+type = posadd
+trigger1 = animelem = 7 || animelem = 8 || animelem = 9 || animelem = 10
+x = 10
+
+;あらがみ系の音
+[state 1500,1]
+type=playsnd
+trigger1=animelem=9
+value=s0,10
+
+;攻撃判定
+[state 1000,1]
+type = HitDef
+trigger1 = animelem=3
+attr = S, SA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 25, 9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = hard               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = none                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MAF                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 9, 20                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-25)*2.77),floor((-65               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,36                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 5                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 24             ;相手が後にすべる時間
+ground.hittime  = 18             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = floor((-9-(var(40)*2))*2.77),0.0  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+guard.pausetime = 13,13
+guard.velocity = floor((-9-(var(40)*2))*2.77)
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -12.465,-13.85  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+air.fall=0
+palfx.time = 47
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+kill = 0
+
+;=============================================================================
+;かむくら　４段目(つみよみ)
+[statedef 19306]
+type = S
+movetype = A
+anim = 19306
+ctrl = 0
+
+;無敵
+[state 6020,0]
+type=nothitby
+trigger1=1
+time=1
+value=SCA
+
+;移動
+[state 4324]
+type = posadd
+trigger1 = animelem = 1 || animelem = 3 || animelem = 5 || animelem = 7
+x = 10
+
+;あらがみ系の音
+[state 1500,1]
+type=playsnd
+trigger1=animelem=4
+value=s0,10
+
+;攻撃判定
+[state 1000,1]
+type = HitDef
+trigger1 = animelem=3
+attr = S, SA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 50, 9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = hard               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = none                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MAF                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 9, 20                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-25)*2.77),floor((-65               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,36                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 5                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 24             ;相手が後にすべる時間
+ground.hittime  = 18             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = floor((-13-(var(40)*2))*2.77),0.0  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+guard.pausetime = 13,13
+guard.velocity = floor((-9-(var(40)*2))*2.77)
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -12.465,-13.85  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+air.fall=0
+palfx.time = 47
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+kill = 0
+
+;=========================燃える技に必要なステート====================
+;燃える技を当てた時必須
+[state 1000,999]
+type=varrandom
+trigger1=movehit=1
+v=10
+range=1,11
+persistent = 0
+ignorehitpause = 1
+
+;燃える技を当てた時必須2
+[state 1000,9991]
+type=varrandom
+trigger1=movehit=1
+v=11
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須3
+[state 1000,9992]
+type=varrandom
+trigger1=movehit=1
+v=12
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須4
+[state 1000,9993]
+type=varrandom
+trigger1=movehit=1
+v=13
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須5
+[state 1000,9994]
+type=varrandom
+trigger1=movehit=1
+v=14
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;吹っ飛ぶ燃え技に必須
+[state 1010,999]
+type=varrandom
+trigger1=movehit=1
+v=2
+range=4,9
+persistent = 0
+ignorehitpause = 1
+;=========================ここまで========================
+
+;分身ヘルパー
+[state 191]
+type=helper
+helpertype=normal
+name="きり株"
+ID=3111
+pos=-100,0
+postype=P1
+stateno=19316
+keystrl=0
+trigger1 = time = 0
+trigger2 = time = 5
+ownpal = 1
+
+;次に移行
+[state 19304,999]
+type = changestate
+trigger1 = animtime = 0
+value = 19307
+ctrl = 0
+
+;==============================================================================
+;かむくら　四段目ヘルパー
+[statedef 19316]
+type = S
+movetype = A
+anim = 19316
+ctrl = 0
+
+;無敵
+[state 6020,0]
+type=nothitby
+trigger1=1
+time=1
+value=SCA
+
+;消滅
+[state 19313,000]
+type = destroyself
+trigger1 = animtime = 0
+
+;移動
+[state 4324]
+type = posadd
+trigger1 = animelem = 1 || animelem = 3 || animelem = 5 || animelem = 7
+x = 30
+
+;あらがみ系の音
+[state 1500,1]
+type=playsnd
+trigger1=animelem=4
+value=s0,10
+
+;攻撃判定
+[state 1000,1]
+type = HitDef
+trigger1 = animelem=3
+attr = S, SA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 25, 9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = hard               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = none                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MAF                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 2, 20                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-25)*2.77),floor((-65               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,36                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 5                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 24             ;相手が後にすべる時間
+ground.hittime  = 18             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = floor((-9-(var(40)*2))*2.77),0.0  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+guard.pausetime = 13,13
+guard.velocity = floor((-9-(var(40)*2))*2.77)
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -12.465,-13.85  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+air.fall=0
+palfx.time = 47
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+kill = 0
+
+;あたったときフラッシュ
+[state 19002]
+type = BGpalfx
+trigger1 = movehit = 1
+add = 70,70,70
+sinadd = 10, 10, 10
+time = 1;1
+persistant = 0
+ignorehitpause = 1
+
+;=============================================================================
+;かむくら　５段目(ばつよみ)
+[statedef 19307]
+type = A
+movetype = A
+anim = 19307
+ctrl = 0
+
+;無敵
+[state 6020,0]
+type=nothitby
+trigger1=1
+time=1
+value=SCA
+
+[state 1700,0]
+type=veladd
+trigger1=pos y<=0
+y=0.42
+
+[state 1700,0]
+type=veladd
+trigger1=vel x>=0
+x=-0.18
+
+[state 1700,3]
+type=velset
+trigger1=animelem=4
+y=-7
+x=0
+
+;あらがみ系の音
+[state 1500,1]
+type=playsnd
+trigger1=animelem=4
+value=s0,10
+
+;攻撃判定
+[state 1000,1]
+type = HitDef
+trigger1 = animelem=3
+attr = S, SA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 50, 9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = hard               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = none                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MAF                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 9, 9                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-25)*2.77),floor((-65               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,36                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 5                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 24             ;相手が後にすべる時間
+ground.hittime  = 18             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = -19.39,-33.24  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+guard.pausetime = 13,13
+guard.velocity = floor((-9-(var(40)*2))*2.77)
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -8.31,-24.93  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+fall = 1
+fall.recover = 0
+air.fall=0
+palfx.time = 47
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+kill = 0
+
+;無式炎エフェ
+[state 2500,3]
+type=explod
+trigger1=animelem = 7
+anim = 19000
+postype = p1
+pos = 30,20
+sprpriority = 4
+bindtime = 1
+; = 29
+supermove = 1
+ownpal = 1
+ignorehitpause = 1
+removeongethit = 1
+ID = 19000
+
+;無式炎音
+[state 23192]
+type = playsnd
+trigger1 = animelem = 7
+value = s0,21
+;=========================燃える技に必要なステート====================
+;燃える技を当てた時必須
+[state 1000,999]
+type=varrandom
+trigger1=movehit=1
+v=10
+range=1,11
+persistent = 0
+ignorehitpause = 1
+
+;燃える技を当てた時必須2
+[state 1000,9991]
+type=varrandom
+trigger1=movehit=1
+v=11
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須3
+[state 1000,9992]
+type=varrandom
+trigger1=movehit=1
+v=12
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須4
+[state 1000,9993]
+type=varrandom
+trigger1=movehit=1
+v=13
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須5
+[state 1000,9994]
+type=varrandom
+trigger1=movehit=1
+v=14
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;吹っ飛ぶ燃え技に必須
+[state 1010,999]
+type=varrandom
+trigger1=movehit=1
+v=2
+range=4,9
+persistent = 0
+ignorehitpause = 1
+;=========================ここまで========================
+
+;分身ヘルパー
+[state 191]
+type=helper
+helpertype=normal
+name="きり株"
+ID=3111
+pos=-80,0
+postype=P1
+stateno=19317
+keystrl=0
+trigger1 = time = 0
+trigger2 = time = 5
+ownpal = 1
+
+;次に移行
+[state 19304,999]
+type = changestate
+trigger1 = animtime = 0
+value = 19308
+ctrl = 0
+
+;=============================================================================
+;かむくら　５段目ヘルパー
+[statedef 19317]
+type = S
+movetype = A
+anim = 19317
+ctrl = 0
+
+;無敵
+[state 6020,0]
+type=nothitby
+trigger1=1
+time=1
+value=SCA
+
+;消滅
+[state 19313,000]
+type = destroyself
+trigger1 = animtime = 0
+
+;あたったときフラッシュ
+[state 19002]
+type = BGpalfx
+trigger1 = movehit = 1
+add = 70,70,70
+sinadd = 10, 10, 10
+time = 1;1
+persistant = 0
+ignorehitpause = 1
+
+;移動
+[state 1700]
+type=posadd
+trigger1=animelem = 1 || animelem = 3
+x=17
+
+[state 1700,0]
+type=veladd
+trigger1=pos y<=0
+y=0.42
+
+[state 1700,0]
+type=veladd
+trigger1=vel x>=0
+x=-0.18
+
+[state 1700,3]
+type=velset
+trigger1=animelem=3
+y=-7
+x=5
+
+;あらがみ系の音
+[state 1500,1]
+type=playsnd
+trigger1=animelem=3
+value=s0,10
+
+;攻撃判定
+[state 1000,1]
+type = HitDef
+trigger1 = animelem=3
+attr = S, SA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 50, 9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = hard               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = none                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MAF                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 2, 2                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-25)*2.77),floor((-65               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,36                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 5                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 24             ;相手が後にすべる時間
+ground.hittime  = 18             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = -8.31,-33.24  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+guard.pausetime = 13,13
+guard.velocity = floor((-9-(var(40)*2))*2.77)
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -1.385,-33.24  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+air.fall=0
+palfx.time = 47
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+kill = 0
+fall = 1
+fall.recover = 0
+
+;=============================================================================
+;かむくら　６段目(鬼焼き)
+[statedef 19308]
+type = A
+movetype = A
+anim = 19308
+ctrl = 0
+velset = 4,-12
+physics = N
+
+;無敵
+[state 6020,0]
+type=nothitby
+trigger1=1
+time=1
+value=SCA
+
+;重力
+[state 432]
+type = gravity
+trigger1 = 1
+
+
+;摩擦
+[state 4324]
+type = veladd
+trigger1 = Vel x > 0
+x = -.82
+
+;横ベクトル消去
+[state 432]
+type = velset
+trigger1 = animelem = 9
+x = 0
+
+;攻撃判定4
+[state 1000,1]
+type = HitDef
+trigger1 = animelem=1
+attr = S, SA                     ;立ち状態で、通常の攻撃(ｓは立ち、ｎは通常、aは攻撃を表す)
+damage = 50, 9                   ;ダメージ量（左が当たった時、右はガードした時）
+animtype = hard               ;当てた時の相手のポーズ（light/midium/hard/back）から選択
+guardflag = none                   ;ガードできる状態（ｍaは全ての状態でガード可能）
+hitflag = MAF                    ;当てる事のできる条件
+priority = 7, Hit                ;攻撃の優先権（0弱い　4通常　7強い
+pausetime = 35, 35                 ;攻撃が当たった時の硬直時間（左が自分、右が相手）
+sparkno = s7830                      ;ヒットエフェクトのスプライトステート（無ければ0）
+sparkxy =  floor((-25)*2.77),floor((-65               ;ヒットエフェクトを表示する場所（相手の座標で）)*2.77)
+hitsound = s0,21                  ;ヒットした時の音（ｓ*,*にすると自分の音を使う）
+guardsound = s0, 5                ;ガードした時の音（同上）
+ground.type = High               ;相手のくらった場所（High：頭、体, Low：足, Trip：足払い）
+ground.slidetime = 24             ;相手が後にすべる時間
+ground.hittime  = 18             ;コンボが繋がる時間（高くしすぎない事）
+ground.velocity = -8.31,-33.24  ;地上で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+guard.pausetime = 13,13
+guard.velocity = floor((-9-(var(40)*2))*2.77)
+airguard.velocity = -5.263,-2.216  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.type = High                  ;空中で相手がくらった場所（上と同じ）
+air.velocity = -8.31,-27.7  ;空中で攻撃をくらった場合の相手の移動状況（ｘとｙで小数点可）
+air.hittime = 12                 ;空中でコンボが繋がる時間
+air.fall=0
+palfx.time = 47
+palfx.mul = 240,220,128
+palfx.sinadd = 32,128,220,16
+palfx.add = 190,180,84
+kill = 1
+fall = 1
+fall.recover = 0
+envshake.time = 25
+envshake.ampl = 10
+envshake. freq = 110
+envshake.phase = 110
+
+;あたったときフラッシュ
+[state 19002]
+type = BGpalfx
+trigger1 = movehit = 1
+trigger1 = animelem = 1
+add = 70,70,70
+sinadd = 10, 10, 10
+time = 1;1
+persistant = 0
+ignorehitpause = 1
+
+;ヒット時の音
+[state 19308,3]
+type = playsnd
+trigger1 = movehit = 1
+value = s0,22
+ignorehitpause = 1
+persistent = 0
+
+;=========================燃える技に必要なステート====================
+;燃える技を当てた時必須
+[state 1000,999]
+type=varrandom
+trigger1=movehit=1
+trigger1 = animelem = 4
+v=10
+range=1,11
+persistent = 0
+ignorehitpause = 1
+
+;燃える技を当てた時必須2
+[state 1000,9991]
+type=varrandom
+trigger1=movehit=1
+trigger1 = animelem = 4
+v=11
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須3
+[state 1000,9992]
+type=varrandom
+trigger1=movehit=1
+trigger1 = animelem = 4
+v=12
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須4
+[state 1000,9993]
+type=varrandom
+trigger1=movehit=1
+trigger1 = animelem = 4
+v=13
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;燃える技を当てた時必須5
+[state 1000,9994]
+type=varrandom
+trigger1=movehit=1
+trigger1 = animelem = 4
+v=14
+range=1,11
+persistent = 0
+ignorehitpause = 1
+;吹っ飛ぶ燃え技に必須
+[state 1010,999]
+type=varrandom
+trigger1=movehit=1
+trigger1 = animelem = 4
+v=2
+range=4,9
+persistent = 0
+ignorehitpause = 1
+;=========================ここまで========================
+
+;アニメ終了したら次へ
+[state 19308,999]
+type = changestate
+trigger1 = pos Y >= 0
+value = 2055
+ctrl = 0
+
+;=============================================================================
+;かむくら　終了モーション
+[statedef 19309]
+type = S
+anim = 19309
+ctrl = 0
+velset = 0,0
+
+;位置あわせ
+[state 19308,000]
+type = posset
+trigger1 = time = 0
+y = 0
+
+;後ろ炎
+[state 1919,0]
+type=explod
+anim = 1911
+postype = p1
+pos = -20,0
+sprpriority = 10
+bindtime = 1
+removetime = 22
+supermove = 1
+ownpal = 1
+ID = 3111
+trigger1=time=0
+pausemovetime = -1
+
+[state 9999,25]
+type=playsnd
+trigger1=animelem=1
+value=s0,26
+
+[state 19309,testtt]
+type = changestate
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+

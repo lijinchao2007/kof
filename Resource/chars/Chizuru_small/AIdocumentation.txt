@@ -1,0 +1,37 @@
+ ==================================
+  ChizuruX AI SWITCH Documentation
+ ================================== 
+
+ There are 3 types of ai in chizuruX.. 
+ Open the chizuruX.def file with notepad or any text viewer.
+ Just remove the semicolon ";" before the type you want to use
+ and make sure the others have semicolon.
+
+ Sample:
+ 
+-----------------------------------
+ Using MEDIUM AI
+ 
+ ;cmd = kagura.cmd
+  cmd = MediumAI.cmd 
+ ;cmd = NoAI.cmd
+-----------------------------------
+ Using HARD AI
+
+  cmd = kagura.cmd
+ ;cmd = MediumAI.cmd 
+ ;cmd = NoAI.cmd
+
+-----------------------------------
+ Using No ai (lame, stupid :P)
+
+ ;cmd = kagura.cmd
+ ;cmd = MediumAI.cmd 
+  cmd = NoAI.cmd
+
+-----------------------------------
+
+Salamat (Thanks)..
+Enjoy
+
+SANDER71113

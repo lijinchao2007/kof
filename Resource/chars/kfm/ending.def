@@ -1,0 +1,82 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[SceneDef]
+spr = ending.sff
+startscene = 0
+
+[Scene 0]
+fadein.time = 60
+fadein.col = 0,0,0
+fadeout.time = 15
+fadeout.col = 255,255,255
+clearcolor = 255,255,255
+layerall.pos = 160,0
+layer0.anim = 0
+layer0.offset = 0,32
+layer0.starttime = 0
+layer1.anim = 1
+layer1.offset = 0,176
+bgm = ending.mp3
+bgm.loop = 0
+end.time = 460
+
+[Scene 1]
+fadein.time = 15
+fadein.col = 255,255,255
+fadeout.time = 15
+fadeout.col = 255,255,255
+clearcolor = 0,0,0
+layerall.pos = 0,0
+layer0.anim = 10
+layer0.offset = 0,32
+layer0.starttime = 0
+layer1.anim = 11
+layer1.offset = 0,176
+bgm = 
+bgm.loop = 0
+end.time = 300
+
+[Scene 2]
+fadein.time = 15
+fadein.col = 255,255,255
+fadeout.time = 90
+fadeout.col = 0,0,0
+clearcolor = 0,0,0
+layerall.pos = 0,0
+layer0.anim = 20
+layer0.offset = 0,32
+layer0.starttime = 0
+layer1.anim = 21
+layer1.offset = 0,176
+bgm = 
+bgm.loop = 0
+end.time = 400
+
+; Background image
+[Begin Action 0]
+0,0, 0,0, -1, 
+
+; Text
+[Begin Action 1]
+1,0, 0,0, 200, 
+1,1, 0,0, -1, 
+
+; Background image
+[Begin Action 10]
+10,0, 0,0, -1, 
+
+; Text
+[Begin Action 11]
+11,0, 0,0, -1, 
+
+; Background image
+[Begin Action 20]
+20,0, 0,0, -1, 
+
+; Text
+[Begin Action 21]
+21,0, 0,0, -1, 
+

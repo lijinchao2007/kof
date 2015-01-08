@@ -1,0 +1,1606 @@
+;-------------------------
+;CHIZURUX's Special moves
+;-------------------------
+
+; Mirror Ball 
+[Statedef 1000]
+type = S
+movetype = A
+physics = S
+anim = 1000
+juggle = 15
+poweradd = 70
+velset = 0
+ctrl = 0
+
+[State 250, 6]
+type = playsnd
+trigger1 = AnimElem = 3
+value = 5,0
+volume = 30
+
+[State 250, 6]
+type = playsnd
+trigger1 = AnimElem = 4
+value = 5,1
+volume = 10
+
+[State 250, 6]
+type = screenbound	
+trigger1 = animelem = 7
+value = 1
+movecamera = 1,0
+
+[State 750, 4]
+type = width
+trigger1 = animelem = 8, <2
+value = 40,0
+
+[State 1000, Projcancel]
+type = projectile
+trigger1 = animelem = 7
+hitflag = P
+persistent = 1
+ignorehitpause = 1
+persistent = 1
+projanim = 1001
+projid = 1001
+projremovetime = 20
+offset= 95, 0
+postype = P1
+bindtime = 1
+vel = .0001
+projsprpriority = 2
+projpriority = 9999
+ownpal = 1
+
+[State 100, 2]
+type = helper
+trigger1 = animelem = 7 && numhelper(1010) = 0
+stateno = 1010
+id = 1010
+name = "Reflector"
+postype = p1
+pos = 95,0
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+
+[State 280, 3]
+type = HitDef
+trigger1 = AnimElem = 7
+attr = S, SA
+damage = 134,10
+hitflag = MAF
+guardflag = MA
+pausetime = 14,14
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = -5,-55
+hitsound = S280,0
+guardsound = S200,3
+ground.velocity = -3.2,-3.5
+air.velocity = -4,-4
+airguard.velocity = -4,-2
+fall = 1
+guard.velocity = -8.9
+guard.slidetime = 16
+getpower = 30
+givepower = 30
+
+[State 280, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;-------------------------------------------------
+
+;Illusion reflector
+[Statedef 1010]
+type = S
+movetype = A
+physics = S
+sprpriority = 1
+anim = 1010
+juggle = 10
+velset = 0,0
+ctrl = 0
+
+[State 280, 4]
+type = hitby	
+trigger1 = time >= 0
+value = SA, AP
+
+[State 280, 1]
+type = HitOverride
+trigger1 = time = 0
+attr = SCA, NP, SP, HP
+stateno = 1011
+time = -1
+slot = 0
+
+[State 280, 4]
+type = movehitreset
+trigger1 = parent, stateno = 1000 && movecontact
+
+[State 280, 4]
+type = destroyself
+trigger1 = animtime = 0
+trigger2 = root, movetype = H
+;-------------------------
+;Reflector reflecting 
+[Statedef 1011]
+type = S
+movetype = A
+physics = S
+sprpriority = 1
+juggle = 10
+velset = 0,0
+ctrl = 0
+
+[State 280, 4]
+type = nothitby	
+trigger1 = time >= 0
+value = SCA 
+
+[State 280, 4]
+type = Projectile
+projanim = 1850
+projhitanim = 1851
+trigger1 = p2statetype != A
+trigger1 = time = 0
+animtype = medium
+offset = 30, 0
+velocity = 5
+attr = A, SP
+damage   = gethitvar(damage),10
+guardflag = MA
+pausetime = 14,4
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = 0,0
+hitsound = S200,0
+guardsound = S200,3
+ground.velocity = -3.2,-3.5
+air.velocity = -4,-4
+airguard.velocity = -4,-2
+guard.slidetime = 16
+
+[State 280, 4]
+type = Projectile
+projanim = 1850
+projhitanim = 1851
+trigger1 = p2statetype = A
+trigger1 = time = 0
+animtype = medium
+offset = 30, 0
+velocity = 5,-4
+attr = A, SP
+damage   = gethitvar(damage),10
+guardflag = MA
+pausetime = 14,4
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = 0,0
+hitsound = S200,0
+guardsound = S200,3
+ground.velocity = -3.2,-3.5
+air.velocity = -4,-4
+airguard.velocity = -4,-2
+guard.slidetime = 16
+
+[State 280, 4]
+type = changestate
+trigger1 = time = 1
+value = 1010
+;-------------------------
+
+;Mirror Ball 2
+[Statedef 1005]
+type = S
+movetype = I
+physics = N
+anim = 700
+poweradd = 70
+velset = 0,0
+ctrl = 0
+
+[State 250, 6]
+type = playsnd
+trigger1 = AnimElem = 1
+value = S5,0
+volume = 10
+
+[State 1000, 1]
+type = hitby
+trigger1 = time >= 0
+value = SCA, NT, ST, HT
+
+[State 750, 4]
+type = SprPriority
+trigger1 = Time = 8
+value = -2
+
+[State 250, 4]
+type = VelSet
+trigger1 = AnimElem = 3
+x = 5
+
+[State 250, 5]
+type = VelAdd
+trigger1 = AnimElem = 3, >= 0
+trigger2 = AnimElem = 7, >= 0
+x = -.10
+
+[State 250, 6]
+type = VelSet
+trigger1 = AnimElem = 8
+x = 0
+
+[State 250, 7]
+type = ChangeState
+trigger1 = animtime = 0
+value = 1006
+ctrl = 0
+;-----------------------------------
+; Mirror Ball 2 attack
+[Statedef 1006]
+type = S
+movetype = A
+physics = S
+anim = 1006
+juggle = 15
+velset = 0
+ctrl = 0
+
+[State 250, 6]
+type = playsnd
+trigger1 = AnimElem = 3
+value = S5,1
+volume = 30
+
+[State 250, 6]
+type = screenbound	
+trigger1 = animelem = 7
+value = 1
+movecamera = 1,0
+
+[State 750, 4]
+type = width
+trigger1 = animelem = 8, <2
+value = 40,0
+
+[State 1000, Projcancel]
+type = projectile
+trigger1 = animelem = 7
+hitflag = P
+persistent = 1
+ignorehitpause = 1
+persistent = 1
+projanim = 1001
+projid = 1001
+projremovetime = 20
+offset= 95, 0
+postype = P1
+bindtime = 1
+vel = .0001
+projsprpriority = 2
+projpriority = 9999
+ownpal = 1
+
+[State 100, 2]
+type = helper
+trigger1 = animelem = 7 && numhelper(1010) = 0
+stateno = 1010
+id = 1010
+name = "Reflector"
+postype = p1
+pos = 95,0
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+
+[State 280, 3]
+type = HitDef
+trigger1 = AnimElem = 7
+attr = S, SA
+damage = 134,10
+hitflag = MAF
+guardflag = MA
+pausetime = 14,14
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = -5,-55
+hitsound = S280,0
+guardsound = S200,3
+ground.velocity = -3.2,-3.5
+air.velocity = -4,-4
+airguard.velocity = -4,-2
+guard.slidetime = 16
+fall = 1
+guard.velocity = -8.9
+
+[State 280, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;========================================================================
+;GROOVE UPPER SUMMON 1
+[Statedef 1100]
+type = S
+movetype = A
+physics = S
+anim = 1100
+sprpriority = -1
+poweradd = 70
+velset = 0
+ctrl = 0
+
+[State 250, 6]
+type = playsnd
+trigger1 = AnimElem = 3
+value = 6,0
+volume = 50
+
+[State 250, 6]
+type = playsnd
+trigger1 = AnimElem = 3
+value = 6,1
+volume = 30
+
+[State 250, 6]
+type = screenbound	
+trigger1 = animelem = 7
+value = 1
+movecamera = 1,0
+
+[State 1100,illussion]
+type = Helper
+triggerall = NumHelper(1101) = 0
+trigger1 = animelem = 4, = 1
+name = "Groove Upper Illussion"
+id = 1101
+stateno = 1101
+pos = 0,0
+postype = p1
+helpertype = player
+keyctrl = 0
+ownpal = 1
+
+[State 280, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;-----------------------------
+
+;GROOVE UPPER ILLUSION Start
+[Statedef 1101]
+type = S
+movetype = A
+physics = S
+anim = 1101
+sprpriority = 1
+juggle = 10
+velset = 0,0
+ctrl = 0
+
+[State 280, 3]
+type = HitDef
+trigger1 = AnimElem = 2
+attr = S, SA
+damage = 74,10
+hitflag = MAF
+guardflag = MA
+pausetime = 11,11
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = -5,-55
+hitsound = S240,0
+guardsound = S200,3
+ground.velocity = 0,-3.5
+air.velocity = 0,-4
+airguard.velocity = 0,-2
+guard.slidetime = 12
+fall = 1
+guard.velocity = 0
+getpower = 30
+givepower = 30
+
+[State 250, 6]
+type = nothitby	
+trigger1 = time >= 0
+value = SCA
+
+[State 280, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 1102
+ctrl = 0
+
+[State 280, 4]
+type = destroyself
+trigger1 = root, movetype = H
+;------------------------------
+
+;GROOVE UPPER ILLUSION jump
+[Statedef 1102]
+type = A
+movetype = A
+physics = N
+anim = 1102
+sprpriority = 1
+juggle = 5
+velset = 0,0
+ctrl = 0
+
+[State 200, 1]
+type = afterimage
+trigger1 = animelemtime(1) = 0
+time = 15
+palbright = 0,0,0
+palcontrast = 250,250,250
+paladd = 0,0,0
+palmul = 0.6,0.6,0.6
+timegap = 1
+framegap = 2
+length = 7
+
+[State 250, 6]
+type = nothitby	
+trigger1 = time >= 0
+value = SCA
+
+[State 280, 3]
+type = HitDef
+trigger1 = AnimElem = 1
+attr = S, SA
+damage = 74,5
+hitflag = MAF
+guardflag = MA
+pausetime = 12,12
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = -5,-75
+hitsound = S240,0
+guardsound = S200,3
+ground.velocity = -3.2,-5
+guard.slidetime = 14
+air.velocity = -3,-5
+airguard.velocity = -4,-2
+air.juggle = 10
+fall = 1
+guard.velocity = -8.9
+getpower = 30
+givepower = 30
+
+[State 250, 6]
+type = velset	
+trigger1 = time = 0
+x = 1.9
+y = -5.4
+
+[State 250, 6]
+type = veladd	
+trigger1 = time >= 0
+y = .18
+
+[State 280, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 1103
+ctrl = 0
+
+[State 280, 4]
+type = destroyself
+trigger1 = root, movetype = H
+;----------------------------
+
+;GROOVE UPPER ILLUSION Vanish
+[Statedef 1103]
+type = A
+movetype = A
+physics = N
+anim = 1103
+sprpriority = 1
+velset = 0,0
+ctrl = 0
+
+[State 250, 6]
+type = nothitby	
+trigger1 = time >= 0
+value = SCA
+
+[State 280, 4]
+type = destroyself
+trigger1 = root, movetype = H
+trigger2 = AnimTime = 0
+
+;=========================
+
+;GROOVE UPPER SUMMON 2
+[Statedef 1110]
+type = S
+movetype = A
+physics = S
+anim = 1110
+sprpriority = 2
+poweradd = 70
+juggle = 5
+velset = 0
+ctrl = 0
+
+[State 250, 6]
+type = playsnd
+trigger1 = AnimElem = 3
+value = 6,0
+volume = 50
+
+[State 250, 6]
+type = playsnd
+trigger1 = AnimElem = 3
+value = 6,1
+volume = 30
+
+[State 250, 6]
+type = playerpush	
+trigger1 = time >= 0
+value = 0
+
+[State 250, 6]
+type = screenbound	
+trigger1 = animelem = 7
+value = 1
+movecamera = 1,0
+
+[State 1100,illussion left]
+type = Helper
+triggerall = NumHelper(1111) = 0
+trigger1 = time = 0
+name = "Illussion Left Behind"
+id = 1101
+stateno = 1111
+pos = 0,0
+postype = p1
+helpertype = player
+keyctrl = 0
+ownpal = 1
+
+[State 280, 3]
+type = HitDef
+trigger1 = AnimElem = 3
+attr = S, SA
+damage = 74,10
+hitflag = MAF
+guardflag = MA
+pausetime = 12,12
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = -5,-55
+hitsound = S240,0
+guardsound = S200,3
+ground.velocity = 0,-3.5
+air.velocity = 0,-4
+airguard.velocity = 0,-2
+guard.slidetime = 14
+fall = 1
+guard.velocity = 0
+getpower = 30
+givepower = 30
+
+[State 280, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 1112
+ctrl = 0
+
+;---------------------------
+
+;GROOVE ILLUSION LEFT BEHIND
+[Statedef 1111]
+type = S
+movetype = A
+physics = S
+anim = 1111
+sprpriority = 0
+velset = 0,0
+ctrl = 0
+
+[State 250, 6]
+type = playerpush	
+trigger1 = time >=0
+value = 1
+
+[State 250, 6]
+type = bindtoroot	
+trigger1 = animelem = 4, <1
+pos = 0,0
+
+[State 250, 6]
+type = nothitby	
+trigger1 = time >= 0
+value = SCA
+
+[State 280, 4]
+type = destroyself
+trigger1 = root, movetype = H
+trigger2 = AnimTime = 0
+;---------------------------
+
+;GROOVE UPPER ILLUSION jump
+[Statedef 1112]
+type = A
+movetype = A
+physics = N
+anim = 1112
+sprpriority = 3
+juggle = 5
+velset = 0,0
+ctrl = 0
+
+[State 200, 1]
+type = afterimage
+trigger1 = time = 0
+time = 15
+palbright = 0,0,0
+palcontrast = 250,250,250
+paladd = 0,0,0
+palmul = 0.6,0.6,0.6
+timegap = 1
+framegap = 2
+length = 7
+
+[State 280, 3]
+type = HitDef
+trigger1 = AnimElem = 1
+attr = S, SA
+damage = 74,10
+hitflag = MAF
+guardflag = MA
+pausetime = 14,14
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = -5,-75
+hitsound = S240,0
+guardsound = S200,3
+ground.velocity = -3.2,-.5
+air.velocity = -3,-7
+airguard.velocity = -4,-2
+guard.slidetime = 14
+fall = 1
+guard.velocity = -8.9
+getpower = 30
+givepower = 30
+
+[State 250, 6]
+type = velset	
+trigger1 = time = 0
+x = 1.5
+y = -5.4
+
+[State 250, 6]
+type = veladd	
+trigger1 = animelem = 4, <0
+y = .18
+
+[State 280, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 1113
+ctrl = 0
+
+;------------------------------
+
+;GROOVE UPPER ILLUSION Falling down
+[Statedef 1113]
+type = A
+movetype = I
+physics = N
+anim = 1113
+sprpriority = 3
+velset = 0,0
+ctrl = 0
+
+[State 250, 6]
+type = velset	
+trigger1 = animelem = 2, <0
+y = 0
+
+[State 250, 6]
+type = veladd	
+trigger1 = animelem = 2, >=0
+y = .42
+
+[State 280, 4]
+type = ChangeState
+trigger1 = (vel y > 0) && (pos y >= 0)
+value = 1114
+ctrl = 0
+
+;-----------------------
+
+;GROOVE UPPER ILLUSION Land
+[Statedef 1114]
+type = S
+movetype = I
+physics = N
+anim = 1114
+sprpriority = 3
+velset = 0,0
+ctrl = 0
+
+[State 250, 6]
+type = playsnd	
+trigger1 = time = 0
+value = 0,7
+volume = 50
+
+[State 250, 6]
+type = velset	
+trigger1 = time = 0
+y = 0
+
+[State 250, 6]
+type = posset	
+trigger1 = time = 0
+y = 0
+
+[State 280, 4]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+;=====================
+
+
+
+
+;=============================================================================
+;Charing SUMMON 1
+[Statedef 1500]
+type = S
+movetype = I
+physics = S
+anim = 1500
+sprpriority = -1
+poweradd = 70
+velset = 0
+ctrl = 0
+
+[State 250, 6]
+type = playsnd
+trigger1 = AnimElem = 3
+value = 7,0
+volume = 50
+
+[State 250, 6]
+type = screenbound	
+trigger1 = time >=0
+value = 0
+movecamera = 1,0
+
+[State 1100,illussion]
+type = Helper
+triggerall = NumHelper(1901) = 0
+trigger1 = animelem = 4, = 1
+name = "Charing"
+id = 1901
+stateno = 1501
+pos = 0,0
+postype = p1
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+
+[State 280, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;-----------------------------
+
+;Charing illusion Start
+[Statedef 1501]
+type = S
+movetype = I
+physics = S
+anim = 1501
+sprpriority = 1
+velset = 0,0
+ctrl = 0
+
+[State 1010, Override]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, AA, AP, AT
+slot = 0
+stateno = 1537
+time = -1
+
+[State 280, 4]
+type = playerpush
+trigger1 = time >= 0
+value = 0
+
+[State 280, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 1502
+ctrl = 0
+
+[State 280, 4]
+type = destroyself
+trigger1 = root, movetype = H
+;------------------------------
+
+;Charing on air
+[Statedef 1502]
+type = A
+movetype = A
+physics = N
+anim = 1502
+sprpriority = 1
+juggle = 5
+velset = 0,0
+ctrl = 0
+
+[State 250, 6]
+type = playsnd
+trigger1 = time = 0
+value = 0,16
+volume = -10
+
+[State 280, 4]
+type = playerpush
+trigger1 = time >= 0
+value = 0
+
+[State 1010, Override]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, AA, AP, AT
+slot = 0
+stateno = 1537
+time = -1
+
+[State 200, 1]
+type = afterimage
+trigger1 = time = 0
+time = 15
+palbright = 0,0,0
+palcontrast = 250,250,250
+paladd = 0,0,0
+palmul = 0.6,0.6,0.6
+timegap = 1
+framegap = 2
+length = 7
+
+[State 280, 3]
+type = HitDef
+trigger1 = AnimElem = 4
+attr = S, SA
+damage = 104,10
+hitflag = MAF
+guardflag = MA
+pausetime = 14,14
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = 2,-45
+hitsound = S240,0
+guardsound = S200,3
+ground.slidetime = 18
+ground.hittime = 18
+ground.velocity = -11.5
+air.velocity = -6,-2.5
+airguard.velocity = -4,-2
+air.juggle = 10
+guard.velocity = -8.9
+guard.slidetime = 14
+getpower = 30
+givepower = 30
+
+[State 250, 6]
+type = velset	
+trigger1 = time = 0
+x = 4.9
+y = -5
+
+[State 250, 6]
+type = veladd	
+trigger1 = time >= 0
+y = .45
+
+[State 280, 4]
+type = destroyself
+trigger1 = root, movetype = H
+
+[State 280, 4]
+type = ChangeState
+trigger1 = (vel y > 0) && (pos y >= 0)
+value = 1503
+ctrl = 0
+
+;-----------------------
+
+;Charing Land
+[Statedef 1503]
+type = A
+movetype = I
+physics = N
+anim = 1503
+sprpriority = 3
+velset = 0,0
+ctrl = 0
+
+[State 250, 6]
+type = nothitby	
+trigger1 = time >= 0
+value = SCA
+
+[State 250, 6]
+type = playsnd	
+trigger1 = time = 0
+value = 0,7
+volume = -10
+
+[State 280, 4]
+type = playerpush
+trigger1 = time >= 0
+value = 0
+
+[State 250, 6]
+type = velset	
+trigger1 = time = 0
+y = 0
+
+[State 250, 6]
+type = posset	
+trigger1 = time = 0
+y = 0
+
+[State 280, 4]
+type = destroyself
+trigger1 = animtime = 0
+;=====================
+
+;=============================================================================
+;Charing SUMMON 2
+[Statedef 1510]
+type = S
+movetype = I
+physics = S
+anim = 1500
+sprpriority = -1
+poweradd = 70
+velset = 0
+ctrl = 0
+
+[State 250, 6]
+type = playsnd
+trigger1 = AnimElem = 3
+value = 7,0
+volume = 50
+
+[State 250, 6]
+type = screenbound	
+trigger1 = animelem = 7
+value = 1
+movecamera = 1,0
+
+[State 1100,illussion]
+type = Helper
+triggerall = NumHelper(1901) = 0
+trigger1 = animelem = 4, = 1
+name = "Charing2"
+id = 1901
+stateno = 1511
+pos = 0,0
+postype = p1
+helpertype = normal
+keyctrl = 0
+ownpal = 1
+
+[State 280, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 0
+ctrl = 1
+
+;-----------------------------
+
+;Charing 2 illusion Start
+[Statedef 1511]
+type = S
+movetype = I
+physics = S
+anim = 1501
+sprpriority = 1
+velset = 0,0
+ctrl = 0
+
+[State 1010, Override]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, AA, AP, AT
+slot = 0
+stateno = 1537
+time = -1
+
+[State 280, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 1512
+ctrl = 0
+
+[State 280, 4]
+type = playerpush
+trigger1 = time >= 0
+value = 0
+
+[State 280, 4]
+type = destroyself
+trigger1 = root, movetype = H
+;------------------------------
+
+;Charing jump
+[Statedef 1512]
+type = A
+movetype = A
+physics = N
+anim = 1502
+sprpriority = 1
+juggle = 5
+velset = 0,0
+ctrl = 0
+
+[State 250, 6]
+type = playsnd
+trigger1 = time = 0
+value = 0,16
+volume = -10
+
+[State 280, 4]
+type = playerpush
+trigger1 = time >= 0
+value = 0
+
+[State 200, 1]
+type = afterimage
+trigger1 = time = 0
+time = 19
+palbright = 0,0,0
+palcontrast = 250,250,250
+paladd = 0,0,0
+palmul = 0.6,0.6,0.6
+timegap = 1
+framegap = 2
+length = 7
+
+[State 1010, Override]
+type = HitOverride
+trigger1 = Time = 0
+attr = SCA, AA, AP, AT
+slot = 0
+stateno = 1537
+time = -1
+
+[State 280, 3]
+type = HitDef
+trigger1 = AnimElem = 4
+attr = S, SA
+damage = 104,10
+hitflag = MAF
+guardflag = MA
+pausetime = 14,14
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = 2,-45
+hitsound = S240,0
+guardsound = S200,3
+ground.slidetime = 18
+ground.hittime = 18
+ground.velocity = -11.5
+air.velocity = -6,-2.5
+airguard.velocity = -4,-2
+guard.slidetime = 14
+air.juggle = 10
+guard.velocity = -8.9
+getpower = 30
+givepower = 30
+
+[State 250, 6]
+type = velset	
+trigger1 = time = 0
+x = 7.4
+y = -6.5
+
+[State 250, 6]
+type = veladd	
+trigger1 = time >= 0
+y = .45
+
+[State 280, 4]
+type = destroyself
+trigger1 = root, movetype = H
+
+[State 280, 4]
+type = ChangeState
+trigger1 = (vel y > 0) && (pos y >= 0)
+value = 1503
+ctrl = 0
+;-----------------------
+
+;================================================================================
+
+;Charing 3 start
+[Statedef 1520]
+type = S
+movetype = I
+physics = S
+anim = 1520
+sprpriority = 1
+velset = 0,0
+ctrl = 0
+
+[State 250, 6]
+type = playsnd
+trigger1 = AnimElem = 3
+value = 7,0
+volume = 50
+
+[State 250, 6]
+type = screenbound	
+trigger1 = time >=0
+value = 0
+movecamera = 1,0
+
+[State 280, 4]
+type = playerpush
+trigger1 = time >= 0
+value = 0
+
+[State 1100,illussion left]
+type = Helper
+triggerall = NumHelper(1901) = 0
+trigger1 = time = 0
+name = "Illussion Left Behind"
+id = 1901
+stateno = 1536
+pos = 0,0
+postype = p1
+helpertype = player
+keyctrl = 0
+ownpal = 1
+
+[State 250, 6]
+type = nothitby	
+trigger1 = time >= 0
+value = SCA
+
+[State 280, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 1521
+ctrl = 0
+
+;------------------------------
+
+; Charing 3 jump
+[Statedef 1521]
+type = A
+movetype = A
+physics = N
+anim = 1502
+sprpriority = 1
+juggle = 5
+velset = 0,0
+ctrl = 0
+
+[State 250, 6]
+type = screenbound	
+trigger1 = time >=0
+value = 0
+movecamera = 1,0
+
+[State 280, 4]
+type = playerpush
+trigger1 = time >= 0
+value = 0
+
+[State 250, 6]
+type = playsnd
+trigger1 = time = 0
+value = 0,16
+volume = -10
+
+[State 200, 1]
+type = afterimage
+trigger1 = time = 0
+time = 15
+palbright = 0,0,0
+palcontrast = 250,250,250
+paladd = 0,0,0
+palmul = 0.6,0.6,0.6
+timegap = 1
+framegap = 2
+length = 7
+
+[State 280, 3]
+type = HitDef
+trigger1 = AnimElem = 4
+attr = S, SA
+damage = 104,10
+hitflag = MAF
+guardflag = MA
+pausetime = 14,14
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = 2,-45
+hitsound = S240,0
+guardsound = S200,3
+ground.slidetime = 18
+ground.hittime = 18
+ground.velocity = -11.5
+air.velocity = -6,-2.5
+airguard.velocity = -4,-2
+guard.slidetime = 14
+air.juggle = 10
+guard.velocity = -8.9
+getpower = 30
+givepower = 30
+
+[State 250, 6]
+type = velset	
+trigger1 = time = 0
+x = 4.9
+y = -5
+
+[State 250, 6]
+type = veladd	
+trigger1 = time >= 0
+y = .45
+
+[State 280, 4]
+type = ChangeState
+trigger1 = (vel y > 0) && (pos y >= 0)
+value = 1535
+ctrl = 0
+;-----------------------
+
+;==============================================================
+;Charing 4 start
+[Statedef 1530]
+type = S
+movetype = I
+physics = S
+anim = 1520
+sprpriority = 1
+velset = 0,0
+ctrl = 0
+
+[State 250, 6]
+type = playsnd
+trigger1 = AnimElem = 3
+value = 7,0
+volume = 50
+
+[State 1100,illussion left]
+type = Helper
+triggerall = NumHelper(1901) = 0
+trigger1 = time = 0
+name = "Illussion Left Behind"
+id = 1901
+stateno = 1536
+pos = 0,0
+postype = p1
+helpertype = player
+keyctrl = 0
+ownpal = 1
+
+[State 250, 6]
+type = screenbound	
+trigger1 = time >=0
+value = 0
+movecamera = 1,0
+
+[State 280, 4]
+type = playerpush
+trigger1 = time >= 0
+value = 0
+
+[State 250, 6]
+type = nothitby	
+trigger1 = time >= 0
+value = SCA
+
+[State 280, 4]
+type = ChangeState
+trigger1 = AnimTime = 0
+value = 1531
+ctrl = 0
+
+;------------------------------
+
+;Charing 4 jump
+[Statedef 1531]
+type = A
+movetype = A
+physics = N
+anim = 1502
+sprpriority = 1
+juggle = 5
+velset = 0,0
+ctrl = 0
+
+[State 250, 6]
+type = playsnd
+trigger1 = time = 0
+value = 0,16
+volume = -10
+
+[State 250, 6]
+type = screenbound	
+trigger1 = time >=0
+value = 0
+movecamera = 1,0
+
+[State 280, 4]
+type = playerpush
+trigger1 = time >= 0
+value = 0
+
+[State 200, 1]
+type = afterimage
+trigger1 = time = 0
+time = 19
+palbright = 0,0,0
+palcontrast = 250,250,250
+paladd = 0,0,0
+palmul = 0.6,0.6,0.6
+timegap = 1
+framegap = 2
+length = 7
+
+[State 280, 3]
+type = HitDef
+trigger1 = AnimElem = 4
+attr = S, SA
+damage = 104,10
+hitflag = MAF
+guardflag = MA
+pausetime = 14,14
+sparkno = S1041
+guard.sparkno = S1042
+sparkxy = 2,-45
+hitsound = S240,0
+guardsound = S200,3
+ground.slidetime = 18
+ground.hittime = 18
+ground.velocity = -11.5
+air.velocity = -6,-2.5
+airguard.velocity = -4,-2
+air.juggle = 10
+guard.slidetime = 14
+guard.velocity = -8.9
+getpower = 30
+givepower = 30
+
+[State 250, 6]
+type = velset	
+trigger1 = time = 0
+x = 7.4
+y = -6.5
+
+[State 250, 6]
+type = veladd	
+trigger1 = time >= 0
+y = .45
+
+[State 280, 4]
+type = ChangeState
+trigger1 = (vel y > 0) && (pos y >= 0)
+value = 1535
+ctrl = 0
+;-----------------------
+
+;CHARING LEFT BEHIND
+[Statedef 1536]
+type = S
+movetype = I
+physics = S
+anim = 1536
+sprpriority = 0
+velset = 0,0
+ctrl = 0
+
+[State 250, 6]
+type = playerpush	
+trigger1 = time >=0
+value = 1
+
+[State 250, 6]
+type = bindtoroot	
+trigger1 = animelem = 4, <1
+pos = 0,0
+
+[State 250, 6]
+type = nothitby	
+trigger1 = time >= 0
+value = SCA
+
+[State 280, 4]
+type = destroyself
+trigger1 = root, movetype = H
+trigger2 = AnimTime = 0
+;---------------------------
+;-----------------------
+;CHARING LAND
+[Statedef 1535]
+type = A
+movetype = I
+physics = N
+anim = 1535
+sprpriority = 3
+velset = 0,0
+ctrl = 0
+
+[State 250, 6]
+type = playsnd	
+trigger1 = time = 0
+value = 0,7
+volume = 50
+
+[State 250, 6]
+type = velset	
+trigger1 = time = 0
+y = 0
+
+[State 250, 6]
+type = posset	
+trigger1 = time = 0
+y = 0
+
+[State 280, 4]
+type = ChangeState
+trigger1 = animtime = 0
+value = 0
+ctrl = 1
+
+;=======================================
+
+;HIT override 
+[Statedef 1537]
+type = S
+movetype = H
+physics = N
+anim = 1537
+sprpriority = 0
+velset = 0,0
+ctrl = 0
+
+[State 250, 6]
+type = playerpush	
+trigger1 = time >=0
+value = 0
+
+[State 250, 6]
+type = bindtoroot	
+trigger1 = time >= 0
+pos = 0,0
+
+[State 280, 4]
+type = ChangeState
+trigger1 = time = 0
+value = 1538
+ctrl = 0
+;============================================
+
+;HIT override 
+[Statedef 1538]
+type = S
+movetype = A
+physics = N
+sprpriority = 0
+velset = 0,0
+anim = 1538
+ctrl = 0
+
+[State 250, 6]
+type = playerpush	
+trigger1 = time >=0
+value = 0
+
+[State 250, 6]
+type = velset	
+trigger1 = time = 0
+y = 0
+x = -.5
+
+[State 280, High ]
+type = HitDef
+triggerall = animelem = 1
+trigger1 = gethitvar(type) = 0
+trigger2 = gethitvar(type) = 1
+attr = S, NA
+affectteam = F
+numhits = 0
+damage = gethitvar(damage)
+hitflag = MAF
+animtype = medium
+ground.type = high
+guardflag = N
+sparkno = -1
+hitsound = -1
+guardsound = -1
+pausetime = 14,14
+ground.slidetime = 18
+ground.hittime = 18
+ground.velocity = 11.5
+air.velocity = 6,-2.5
+air.juggle = 10
+guard.velocity = -8.9
+
+[State 280, low ]
+type = HitDef
+triggerall = animelem = 1
+trigger1 = gethitvar(type) = 2
+attr = S, NA
+affectteam = F
+numhits = 0
+damage = gethitvar(damage)
+hitflag = MAF
+animtype = medium
+ground.type = low
+guardflag = N
+pausetime = 14,14
+sparkno = -1
+hitsound = -1
+guardsound = -1
+ground.slidetime = 18
+ground.hittime = 18
+ground.velocity = 11.5
+air.velocity = 6,-2.5
+air.juggle = 10
+guard.velocity = -8.9
+
+[State 280, low]
+type = HitDef
+triggerall = animelem = 1
+trigger1 = gethitvar(type) = 3
+trigger2 = gethitvar(animtype) = 3
+trigger3 = gethitvar(animtype) = 4
+trigger4 = gethitvar(animtype) = 5
+attr = S, NA 
+numhits = 0
+affectteam = F
+damage = gethitvar(damage)
+hitflag = MAF
+animtype = diagup
+ground.type = low
+guardflag = N
+pausetime = 14,14
+sparkno = -1
+hitsound = -1
+guardsound = -1
+ground.slidetime = 18
+ground.hittime = 18
+ground.velocity = 4,-4
+air.velocity = 6,-2.5
+air.juggle = 10
+guard.velocity = -8.9
+fall = 1
+
+[State 250, 6]
+type = bindtoroot	
+trigger1 = time = [0,5]
+pos = 2,0
+
+[State 280, 4]
+type = destroyself
+trigger1 = AnimTime = 0
+;=============================================================================

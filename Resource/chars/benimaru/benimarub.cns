@@ -1,0 +1,503 @@
+;===========================================================================
+;-2 STATES (Constants)
+;===========================================================================
+[Statedef -2]
+
+[State -2, StopAI]
+type = VarSet
+triggerall = var(58) > 0 && !IsHelper
+trigger1 = RoundState != 2
+trigger2 = !Alive
+var(58) = -2
+IgnoreHitPause = 1
+
+[State -2, Simplifier]
+type = VarSet
+trigger1 = 1
+var(9) = AILevel
+IgnoreHitPause = 1
+
+[State -2, Spark1]
+type = Explod
+trigger1 = random <= 800 && numexplod(1340) <= 1
+trigger1 = ((p2stateno = [7000,7020]) || (p2stateno = [3300,3315])) && p2movetype = H
+anim = 1340
+id = 1340
+postype = p2
+pos = -10,-70
+random = 20,80
+bindtime = 1
+sprpriority = 5
+
+[State -2, Spark2]
+type = Explod
+triggerall = random <= 800 && numexplod(1340) <= 1
+trigger1 = ((p2stateno = [7020,7050])|| p2stateno = 3150 || p2stateno = 3830) && p2movetype = H
+anim = 1340
+id = 1340
+postype = p2
+pos = -10,-40
+random = 70,20
+bindtime = 1
+sprpriority = 5
+
+;Stop Shinkuu Katategoma sound if hit
+[State -2, StopSnd]
+type = StopSnd
+trigger1 = stateno != [1200,1210]
+channel = 4
+
+;Kill Afterimages when hit
+[State -2, 12]
+type = AfterImage
+trigger1 = movetype = H || stateno = 0
+value = 0
+
+[State -2, StopDashSound]
+type = StopSnd
+trigger1 = stateno != 100
+channel = 11
+
+[State -2, StopChargeSound]
+type = StopSnd
+trigger1 = stateno != 704
+channel = 15
+
+[State -2, StopDashSound]
+type = StopSnd
+trigger1 = prevstateno = 195 && stateno <= 40
+channel = 0
+
+;Determine Originating Side
+[State -2, StartOnLeft]
+type = VarSet
+trigger1 = var(30) = 0
+trigger1 = Pos X < 0
+v = 30
+value = 1
+
+[State -2, StartOnRight]
+type = VarSet
+trigger1 = var(30) = 0
+trigger1 = Pos X >= 0
+v = 30
+value = 2
+
+;--------------------
+;Advanced Mode addition code
+[State -2, CountDown]
+type = VarAdd
+trigger1 = var(10) > 0
+v = 10
+ignorehitpause = 1
+value = -1
+
+[State -2, Flash]
+type = PalFX
+triggerall = p1name = "Benimaru Nikaido"
+triggerall = !IsHelper
+triggerall = timemod = 2,0
+trigger1 = var(10)
+;trigger1 = win != 1
+;trigger1 = lose != 1
+time = 1
+add = 64,64,64
+ignorehitpause = 1
+
+[State -2, ExplodCountdown]
+type = ModifyExplod
+trigger1 = var(10) > 0
+ID = 4102
+scale = (1100 - var(10)) / 1100.0,1
+ontop = 1
+
+[State -2, ResetDamageBonus]
+type = AttackMulSet
+trigger1 = var(10) = 0 && NumExplod(4100)
+value = 1
+
+[State -2, BarRemovalAnimLeft]
+type = Explod
+trigger1 = var(10) = 0 && Var(30) = 1 && NumExplod(4100)
+anim = 4101
+postype = left
+pos = 16,200
+ontop = 1
+supermove = 1
+ignorehitpause = 1
+ignoresuperpause = 1
+bindtime = 30
+ownpal = 1
+
+[State -2, BarRemovalAnimRight]
+type = Explod
+trigger1 = var(10) = 0 && Var(30) = 2 && NumExplod(4100)
+anim = 4106
+postype = right
+pos = -107,200
+ontop = 1
+supermove = 1
+ignorehitpause = 1
+ignoresuperpause = 1
+bindtime = 30
+ownpal = 1
+
+[State -2, RemoveMAXCounterBar]
+type = RemoveExplod
+trigger1 = var(10) = 0 && NumExplod(4100)
+id = 4102
+
+[State -2, RemoveMAXBar]
+type = RemoveExplod
+trigger1 = var(10) = 0 & NumExplod(4100)
+id = 4100
+
+[State -2, Lightning when hit]
+type = RemoveExplod
+trigger1 = movetype = H
+id = 1620
+
+[State -2, DTC]
+type = DisplayToClipboard
+trigger1 = time >=0
+text = "POWER: %d  VELOCITIES: X %f, Y %d" ;POS:  X %d, Y %d"
+params = power, vel x, floor(vel y)
+
+[State -2, ATC]
+type = AppendToClipboard
+trigger1 = time >=0
+text = "\nAI: %d,  POS:  X %d, Y %d, Timer: %d"
+params = var(9), floor(p2dist x), floor(p2dist y), time % 4
+
+;=====================================
+; ------- MAX -------
+;=====================================
+
+;MAximum PalFx
+[State -2, PalFX]
+type = PalFX
+triggerall = var(10)
+trigger1 = MoveType != H && (GameTime%2)=0
+time = 1
+add = 60,60,60
+ignorehitpause = 1
+
+[State -2, Defense Up]
+type = DefenceMulSet
+trigger1 = Life <= 437
+value = ifelse(life < 262,.75,.85)
+
+;Get rid of trailing anims when hit
+[State -2, 3]
+type = AfterImageTime
+triggerall = movetype = H || stateno = 0
+trigger1 = Time = 1
+time = 0
+
+;Sorrow edge' Throw limiter-------------------------------
+[State -2, throwa]
+type = VarSet
+trigger1 = HitDefAttr = SCA, NA, AP && MoveContact
+var(4) = 15
+ignorehitpause = 1
+
+[State -2, throwb]
+type = VarAdd
+trigger1 = var(4) >= 1
+var(4) = -1
+ignorehitpause = 1
+
+;Modified it a bit for special throws
+[State -2, throwa]
+type = VarSet
+trigger1 = MoveGuarded
+var(5) = 15
+ignorehitpause = 1
+
+[State -2, throwb]
+type = VarAdd
+trigger1 = var(5) >= 1
+var(5) = -1
+ignorehitpause = 1
+
+;==================================================================================
+; ------- DIZZY CODE --------
+;==================================================================================
+[State -2, reset Dizzy]
+type = VarSet
+trigger1 = RoundState = 0 || RoundState = 3 || (movetype = H &&  var(14) = 1)
+ignorehitpause = 1
+var(11) = 0
+
+[State -2, reset Dizzy]
+type = VarSet
+trigger1 = stateno = 5250
+ignorehitpause = 1
+var(14) = 1
+
+[State -2, reset Dizzy]
+type = VarSet
+trigger1 = var(11) <= 0 && var(14) = 1
+ignorehitpause = 1
+var(14) = 0
+
+[State -2, DIZZY CODE]
+type = VarAdd
+trigger1 = NumEnemy
+trigger1 = (var(11) = [1,999]) && movetype = H && enemynear, hitdefattr = SCA, HA, HP
+var(11) = -50
+ignorehitpause = 1
+
+[State -2, DIZZY CODE]
+type = VarAdd
+trigger1 = (var(11) = [1,999]) && movetype = H && gethitvar(hitcount) >= 5
+var(11) = -20
+ignorehitpause = 1
+
+[State -2, DIZZY CODE]
+type = VarAdd
+trigger1 = var(11) = [1,999]
+var(11) = -1
+ignorehitpause = 1
+
+[State -2, DIZZY CODE]
+type = Varset
+trigger1 = var(11) > 1000
+var(11) = 1000
+ignorehitpause = 1
+;------------------------------------------------------
+
+;==================================================================================
+; ------- GUARD CRUSH--------
+;==================================================================================
+
+[State -2, GUARD CRUSH CODE]
+type = VarAdd
+trigger1 = var(12) >= 1
+var(12) = -1
+ignorehitpause = 1
+
+[State -2, GUARD CRUSH CODE]
+type = VarAdd
+trigger1 = NumEnemy
+trigger1 = var(12) >= 1 && movetype = H && enemynear, hitdefattr = SCA, HA, HP
+var(12) = -10
+ignorehitpause = 1
+
+;-----------------------------------------
+;==================================================================================
+; ------- COUNTER HIT --------
+;==================================================================================
+
+[State -2, Quake Juggle]
+type = VarSet
+triggerall = var(13) > 0
+trigger1 = P2MoveType != H
+ignorehitpause = 1
+var(13) = 0
+
+[State -2, CrFwdHP Juggle]
+type = VarSet
+triggerall = var(19) > 0
+trigger1 = P2MoveType != H
+ignorehitpause = 1
+var(19) = 0
+
+[State -2, Quake Juggle]
+type = VarSet
+triggerall = var(25) > 0
+trigger1 = P2MoveType != H
+ignorehitpause = 1
+var(25) = 0
+
+[State -2, COUNTER HIT1]
+type = VarSet
+trigger1 = P2MoveType = A
+ignorehitpause = 1
+var(15) = 1
+
+[State -2, COUNTER HIT2]
+type = VarSet
+trigger1 = P2MoveType = I || var(16) >= 1
+trigger2 = numexplod(308) > 0 && p2movetype = H && p2stateno = [1004,1009]
+ignorehitpause = 1
+var(15) = 0
+
+[State -2, COUNTER HIT3]
+type = VarSet
+trigger1 = var(16) > 10 && P2MoveType = H
+ignorehitpause = 1
+var(15) = 0
+
+[State -2, COUNTER HIT4]
+type = VarSet
+trigger1 = (stateno != [800,870]) && (stateno != [3000,3999]) && var(15) = 1 && movehit
+trigger1 = stateno != 460
+ignorehitpause = 1
+var(16) = 1
+
+[State -2, COUNTER HIT5]
+type = Varadd
+trigger1 = var(16) >= 1
+ignorehitpause = 1
+var(16) = 1
+
+[State -2, COUNTER HIT6]
+type = VarSet
+trigger1 = p2movetype != H
+trigger2 = var(16) > 22 && (p2stateno = 5030 || p2stateno = 1300)
+trigger3 = p2statetype = L
+ignorehitpause = 1
+var(16) = 0
+
+[State -2, COUNTER HIT7]
+type = Assertspecial
+trigger1 = var(16) > 0
+;trigger2 = (p2stateno = [3300,3315]) && p2movetype = H
+flag = Nojugglecheck
+
+[State -2, COUNTEREXPLOD1]
+type = Explod
+triggerall = var(15) = 1 && numexplod(308) <= 0 && teamside = 1
+trigger1 = (stateno != [800,870]) && (stateno != [3000,3999]) && movehit
+ignorehitpause = 1
+persistent = 0
+anim = 308
+id   = 308
+pos = 45,75
+postype = left
+supermove = 1
+bindtime = -1
+sprpriority = -4
+pausemovetime = 9999999999
+supermovetime = 9999999999
+facing = 1
+ontop = 0
+ownpal = 1
+
+[State -2, COUNTEREXPLOD2]
+type = Explod
+triggerall = var(15) = 1 && numexplod(308) <= 0 && teamside = 2
+trigger1 = (stateno != [800,870]) && (stateno != [3000,3999]) && movehit
+ignorehitpause = 1
+persistent = 0
+anim = 308
+id   = 308
+pos = -45,75
+postype = right
+supermove = 1
+bindtime = -1
+facing = 1
+sprpriority = -4
+pausemovetime = 9999999999
+supermovetime = 9999999999
+ontop = 0
+ownpal = 1
+
+;=============================================================================
+;TARGET DROP
+[State -2, Target Drop]
+type = Targetdrop
+trigger1 = movetype = H
+
+;=============================================================================
+[Statedef -3]
+[State -3, 1];kill the corner push bug
+type = VelSet
+trigger1 = FrontEdgeDist < 10 && Vel x > 0.1
+x = 0.1
+;=============================================================================
+
+; Kamek and Luchini appear to have been the first ones to use the IsHomeTeam AI
+; activation concept.
+[State -3, SetAI]
+type = VarSet
+triggerall = Alive && !IsHelper
+triggerall = IsHomeTeam
+trigger1 = TeamSide = 2
+trigger2 = MatchNo > 1
+var(58) = 1
+
+[State -3, AI Helper - Compatibly Partnered Version]
+type = Helper
+trigger1 = !var(58) && !IsHelper
+trigger1 = !NumHelper(9742)
+trigger1 = Alive && RoundState = 2
+trigger1 = NumPartner
+trigger1 = Partner,SelfAnimExist(9741)
+HelperType = normal
+name = "AI Helper (Simul Version)"
+ID = 9742
+pos = 9999999,99999
+StateNo = 9742
+KeyCtrl = 1
+PauseMoveTime = 2147483647
+SuperMoveTime = 2147483647
+
+; If you want to use the Guard mode, Dummy mode, Distance, or Button jam dummy control
+; options in Training mode without activating the dummy's AI while working on your
+; character, then all you need to do is temporarily disable this controller.
+[State -3, AI Helper]
+type = Helper
+triggerall = !var(58) && !IsHelper
+triggerall = !NumHelper(9741)
+triggerall = Alive && RoundState = 2
+trigger1 = !NumPartner
+trigger2 = !(Partner,SelfAnimExist(9741))
+HelperType = normal
+name = "AI Helper"
+ID = 9741
+pos = 9999999,99999
+StateNo = 9741
+KeyCtrl = 1
+PauseMoveTime = 2147483647
+SuperMoveTime = 2147483647
+
+[State -3, TurnBackOnAI]
+type = VarSet
+trigger1 = var(58) = -2 && !IsHelper
+trigger1 = Alive && RoundState = 2
+var(58) = 1
+
+[State -3, XOR]
+type = VarSet
+triggerall = var(58)!=1 && !IsHelper
+triggerall = !var(56)
+triggerall = var(57) = GameTime-1
+trigger1 = command = "b" ^^ command = "b2"
+trigger2 = command = "d" ^^ command = "d2"
+trigger3 = command = "c1" ^^ command = "c2"
+trigger4 = command = "x" ^^ command = "x2"
+trigger5 = command = "y" ^^ command = "y2"
+trigger6 = command = "z" ^^ command = "z2"
+trigger7 = command = "s" ^^ command = "s2"
+trigger8 = command = "holda" ^^ command = "holda2"
+trigger9 = command = "holdb" ^^ command = "holdb2"
+trigger10 = command = "holdc" ^^ command = "holdc2"
+trigger11 = command = "holdx" ^^ command = "holdx2"
+trigger12 = command = "holdy" ^^ command = "holdy2"
+trigger13 = command = "holdz" ^^ command = "holdz2"
+trigger14 = command = "holds" ^^ command = "holds2"
+trigger15 = command = "holdfwd" ^^ command = "holdfwd2"
+trigger16 = command = "holdback" ^^ command = "holdback2"
+trigger17 = command = "holdup" ^^ command = "holdup2"
+trigger18 = command = "holddown" ^^ command = "holddown2"
+trigger19 = command = "recovery" ^^ command = "recovery2"
+var(58) = 1
+
+[State -3, fiXOR]
+type = VarAdd
+trigger1 = var(56) > 0 && !IsHelper
+var(56) = -1
+
+[State -3, fuXOR]
+type = VarSet
+trigger1 = var(57) < GameTime-1 && !IsHelper
+var(56) = 31
+IgnoreHitPause = 1
+
+[State -3, GameTimeVar]
+type = VarSet
+trigger1 = 1
+var(57) = GameTime
+IgnoreHitPause = 1

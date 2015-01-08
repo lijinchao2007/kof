@@ -1,0 +1,53 @@
+;------------------------------------
+; Chizuru Kagura X Version 2
+;      -SANDER71113-
+;------------------------------------
+
+;General Information
+
+[Info] 
+Name         ="Chizuru Kagura"
+DisplayName  ="Chizuru"
+Author       ="Sander71113"
+VersionDate  = 07,19,2004
+MugenVersion = 04,14,2001
+Pal.Defaults = 4
+
+;Files for the player
+
+[Files]
+cmd      = kagura.cmd      ; type 1 (Hard ai) 
+;cmd     = mediumai.cmd    ; type 2 (Medium ai)
+;cmd     = noai.cmd        ; no ai  (easy)
+cns      = kagura.cns      ; Constants
+stcommon = common1_small.cns     ; Common states (in data/)
+st       = kagura.cns      ; States
+st2      = specials1.cns
+st3      = specials2.cns
+st4      = supers1.cns
+st5      = supers2.cns
+st6      = mai.cns
+st7      = king.cns 
+sprite   = kagura.sff      ;Sprite
+anim     = kagura.air      ;Animation
+sound    = kagura.snd      ;Sound
+pal1     = fenk.act        ;Palettes
+pal2     = bughaw.act
+pal3     = itim.act
+pal4     = 98.act
+pal5     = berde.act
+pal6     = ginto.act
+pal7     = dugo.act
+
+;Arcade mode
+[Arcade]
+intro.storyboard   = intro.def
+ending.storyboard  = ending.def
+
+;=========================================================
+;---<> Email   : sander71113@gmail.com 
+;=========================================================
+;---<> WEBPAGE : http://go.to/sander71113
+;                http://sander71113.mgbr.net
+;                http://www.angelfire.com/jazz/sander71113
+;=========================================================

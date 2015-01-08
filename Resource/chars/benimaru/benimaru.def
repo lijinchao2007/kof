@@ -1,0 +1,40 @@
+;***************************************************************************;
+;******************* Created in Fighter Factory Ultimate *******************;
+;*******************      http://www.virtualltek.com     *******************;
+;***************************************************************************;
+
+[Info]
+name = "Benimaru Nikaido"
+displayname = "Benimaru"
+versiondate = 04,07,2006
+mugenversion = 04,14,2001
+author = "Deuce"
+pal.defaults = 10,1,3,2
+
+[Files]
+sprite = benimaru.sff
+anim = benimaru.air
+sound = benimaru.snd
+cmd = benimaru.cmd
+cns = benimaru.cns
+stcommon = common1.cns
+st = benimaru.cns
+st1 = benimarua.cns
+st2 = benimarub.cns
+st3 = 2001-04.txt
+pal1 = benimaru.act
+pal2 = beni97d.act
+pal3 = beni99d.act
+pal4 = beni99a.act
+pal5 = beni94d.act
+pal6 = beni95d.act
+pal7 = benimaru.act
+pal8 = beni98c.act
+pal9 = beni98d.act
+pal10 = beni2ka.act
+pal11 = beni2kb.act
+pal12 = beni96d.act
+
+[Arcade]
+;intro.storyboard = 
+;ending.storyboard = beniend.def
