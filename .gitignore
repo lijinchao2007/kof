@@ -28,3 +28,27 @@ proguard/
 *.iws
 .idea/
 
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+
+# Compiled Dynamic libraries
+#*.so
+#*.dylib
+
+# Compiled Static libraries
+*.lai
+*.la
+#*.a
+
+Debug
+*.ncb
+*.opensdf
+*.sdf
+*.suo
+BIN
+OBJ
+log.txt
+
