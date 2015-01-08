@@ -1,0 +1,118 @@
+verion .65 Beta - October 11th, 2004
+
+I'm very excited about this release, this is really turning into something!
+This release integrates Allegro with my last official release, plus the following improvements:
+
+Welcome SHADOWS and REFLECTIONS!
+     The shadow color is ignored, haven't figured out how the color is derived yet.
+Fixed up the translucent fx a bit, still not perfect....
+Finally straightened out the horizontal parallaxing effect, now it's either perfect or so close I can't tell!!!  :))
+    With the exception of stages that use the 'width' parameter for the floor.. next version ok?
+Added option to take a snapshot (screenshot), just press F8. Pictures will be in the \snapshots directory..
+
+Added optional error output window, instead of being annoyed by those popups.  You won't see any errors unless you have the error window open..  Unless the program crashes of course!
+
+And probably the coolest improvement I slaved over, you may notice the stages now load teeny bit faster, and I'm being sarcastic when I say that.  They should load WAY WAY faster!  Good golly!  I impressed myself!!
+
+Took out character jump for now, 'til I get a certain few things done...
+Fullscreen mode disabled for now..
+
+All the pcx errors should be gone..
+Many stages that did not work at all before work now.
+And probably some stages that did work don't anymore!  Heheheh!
+
+Fixed some stuff people mentioned, thanks to those who report bugs to me!!
+
+
+
+version .59 Alpha - September 9th, 2004
+
+Character can do standing jump, but screen does not follow yet....
+Drag Drop support 'for loading stages.. just drop .def file on the main window!
+ZIP support, including Drag Drop ZIP!!  :)
+
+Can change the the backround music and volume for the stage.. and save it!
+    Really cool.. so you can find just the right tune for the stage while your viewing it!
+    Important as it will be a test for my def editing code, for future stuff.. :)
+    This will modify your file, you might want to make sure you have a backup if it's an original work
+    Don't worry, it will preserve your formatting, comments, etc.
+    It hasn't messed up any of my stages.. I think it's safe :)
+    I'm not liable if it does mess up your stage.. heheh.
+Added option to view .def in Notepad
+
+Parallax floor effect faster..  still isn't perfect...
+Don't think I really fixed many bugs from the last version.. sorry.
+probably made some new bugs..
+
+
+
+Version .51 Alpha - July 10, 2004
+
+Added error handling so that the program won't crash anymore (ok, most of the time) when it encounters an error.  So many stages that didn't load before will now..
+
+
+Version .50 Alpha - July 7, 2004
+
+I should have probably fixed ALL old bugs before adding new features but hey..
+I did fix oodles of bugs.. and likely probably made some new ones.. we'll see!
+Many stages that didn't work before, work now.. and many errors folks reported are gone.
+
+I am probably leaving something out:
+
+- Program saves many settings now automatically..
+- Recent files list
+- Will create an alphabetical list of all of the stages in your \stages" directory!
+	Click on '<<' to load the previous stage on the list.
+	Click on '>>' to load the next stage on the list.
+	Click on 'R' to load a random stage from the list
+	Click on Stage List at the top to view the list, and again to hide it!
+		Clicking on any stage in the list will of course load that stage!
+
+- Click on a BG element.. it will tell you the name & BG position (in the layers)..
+	Which means that you will be able to work with your layers similar to Photoshop, etc.!!  COOL!!
+
+- If the Deform option is checked then:
+	- Click and drag around backround elements.. very cool!
+	Will only work on actual BG Elements position at this time.. not things under motion by controllers/etc.
+	- 'Del' key will delete the backround
+	- 'Insert' key will clone the backround (same X/Y pos, topmost layer, if ur dragging the BG around.. pushing insert 		will "STAMP" it at the current position)
+	- '+' key will move the BG one layer up, COOL!!
+	- '-' key will move the selected BG one layer down.. COOL!!
+	Note the program does not save any changes.  This is a viewer, not an editor yet!! 
+	I just added this stuff to wet your appetite, I was curious how I would implement it later.. so I did now.
+
+- DebugBG option is the same as the DebugBG stage option.. will draw pink (bright green in this case) at the rear of the layers.. for debugging 'holes' in your stage.  Now keep in mind my viewer is not yet reliable enough to test your stages during production.. only test them in MUGEN for now.
+Useful to have DebugBG on if you are 'deforming' the stage.  :)
+
+- You may now load a character to walk around (arrow keys) and test the ZOffset, ZOffsetLink, and camera tension, etc. for the stage!  COOL!!  
+NOTE:  Probably only 50% of your characters will work perfectly and some may crash the program.. I don't care about this just yet since it is just a stage viewer after all!  I used some old code for the characters.. need to rewrite that (LATER).
+A future version will allow the character to jump, sos you can also test the vertical camera tension, etc.
+No, there is no shadow yet, and probably won't be until the DirectX version.. which I won't even start with until everything else is perfected..
+
+- Oh ya.. and I managed to add in support for horizontal parallax scrolling!!! (floor effect) (vertical coming sooon)..
+It's not perfect.. and nothing in my program is as fast as it will be .. but it works pretty darn good!  I impressed myself!  LOL.  Maybe I am an advanced programmer now? ...
+
+
+
+
+
+**********
+ History
+**********
+
+Version .39 Alpha
+
+This is a minor update fixing some (but not all) MAJOR bugs!
+
+- Added support for LoopStart (I think it works correctly now?)
+- Mirrored animations (horizontal) should work properly now.. haven't added vertical yet.. haven't seen a stage that uses vertical!
+- Added error handler so PCX errors will be reported, and hopefully the stage won't crash!
+	- Will fix PCX code soon (ok, someday!!)
+- Added support for 'anim' background controller
+- Fixed some other bugs.. more stages should work.. yaaaaa.
+- Added speed throttle for scrolling speed.. not how it will be in the end.. but good enough for now:
+	Tap (or hold down) the "A" key on the numeric keypad increase scroll speed
+	Tap (or hold down) the "Z" key on the numeric keypad decrease scroll speed
+	This adds a 'lil bug.. on some stages.. on the borders.. too much showing beyond it.. will fix later.. sorry.
+
+Oh, and a note:  I haven't added bug free support for individual background controller's CtrlIDs yet (Just CtrlDefs).  There are very very few stages that use this, and the ones that do ain't going to work correctly just yet.. sorry.

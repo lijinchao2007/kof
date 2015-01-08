@@ -1,0 +1,92 @@
+*********************************************
+M.U.G.E.N. Stage Viewer .65 Beta by XiRtAmOn
+*********************************************
+
+** PLEASE READ ALL OF THIS, AS IT CONTAINS AN IMPORTANT MESSAGE TO THE MUGEN COMMUNITY! **
+
+Released 10/11/2004
+
+Note: If you get one of those annoying missing DLL errors when you try to run it, download the runtimes at: http://download.microsoft.com/download/vb60pro/Redist/sp5/WIN98Me/EN-US/vbrun60sp5.exe
+
+Please see 'What's New.txt' for updated instructions, etc.
+
+INSTRUCTIONS:	
+
+	Move arrow keys, the camera will move!
+	Everything else is self explanatory.
+	Some menus do some stuff:  Of note, FPS Limit defaults to 60fps.  Turning off the limiter and turning it back on again will allow you to input the maximum FPS.
+	That's it for now! :)
+
+Also, the program will perform better if your desktop is set for 16-bit color mode than it will in 24-bit or 32-bit color mode.  This program is currently using the Windows GDI for graphics, so speed may be an issue on some stages.
+
+
+ERRORS/CONTACT:
+	This has not been tested on anything but my 1 Ghz laptop (obselete, heheh) under Windows XP.  My fingers are crossed.  Please do not report minor stage errors yet.  There are way too many imperfections at this point, and most of them I am aware of already.  Ok.. I'm not so much interested in whether or not a stage is displaying perfectly (YET).  I'm mostly interested in whether or not the dang stage loads and runs, and whether the program runs!  If you get errors like 'type mismatch', 'overflow', or 'subscript out of range' please email me the name of the stage and a link to download it.  Do not email me stages as my hotmail account is limited in storage.  Thanks!  Elecbyte was very kind.. and some stages work in MUGEN that were coded VERY sloppily.. that just shouldn't work!  MUGEN allows some stuff it just shouldn't allow..  Oh, and you may email me and tell me how cool this program is, or how cool I am, or how cool you are, or provide your recommendations for future development.  If you provide a recommendation that isn't already on my 'TO DO' list and I implement that, you will be credited for it.  You rock!  Oh ya, and some stages that ran fine with my program did not actually work in MUGEN! (sprite error, etc).  Sorry about that! :)
+
+
+DISTRIBUTION:
+	You may freely host this on your site/distribute this program as long as you keep all of the original archive files in tact.
+
+DISCLAIMER:
+	Yup, If your computer blows up I am not responsible.  And if it does it wasn't because of my program!  Although I have scanned the executable for viruses, I would recommend you do so as well (standard procedure).  No need to backup any of your stage files as the program does not currently modify them.
+
+
+DESCRIPTION:
+	What is this?  A Windows stage view for MUGEN stages of course.  I extracted it from my MUGEN clone project.  I have added a few things since that..
+
+
+The goals of this project (of which it currently doesn't really do) are as follows:
+
+Initially act as a viewer for quickly viewing stages (withought having to load MUGEN) in order to see if it's a stage you would like in your MUGEN game, then import it into MUGEN if that's the case, and to be able to select which music you have to best fit the stage.
+
+Also to be able to quickly and accurately test the stages you are developing without having to load MUGEN!
+
+Possibly turn into a real time visual stage editor!  Yes, that WOULD be AWESOME!
+
+
+Currently most stages I tested work perfect or near perfect unless they have unsupported items (most mentioned below)
+
+
+Not supported:
+	Translucent backrounds (add, add1, sub).  Probably will wait until DirectX version.
+	Character shadows.. and stuff... you know.
+	Anything you notice that should be but isn't!
+
+Planned for future:
+	Everything that is currently not supported
+	DirectX support (the speeed!!! the speeeeed!!!)
+	port to Visual C++ (the speeed!!! the speeeeed!!!)
+
+
+
+This program is Enjoyware.  If you don't enjoy it, you must delete it and never think of it again!  Agreed?
+
+
+
+History + rant & recruitment attempt:
+
+A couple of years ago I began working on a MUGEN clone, as there was no sign of WinMUGEN (and no evidence it was under development) and DOS MUGEN wouldn't work on my XP machine.  I missed it that much.. and I decided maybe I could help out everybody who couldn't get it to work by making a Windows version!!  And yes, that was a massive undertaking.  I released the MUGEN ARMY SCREENSAVER as my initial progress was made (sorry for not updating that.. maybe I'll get to it someday).  I abandoned the project when Elecbyte finally updated their site as it appeared WinMUGEN was still under development.  And I lost my motivation when shortly thereafter I ended up getting MUGEN to run on my XP machine (thanks DJVAN!!).  Many, many, many more months have gone by.. still no WinMUGEN.  I have realized that PARTS of my code could be useful to the community (this stage viewer for example).
+
+
+And this is a message to Elecbyte if anybody of or affiliated with Elecbyte sees this:  Thanks for creating MUGEN.  I can't imagine the time and effort you put into it.  The community is grateful to you and absolutely appreciates everything you are doing, have done, and will do!!  PLEASE if you don't end up releasing WinMUGEN.. at least turn over what you have to a select team of people, and they will continue it!  (Keep the rights if you wish).  Write up contracts if you have to.  There are enough people out there that will gladly take on the task!  Your project is just waaaaay too cool for it to be stagnant like this!  The popularity of MUGEN will increase many times over if an easy to setup and easy to use version (Windows version) is released.  It is the difficulty of use that detracts many people.  It's really damn frustrating for most people to use a DOS program in this age....  Elecbyte, I'm sure the MUGEN community will BUY the rights if money is what you wish..
+
+
+A MESSAGE TO ALL PROGRAMMERS:
+	If Elecbyte doesn't do it my brothers, we can come together and do it ourselves!  Unfortunately it would take me at least a year or two to finish the 100% compatible MUGEN clone by myself with the little time I have available.  I know nobody wants to wait that long! (AGAIN)  If WE make a clone, then WE have control over how it is EXPANDED!!  Maybe even make it open source.  VERY COOL! :)
+
+If you are interested in participating: please EMAIL ME NOW and tell me about your programming backround/skills and mention any specialties if you have any.  Don't worry.. you don't have to be super advanced.. I'm not!!!  Some coding will be super advanced.  For this I will consult super advanced programmers in each case if none are aboard the team.  All who contribute code that is used will be credited as such.  I'm currently coding in VB.. doesn't really matter what language/s you know.. we can communicate in pseudocode if we have to!  Ultimately the code will end up in C++, and be ported to all platforms (yes including MAC).  Oooh ya.. and someone could port it to XBOX, PS2, GAMECUBE.. YAAAAAAaaaaaaaaaaaaaaaaaa... :))
+
+Special thanks to Adam Hoult for providing me his PCX code.  I used a modified version of his PCX loading code as it loaded images MUCH faster (and more compatible) than what I was previously using.
+
+If you like this rant, read my post at the mugenguild forum:
+http://www.mugenguild.com/forum/index.php?board=5;action=display;threadid=10535
+
+Heheheheheh.  I talk too much.
+
+
+regards to all.. YOU ROCK!,
+
+
+XiRtAmOn
+
+email: xirtamon@hotmail.com

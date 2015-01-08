@@ -1,0 +1,84 @@
+================
+ SFEditor v0.5b
+================
+
+
+==================
+ ¿QUÉ ES SFEDitor?
+==================
+	SFE Editor.
+
+====================
+ Y... ¿QUÉ ES SFE?
+====================
+	Simple Fighting Engine. Simplemente un motor como MUGEN, pero mucho más
+fácil para los desarrolladores. Esto también significa más limitado, por supuesto.
+	Podrás hacer personajes de una forma muy fácil, haciéndolo todo desde menús.
+
+	Voy a dejarlo aquí. Más información cuando SFE y SFEditor estén más completos.
+Esto es sólo una mini-demo, puedes modificar el personaje de "Fist PC" y probarlo.
+Si quieres saber más acerca de el pregúntame por mail o espera a la siguiente demo
+del "aunténtico" SFE+SFEditor.
+
+
+=====================
+ HOT TO USE SFEditor
+=====================
+	Primero necesitas GRÁFICOS, ANIMACIONES y SONIDOS (opcional), y puedes
+importarlos de MUGEN o hacerlos.
+	Ve a la pestaña AIR y pulsa el botón SFEditor.
+	Verás "Animation" y "Frame". Puedes cambiar sus opciones desde aquí.
+
+	* Animation: Sólo dos opciones por ahora.
+		- Initial state: Estado inicial desde donde la animación puede empezar.
+		- Move: Movimiento que ejecuta esta animación. Una combinación de
+		  (U,D,L,R) y botones (sólo A de momento). No puedes hacer movimientos
+		  como "dragon punch" o así, espera a siguientes versiones.
+	* Frame: Opciones para cada fotograma.
+		- State: Estado al que cambia en este fotograma.
+		- Control: El jugador tiene el control.
+		- Play sound: Sonido a reproducir en este fotograma.
+		/ ON HIT /
+			- Type: Tipo de golpe. Usado para las animaciones de las caídas
+			(y para cubrirse).
+			- Sound: Sonido a reproducir si se golpea al oponente.
+		- Flags: Varios flags. Sólo para programadores... por ahora.
+
+=========================
+ ID's DE LAS ANIMACIONES
+=========================
+	Necesito hacer más, pero sólo necesitaba estas para "Fist PC".
+
+	STAND			0
+
+	WALK FORWARD	1
+	WALK BACK		2
+	STARTING		3
+
+	CROUCH			11
+
+	JUMP UP			20
+	JUMP RIGTH		21
+	JUMP LEFT		22
+
+	GUARD HIGH		30
+	GUARD MEDIUM	31
+
+	FALLING FROM HIGH HIT		100
+	FALLING FROM MEDIUM HIT		101
+	FALLING LOW HIGH HIT		100
+	FALLING FROM GROUND HIT		103
+
+	FALLING FROM HIGH HIT (BACK)	104
+	FALLING FROM MEDIUM HIT	(BACK)	104
+	FALLING FROM LOW HIT (BACK)		104
+	FALLING FROM GROUND HIT (BACK)	104
+
+
+
+==========
+ CONTACTO
+==========
+
+http://ses.mgbr.net
+ses@mgbr.net

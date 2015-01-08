@@ -1,0 +1,183 @@
+==================================
+ MCM 2.0b dev3.56 (en desarrollo)
+==================================
+
+
+
+============
+ IMPORTANTE
+============
+	Esta es una "versión en desarrollo" de M.C.M. 2.0 Final.
+    Esto quiere decir VERSIÓN BETA, ¿fale?
+    Por esto:
+        - No me preguntes como funciona, no está terminado aún.
+        - Avísame sólo de errores críticos, por favor.
+        - Por último: Disfrutalo y ten paciencia, espero terminarlo pronto.
+
+    Esta versión está en desarrollo, así que puede tener errores. Ten cuidado.
+De todas formas, debería funcionar mejor que el MCM 1.5; arreglé muchos fallos y
+tiene cositas nuevas.
+
+
+
+=======
+ NUEVO
+=======
+
+v2.0b dev3.54
+--------------
+* Añadido checkbox que muestra/cambia si una imagen usa la paleta compartida.
+
+v2.0b dev3.50
+--------------
+* Editor de SND's.
+	- Cargar/Salvar SND's
+	- Añadir/Cambiar/Borrar samples.
+	- Grabar uno o todos los samples a disco.
+
+IMPORTANTE: MCM deja añadir (y reproducir) ficheros OGG, pero estos ficheros
+  NO FUNCIONAN con MUGEN.
+
+v2.0b dev2.98
+-------------
+* Añadido el soporte para mis formatos de SPRITES y ANIMACIONES (usados en "Fist PC").
+* Ahora MCM "recuerda" los últimos directorios de trabajo.
+* Cambios en el fichero "mcm.ini":
+	- RedrawAlways: Indica que redibuje constantemente.
+	- LastSFFDir, LastAIRDir, LastPCXDir, LastACTDir: ;)
+
+v2.0b dev2.94
+-------------
+* Soporte GDI. Úsalo si tienes problemas con DirectX (normalmente si MCM casca
+  al arrrancar o cargar un SFF). Simplemente abre el MCM.INI y escribe: GDI=1
+  Pero recuerda: DirectX es más rápido.
+
+v2.0b dev2.93
+-------------
+* Capas de papel cebolla: Puedes ver los anteriores fotogramas/sprites (hasta
+  tres, pero creo que uno es suficiente).
+* Fijar una imagen: Fija/libera cualquier imagen (del SFF o el AIR) y siempre
+  la verás. Puedes hacer fácilmente tus nuevas Acciones desde la posición de
+  parado (STAND). Simplemente fija esa imagen.
+
+v2.0b dev2.90
+-------------
+* ¡Editor AIR completo!
+* Nuevos comandos en el tab AIR:
+	- Add Action: Añade una nueva acción (en blanco).
+	- Clone Action: Duplica la acción actual.
+	- Delete Action: Mmm... ¿borra la acción actual?
+
+	- Insert Frame: Inserta un fotograma DELANTE del actual con el
+	  Grupo/Imagen del Sprite seleccionado en el tab SFF.
+	- Add Frame: Lo mismo, pero añadiéndolo al final.
+	- Change Frame: Cambia el fotograma actual con el Sprite del tab SFF.
+	- Delete Frame: Borra el fotograma actual.
+	- Use previous Clsn's: Copia los Clsn's del fotograma anterior.
+* Nuevos comandos en el tab SFF:
+	- Insert Frame, Add Frame, Change Frame: Lo mismo que los del tab AIR pero más útiles.
+
+* NOTA: También puedes cambiar el fotograma desde los Edit Boxes: "Group" e "Image".
+
+v2.0b dev2.73
+-------------
+* ¡Siii! Completo editor de Clsn's. Hay tres modos:
+    - Mano: Mover el fotograma.
+    - Botón Clsn1: Editar los Clsn1's.
+    - Botón Clsn2: Editar los Clsn2's.
+  Puedes hacer varias acciones con los Clsn's:
+    - Añadir: Pulsa y arrastra el ratón en la vista.
+    - Borrar: Selecciona el Clsn (simplemente pon el ratón encima del Clsn) y
+      pulsa SUPR.
+    - Mover: Pulsa y arrastra un lado del Clsn.
+    - Cambiar tamaño: Pulsa y arrastra una esquina del Clsn.
+
+* Checkbox 'Loop' y EditBox 'LoopStart': Si sabes cómo funcionan los AIR,
+  deberías saber cómo usarlos.
+* EditBox 'Flags': Escribe aquó todas las opciones del fotograma que MCM no
+  soporta y quieres añadir al fotograma.
+* EditBox 'T': Tiempo del fotograma.
+
+NOTA: NO PUEDES AÑADIR/BORRAR ACCIONES/FOTOGRAMAS Y NO PUEDES CAMBIAR EL
+      GRUPO/IMAGEN DE NINGÚN FOTOGRAMA. Esto estará en la siguiente versión.
+
+* Opción para salvar la paleta. De verdad que la olvidé ^_^.
+* Nuevo sistema de versiones. No más: "¿Qué versión es la última?".
+
+
+
+====================
+ ERRORES ARREGLADOS
+====================
+
+v2.0b dev3.56
+--------------
+* Corregido otro errorcillo con los SFF. Mmm... asias, Ferenator (te odio, ¿lo sabías?).
+
+v2.0b dev3.55
+--------------
+* Corregido un error al cargar algunos SFF. Asias, Ferenator (ya hablaremos de esas 10000).
+
+v2.0b dev3.54
+--------------
+* Pequeños cambios en SND.
+
+v2.0b dev3.53
+--------------
+* Al insertar (no añadir) fotogramas, los clsn's se perdían y el programa cascaba :(
+* MCM ya no se queda con el control de la tarjeta, ya puedes volver a poner música
+  mientras tienes abierto el programa. Además, si te fallaba por el sonido, ahora
+  debería funcionar.
+
+v2.0b dev3.52
+--------------
+* Error al cargar algunos AIR. Gracias por el aviso, MUGREN.
+
+v2.0b dev3.51
+--------------
+* Error al borrar algunos sprites de un SFF.
+
+v2.0b dev3.50
+--------------
+* Alguno... supongo.
+
+v2.0b dev2.981
+--------------
+* Corregido un error cuando dos imágenes eran iguales, pero con distinta
+  paleta; MCM borraba una. Corregido gracias a "Kitsune Sniper".
+
+v2.0b dev2.98
+-------------
+* Error al pulsar las casillas "Inv H" o "Inv V" si ho había cargada una
+  animación.
+
+v2.0b dev2.95
+-------------
+* Arreglado un error al añadir sprites.
+
+v2.0b dev2.94
+-------------
+* 'Fijar imagen' ahora con más brillo.
+
+v2.0b dev2.93
+-------------
+* Arreglado, DE VERDAD, el error de los sprites perdidos. Gracias otra vez,
+  DCelso.
+
+v2.0b dev2.90
+-------------
+* Algunos errores arreglados.
+
+v2.0b dev2.73
+-------------
+* Arreglado el error de los sprites perdidos. Por lo menos el único que he
+  encontrado. Gracias DCelso.
+
+
+
+==========
+ CONTACTO
+==========
+
+http://ses.mgbr.net
+ses@mgbr.net
