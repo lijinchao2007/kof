@@ -58,7 +58,7 @@ bool CToken::OpenFile( const char* filename )
 	fileBuffer[filesize] = '\0';
 	yy_scan_string(fileBuffer);
 	GetToken();
-	delete fileBuffer;
+	delete [] fileBuffer;
 
 	return true;
 }

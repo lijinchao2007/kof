@@ -65,6 +65,7 @@ void SwapWindow()
 	 char* argv[1] = {"kof"};
 	 int i;
 
+	// TODO: FIXME
 	 state = SDLTest_CommonCreateState(argv, SDL_INIT_VIDEO);
 	 if (!state) {
 		 return 1;
@@ -90,6 +91,7 @@ void SwapWindow()
 	 state->window_y = 0;
 #endif // WIN32
 
+	// TODO: FIXME
 	 if (!SDLTest_CommonInit(state)) {
 		 return 0;
 	 }

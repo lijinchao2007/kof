@@ -269,7 +269,7 @@ void CVideoSystem::RerderSpr(DrawInfo& drawInfo, PalFXInfo* palFXinfo)
 	CAssert(lpSprite != NULL, "RerderSpr spr should existed");
 	//calculate x and y value 
 	// image's xy is the anchor,so the result is the position of the up-left point.it change to(airx-anchorx, airx-anchory)
-	// Í¼Æ¬µÄÆðÊ¼µãÊÇ×óÉÏ£¬Ò»°ã¾Í°ÑÃªµãÉèÖÃÔÚÏÂÃæ¾ÓÖÐ
+	// Í¼Æ¬ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½Ò»ï¿½ï¿½Í°ï¿½Ãªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	PaletteFormat *ColorTable=NULL;
 	if (lpSprite->bSharePallet)
 	{
@@ -482,11 +482,12 @@ void CVideoSystem::RenderDrawRect(Uint8 R, Uint8 G, Uint8 B,int x,int y,int widt
 		ccGLEnableVertexAttribs(kCCVertexAttribFlag_Position);
 		CHECK_GL_ERROR_DEBUG();
 
-		GLfloat        vertices[] = {    
-			x,            y,
-			width + x,    y,
-			x,            height  + y,
-			width + x,    height  + y};
+		GLfloat vertices[] = {
+			static_cast<GLfloat>(x),                    static_cast<GLfloat>(y),
+			static_cast<GLfloat>(x + width),           static_cast<GLfloat>(y),
+			static_cast<GLfloat>(x),                   static_cast<GLfloat>(y + height),
+			static_cast<GLfloat>(x + width),           static_cast<GLfloat>(y + height)
+		};
 
 		glVertexAttribPointer(kCCVertexAttrib_Position, 2, GL_FLOAT, GL_FALSE, 0, vertices);
 
@@ -498,19 +499,20 @@ void CVideoSystem::RenderDrawRect(Uint8 R, Uint8 G, Uint8 B,int x,int y,int widt
 
 	}else if (drawType == eDRAW_RECT_TYPE_LINE)
 	{
-		GLfloat        vertices[] = {    
-			x,            y,
-			width + x,    y,
+		GLfloat vertices[] = {
+			static_cast<GLfloat>(x),                static_cast<GLfloat>(y),
+			static_cast<GLfloat>(x + width),        static_cast<GLfloat>(y),
 
-			width + x,    y,
-			width + x,            height  + y,
+			static_cast<GLfloat>(x + width),        static_cast<GLfloat>(y),
+			static_cast<GLfloat>(x + width),        static_cast<GLfloat>(y + height),
 
-			width + x,    height  + y,
-			x,            height  + y,
+			static_cast<GLfloat>(x + width),        static_cast<GLfloat>(y + height),
+			static_cast<GLfloat>(x),                static_cast<GLfloat>(y + height),
 
-			x,            height  + y,
-			x,    y
+			static_cast<GLfloat>(x),                static_cast<GLfloat>(y + height),
+			static_cast<GLfloat>(x),                static_cast<GLfloat>(y)
 		};
+
 
 		this->RenderDrawLines(R, G, B,1, vertices, 8);
 	}

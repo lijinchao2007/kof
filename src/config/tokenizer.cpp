@@ -174,8 +174,8 @@ CTokenizer::CTokenizer( int bufferSize)
 CTokenizer::~CTokenizer()
 {
 	if( m_FileBuffer )
-		delete m_FileBuffer;
-	delete m_Buffer;
+		delete []m_FileBuffer;
+	delete []m_Buffer;
 }
 
 bool CTokenizer::OpenFile( const char* filename )
@@ -217,7 +217,7 @@ bool CTokenizer::CloseFile()
 	if( !m_FileBuffer )
 		return false;
 
-	delete m_FileBuffer;
+	delete []m_FileBuffer;
 	m_FileSize = 0;
 	m_Filename[0] = 0;
 	m_FileBuffer = NULL;

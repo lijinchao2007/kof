@@ -54,3 +54,6 @@ log.txt
 Resource/debug.log
 assets
 
+.vscode
+build
+cmake-build-*
